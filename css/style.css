@@ -102,3 +102,20 @@
     height: auto;
   }
 }
+.menu li a {
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #007BFF; /* Cambia colore al passaggio del mouse */
+}
+.contenuto {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
