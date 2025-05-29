@@ -1,121 +1,99 @@
-* {
-    box-sizing: border-box;
+/* Stile base */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+  color: #000000;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #f5f5f5;
+}
+
+/* Menu e lista */
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+
+  /* Animazione apertura/chiusura */
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  max-height: none; /* visibile desktop */
+  opacity: 1;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+  color: #007BFF;
+}
+
+/* Bottone hamburger */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Contenuto con fade-in */
+.contenuto {
+  padding: 20px;
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Effetto fade-in */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
-  
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .sidebar {
-    width: 110px;
-    background-color: #414f96;
-    color: white;
-    padding: 20px;
-    height: 100vh;
-  }
-  
-  .menu-section {
-    margin-bottom: 20px;
-  }
-  
-  .menu-title {
-    font-weight: bold;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .submenu {
-    display: none;
-    margin-left: 10px;
-  }
-  
-  .submenu button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    padding: 5px 0;
-    text-align: left;
-  }
-  
-  .content {
-    padding: 20px;
-    flex-grow: 1;
-  }
-  
-  img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 15px;
-  }
-  
-  /* Responsive per smartphone */
-  @media (max-width: 768px) {
-    body {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      height: auto;
-    }
-  
-    .submenu {
-      margin-left: 0;
-    }
-  }
-  /* DESIGN RESPONSIVE PER MOBILE */
+}
+
+/* Responsive per mobile */
 @media (max-width: 768px) {
-  body {
-    font-size: 16px;
+  .menu ul {
+    flex-direction: column;
+    display: block; /* necessario per animare */
+    max-height: 0;  /* chiuso di default */
+    opacity: 0;
+    width: 100%;
     padding: 10px;
   }
 
+  .menu ul.active {
+    max-height: 500px;  /* apertura menu */
+    opacity: 1;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
   header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    width: 100%;
-  }
-
-  .menu {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .menu li {
-    width: 100%;
+    flex-direction: row-reverse;
   }
 
   .contenuto {
     font-size: 16px;
     padding: 15px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-}
-.menu li a {
-  transition: color 0.3s ease;
-}
-
-.menu li a:hover {
-  color: #007BFF; /* Cambia colore al passaggio del mouse */
-}
-.contenuto {
-  opacity: 0;
-  animation: fadeIn 1s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
   }
 }
