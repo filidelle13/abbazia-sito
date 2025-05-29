@@ -19,12 +19,12 @@ const content = {
     },
     section4: {
       title: "Retro",
-      text: "",
+      text: "Il campanile è robusto e slanciato, alto più di 30 metri, ha una pianta quadrata con tetto piramidale ed è basato sull’ultima campata della navata di destra. Nella cella campanaria si aprono le TRIFORE e sotto una BIFORA. Sul retro si vedono le tre absidi.",
       image: "images/retro.jpg" 
     },
     section5: {
       title: "Polittico di San Siro",
-      text: "",
+      text: "La più notevole tra le opere d’arte conservate nella chiesa è il Polittico di San Siro, realizzato nel 1516, attribuito a Pier Francesco Sacchi, detto il Pavese. Il dipinto è stato restaurato nel 1960. Nel riquadro centrale è rappresentato il santo in trono, benedicente (lo capiamo dalla posizione della mano destra con le due dita alzate) che con il pastorale schiaccia il Basilisco (mostro che simboleggia l’eresia ariana). Questa immagine è circondata da 8 scene che riguardano la sua vita e la sua vocazione ed è sovrastata dal mezzo busto della Vergine che allatta il Santo bambino. Ai lati ci sono quattro riquadri per lato che raffigurano altrettante scene della vita di San Siro.",
       image: "images/polittico.jpg" 
     }
   },
@@ -41,19 +41,19 @@ const content = {
     },
     section3: {
       title: "Facade",
-      text: "The façade highlights the internal division into three naves, has a single central entrance, with a simple portal. The facade, oriented towards the East, has a shape with salients, with four roof slopes, and presents some typical elements of Romanesque architecture, which we can recognize together: ● the small arches, ● the rose window, ● The paving of the churchyard is made of pebbles (risseu)",
+      text: "The facade highlights the internal division into three naves, has a single central entrance, with a simple portal. The facade, oriented towards the East, has a shape with salients, with four roof slopes, and presents some typical elements of Romanesque architecture, which we can recognize together: ● the small arches, ● the rose window, ● The paving of the churchyard is made of pebbles (risseu)",
       image: "images/facciata.jpg"
     },
   
     section4: {
     title: "Back",
-    text: "",
+    text: "The bell tower is sturdy and slender, more than 30 meters high, has a square plan with a pyramidal roof and is based on the last span of the right nave. In the bell tower there are the TRIPLE LIGHTS and below a TWIN LIGHT. On the back you can see the three apses.",
     image: "images/retro.jpg"
     },
   
     section5: {
       title: "San Siro Polyptych",
-      text: "",
+      text: "The most notable of the works of art preserved in the church is the Polyptych of San Siro, made in 1516, attributed to Pier Francesco Sacchi, known as Pavese. The painting was restored in 1960. In the central panel, the saint is depicted on a throne, blessing (we understand this from the position of his right hand with two fingers raised) who with the pastoral staff crushes the Basilisk (a monster that symbolizes the Arian heresy). This image is surrounded by 8 scenes that concern his life and his vocation and is dominated by the half-length of the Virgin breastfeeding the Holy Child. On the sides there are four panels per side that depict as many scenes from the life of San Siro.",
       image: "images/polittico.jpg" 
     }
   }
