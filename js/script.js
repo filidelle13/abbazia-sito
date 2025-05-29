@@ -56,6 +56,33 @@ const content = {
       text: "The most notable of the works of art preserved in the church is the Polyptych of San Siro, made in 1516, attributed to Pier Francesco Sacchi, known as Pavese. The painting was restored in 1960. In the central panel, the saint is depicted on a throne, blessing (we understand this from the position of his right hand with two fingers raised) who with the pastoral staff crushes the Basilisk (a monster that symbolizes the Arian heresy). This image is surrounded by 8 scenes that concern his life and his vocation and is dominated by the half-length of the Virgin breastfeeding the Holy Child. On the sides there are four panels per side that depict as many scenes from the life of San Siro.",
       image: "images/polittico.jpg" 
     }
+  },
+  es: {
+    section1: {
+      title: "Historia",
+      text: "Según la tradición, la iglesia fue construida en el lugar donde nació Siro, obispo. de Génova en el siglo IV. No es posible fijar una fecha para la abadía.precisa para su construcción, pero, en 1025, el obispo Landolfo la entregó a la Monjes benedictinos: esta es la razón por la que este año nos encontramos en celebrar el milenio",
+      image: "images/abbazia.jpg"
+    },
+    section2: {
+      title: "Interior",
+      text: "La planta de BASÍLICA, sin CRUCERO, presenta 3 NAVES. Hay 11columnas de aproximadamente 4 m de altura, que dividen el espacio en 3 PASILLOS. En conclusión Encontramos una columna más robusta que sostiene el campanario. En las trece ventanas monolancetas presentes en el muro perimetral se hanSe insertaron las vidrieras de Ilario Cuoghi, el artista que también creó el portal. mayor y las esculturas para el Vía Crucis. Las vidrieras, que sondecoraciones hechas de hierro y vidrio de colores que permiten filtrar la luz Dentro de la iglesia, representan las FIGURAS DE LA BIBLIA (como el Profetas y Judit). El techo de la NAVE CENTRAL es una CEJA DE MADERA de Córcega. de 1923.",
+      image: "images/interni.jpg"
+    },
+    section3: {
+      title: "Fachada",
+      text: "La facciata evidenzia la ripartizione interna in tre navate, ha un unico ingresso centrale, con un semplice portale. La facciata, orientata verso Est, ha una forma a salienti, con quattro falde del tetto, e presenta alcuni elementi tipici dell’architettura romanica, che possiamo riconoscere insieme: ● le arcatelle, ● il rosone, ● La pavimentazione del sagrato è a ciottoli (risseu)",
+      image: "images/facciata.jpg"
+    },
+    section4: {
+      title: "àtras",
+      text: "El campanario es robusto y esbelto, más alto que De 30 metros de altura, tiene planta cuadrada con tejado. piramidal y se basa en el último tramo del pasillo derecho. en la celda El campanario abre el TRIFORE y debajo una VENTANA DE MUFFIN. En la parte posterior se pueden ver los tres ábsides.",
+      image: "images/retro.jpg"
+    },
+    section5: {
+      title: "Políptico de San Siro",
+      text: "La más notable de las obras de arte conservadas en la iglesia es el Políptico de San Siro, construido en 1516, atribuido a Pier Francesco Sacchi, conocido como el Pavés. El cuadro fue restaurado en 1960. En el panel central se representa al santo en el trono, bendiciendo (el entendemos por la posición de la mano derecha con los dos dedos levantados) que con la pastoral aplasta al basilisco (monstruo que simboliza la herejía arriana). Esta imagen está rodeada de 8 escenas que se relacionan con su vida y su vocación y está dominada por el busto de medio cuerpo de la Virgen amamantando al Santo niño. En los laterales hay cuatro paneles por lado que representan otras tantas escenas de la vida de San Siro.",
+      image: "images/polittico.jpg"
+    }
   }
 };
 
