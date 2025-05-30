@@ -4,11 +4,19 @@
   <meta charset="UTF-8">
   <title>Abbazia di San Siro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Collegamento ai file CSS e JS -->
   <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
 </head>
 <body>
-  <div class="sidebar">
+
+  <!-- Pulsante per dispositivi mobili -->
+  <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+
     <!-- Sezione Lingua -->
     <div class="menu-section">
       <div class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
@@ -25,15 +33,19 @@
       <div id="abbeyMenu" class="submenu">
         <button onclick="showContent('section1')">Storia</button>
         <button onclick="showContent('section2')">Interni</button>
-        <button onclick="showContent('section3')">Facciata</button> 
-        <button onclick="showContent('section4')">Retro</button> 
-        <button onclick="showContent('section5')">Polittico di San Siro</button> 
+        <button onclick="showContent('section3')">Facciata</button>
+        <button onclick="showContent('section4')">Retro</button>
+        <button onclick="showContent('section5')">Polittico di San Siro</button>
       </div>
     </div>
+
   </div>
 
+  <!-- Contenuto principale -->
   <div class="content" id="mainContent">
-    <!-- Il contenuto della sezione viene caricato tramite JS -->
+    <h1>Benvenuti all'Abbazia di San Siro</h1>
+    <p>Seleziona una voce dal menu per iniziare.</p>
   </div>
+
 </body>
 </html>

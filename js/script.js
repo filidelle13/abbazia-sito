@@ -86,6 +86,10 @@ const content = {
   }
 };
 
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('active');
+}
+
 function toggleMenu(id) {
   const menu = document.getElementById(id);
   menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
@@ -93,7 +97,7 @@ function toggleMenu(id) {
 
 function changeLanguage(lang) {
   currentLanguage = lang;
-  showContent('section1'); // Mostra sempre una sezione dopo il cambio lingua
+  showContent('section1');
 }
 
 function showContent(sectionKey) {
@@ -101,12 +105,11 @@ function showContent(sectionKey) {
   const html = `
     <h1>${section.title}</h1>
     <p>${section.text}</p>
-    <img src="${section.image}" alt="${section.title}">
+    <img src="${section.image}" alt="${section.title}" style="max-width:100%; margin-top:15px;">
   `;
   document.getElementById('mainContent').innerHTML = html;
 }
 
-// Carica la prima sezione all'avvio
 document.addEventListener('DOMContentLoaded', () => {
   showContent('section1');
 });
