@@ -1,4 +1,42 @@
 let currentLanguage = 'it';
+let currentSection = 'section1';
+
+const labels = {
+  it: {
+    menu: {
+      language: "Lingua",
+      abbey: "L'abbazia",
+      section1: "Storia",
+      section2: "Interni",
+      section3: "Facciata",
+      section4: "Retro",
+      section5: "Polittico di San Siro"
+    }
+  },
+  en: {
+    menu: {
+      language: "Language",
+      abbey: "The Abbey",
+      section1: "History",
+      section2: "Interior",
+      section3: "Facade",
+      section4: "Back",
+      section5: "San Siro Polyptych"
+    }
+  },
+  es: {
+    menu: {
+      language: "Idioma",
+      abbey: "La Abadía",
+      section1: "Historia",
+      section2: "Interior",
+      section3: "Fachada",
+      section4: "Atrás",
+      section5: "Políptico de San Siro"
+    }
+  }
+};
+
 
 const content = {
   it: {
@@ -97,10 +135,23 @@ function toggleMenu(id) {
 
 function changeLanguage(lang) {
   currentLanguage = lang;
-  showContent('section1');
+  updateMenuLabels();         // aggiorna i testi dei menu
+  showContent(currentSection); // NON cambia sezione
+}
+
+function updateMenuLabels() {
+  const langLabels = labels[currentLanguage];
+
+  document.getElementById('languageTitle').textContent = langLabels.menu.language;
+  document.getElementById('abbeyTitle').textContent = langLabels.menu.abbey;
+
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById(`btn-section${i}`).textContent = langLabels.menu[`section${i}`];
+  }
 }
 
 function showContent(sectionKey) {
+  currentSection = sectionKey;
   const section = content[currentLanguage][sectionKey];
   const html = `
     <h1>${section.title}</h1>
@@ -111,5 +162,6 @@ function showContent(sectionKey) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  showContent('section1');
+  updateMenuLabels();
+  showContent(currentSection);
 });
