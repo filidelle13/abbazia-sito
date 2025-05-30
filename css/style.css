@@ -90,13 +90,8 @@ body {
   padding: 10px 15px;
   cursor: pointer;
   font-size: 18px;
-  z-index: 1100;
+  z-index: 1101;
   border-radius: 4px;
-}
-
-/* Nascondi il pulsante quando il menu è aperto */
-.sidebar.active ~ .menu-toggle {
-  display: none;
 }
 
 /* Responsive */
@@ -110,12 +105,10 @@ body {
     width: 100%;
     height: auto;
     transform: translateY(-100%);
-    padding: 10px;
   }
 
   .sidebar.active {
     transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   }
 
   .content {
@@ -127,5 +120,3 @@ body {
     display: block;
   }
 }
-
-    
