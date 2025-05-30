@@ -125,92 +125,43 @@ const content = {
 };
 
 function toggleSidebar() {
-  document.querySelector('.sidebar').classList.toggle('active');
+  document.getElementById('sidebar').classList.toggle('active');
 }
 
-function toggleMenu(menuId) {
-  const menu = document.getElementById(menuId);
-  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+function toggleMenu(id) {
+  const menu = document.getElementById(id);
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
 
 function changeLanguage(lang) {
   currentLanguage = lang;
-  updateMenuLabels();
-  showContent(currentSection);
+  updateMenuLabels();            // Aggiorna le etichette
+  showContent(currentSection);   // 🔁 Mostra la sezione attuale, NON forzare section1
 }
 
 function updateMenuLabels() {
-  // aggiorna i pulsanti lingua
-  const languageButtons = document.querySelectorAll('#languageMenu button');
-  const langs = ['it', 'en', 'es'];
-  languageButtons.forEach((btn, i) => {
-    btn.textContent = content[currentLanguage].languageOptions[i];
-  });
+  const langLabels = labels[currentLanguage];
 
-  // aggiorna pulsanti sezione abbazia
-  const abbeyButtons = document.querySelectorAll('#abbeyMenu button');
-  abbeyButtons.forEach((btn, i) => {
-    btn.textContent = content[currentLanguage].abbeySections[i];
-  });
+  document.getElementById('languageTitle').textContent = langLabels.menu.language;
+  document.getElementById('abbeyTitle').textContent = langLabels.menu.abbey;
+
+  for (let i = 1; i <= 5; i++) {
+    document.getElementById(`btn-section1`.replace('1', i)).textContent = langLabels.menu[`section${i}`];
+  }
 }
 
 function showContent(sectionKey) {
   currentSection = sectionKey;
   const section = content[currentLanguage][sectionKey];
-
-  let imageHtml = '';
-  if (section.images && section.images.length > 0) {
-    imageHtml = `
-      <div class="slideshow-container">
-        <img id="slideshow-image" src="${section.images[0]}" alt="${section.title}" style="max-width:100%">
-        <div class="slideshow-controls">
-          <button onclick="prevImage()">⟨</button>
-          <button onclick="nextImage()">⟩</button>
-        </div>
-      </div>
-    `;
-
-    // Salva immagini e indice corrente in globale
-    window.slideshowImages = section.images;
-    window.currentImageIndex = 0;
-  } else if (section.image) {
-    imageHtml = `<img src="${section.image}" alt="${section.title}" style="max-width:100%; margin-top:15px;">`;
-    window.slideshowImages = null;
-  } else {
-    window.slideshowImages = null;
-  }
-
   const html = `
     <h1>${section.title}</h1>
     <p>${section.text}</p>
-    ${imageHtml}
+    <img src="${section.image}" alt="${section.title}" style="max-width:100%; margin-top:15px;">
   `;
-
   document.getElementById('mainContent').innerHTML = html;
 }
 
-// Slideshow controlli
-function nextImage() {
-  if (!window.slideshowImages) return;
-  window.currentImageIndex = (window.currentImageIndex + 1) % window.slideshowImages.length;
-  updateSlideshowImage();
-}
-
-function prevImage() {
-  if (!window.slideshowImages) return;
-  window.currentImageIndex = (window.currentImageIndex - 1 + window.slideshowImages.length) % window.slideshowImages.length;
-  updateSlideshowImage();
-}
-
-function updateSlideshowImage() {
-  const imgElement = document.getElementById('slideshow-image');
-  if (imgElement) {
-    imgElement.src = window.slideshowImages[window.currentImageIndex];
-  }
-}
-
-// Inizializzazione al caricamento pagina
 document.addEventListener('DOMContentLoaded', () => {
   updateMenuLabels();
-  showContent(currentSection);
+  showContent(currentSection); // Avvia con section1 ma mantiene la logica aggiornata
 });
