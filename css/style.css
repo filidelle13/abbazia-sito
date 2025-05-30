@@ -11,9 +11,9 @@ body {
   color: white;
   height: 100vh;
   padding: 20px;
+  transition: transform 0.3s ease;
 }
 
-/* Sezioni del menu */
 .menu-section {
   margin-bottom: 20px;
 }
@@ -24,10 +24,13 @@ body {
   margin-bottom: 10px;
 }
 
-/* Sotto-menu nascosti di default */
 .submenu {
   display: none;
   margin-left: 10px;
+}
+
+.submenu.show {
+  display: block;
 }
 
 .submenu button {
@@ -40,13 +43,16 @@ body {
   cursor: pointer;
 }
 
-/* Area principale di contenuto */
 .content {
   padding: 20px;
   flex-grow: 1;
 }
 
-/* Responsive sidebar per mobile */
+/* Hamburger button */
+.menu-toggle {
+  display: none;
+}
+
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -55,7 +61,11 @@ body {
   .sidebar {
     width: 100%;
     height: auto;
-    padding: 10px;
+    display: none;
+  }
+
+  .sidebar.active {
+    display: block;
   }
 
   .menu-toggle {
@@ -69,15 +79,10 @@ body {
     padding: 10px 15px;
     font-size: 18px;
     cursor: pointer;
-  }
-
-  header {
-    flex-direction: row-reverse;
+    z-index: 999;
   }
 
   .content {
-    font-size: 16px;
-    padding: 15px;
-    margin-top: 70px;
+    margin-top: 60px;
   }
 }

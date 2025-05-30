@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Abbazia di San Siro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
   <script src="js/script.js" defer></script>
 </head>
 <body>
+
   <button class="menu-toggle" id="hamburgerBtn">☰</button>
 
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <div class="menu-section">
       <div id="menuLanguageTitle" class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
       <div id="languageMenu" class="submenu">
@@ -32,10 +33,7 @@
     </div>
   </div>
 
-  <div class="content" id="mainContent">
-    <!-- Contenuto dinamico -->
-  </div>
+  <div class="content" id="mainContent"></div>
+
 </body>
 </html>
-
-  
