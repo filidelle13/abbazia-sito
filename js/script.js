@@ -124,92 +124,42 @@ const content = {
   }
 };
 
-function toggleSidebar() {
-  document.querySelector('.sidebar').classList.toggle('active');
-}
-
-function toggleMenu(menuId) {
-  const menu = document.getElementById(menuId);
-  menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-}
-
 function changeLanguage(lang) {
   currentLanguage = lang;
   updateMenuLabels();
-  showContent(currentSection);
-}
-
-function updateMenuLabels() {
-  // aggiorna i pulsanti lingua
-  const languageButtons = document.querySelectorAll('#languageMenu button');
-  const langs = ['it', 'en', 'es'];
-  languageButtons.forEach((btn, i) => {
-    btn.textContent = content[currentLanguage].languageOptions[i];
-  });
-
-  // aggiorna pulsanti sezione abbazia
-  const abbeyButtons = document.querySelectorAll('#abbeyMenu button');
-  abbeyButtons.forEach((btn, i) => {
-    btn.textContent = content[currentLanguage].abbeySections[i];
-  });
+  showContent(currentSection); // Rimane sulla pagina attuale, non torna a "Storia"
 }
 
 function showContent(sectionKey) {
   currentSection = sectionKey;
   const section = content[currentLanguage][sectionKey];
-
-  let imageHtml = '';
-  if (section.images && section.images.length > 0) {
-    imageHtml = `
-      <div class="slideshow-container">
-        <img id="slideshow-image" src="${section.images[0]}" alt="${section.title}" style="max-width:100%">
-        <div class="slideshow-controls">
-          <button onclick="prevImage()">⟨</button>
-          <button onclick="nextImage()">⟩</button>
-        </div>
-      </div>
-    `;
-
-    // Salva immagini e indice corrente in globale
-    window.slideshowImages = section.images;
-    window.currentImageIndex = 0;
-  } else if (section.image) {
-    imageHtml = `<img src="${section.image}" alt="${section.title}" style="max-width:100%; margin-top:15px;">`;
-    window.slideshowImages = null;
-  } else {
-    window.slideshowImages = null;
-  }
-
   const html = `
     <h1>${section.title}</h1>
     <p>${section.text}</p>
-    ${imageHtml}
+    <img src="${section.image}" alt="${section.title}">
   `;
-
   document.getElementById('mainContent').innerHTML = html;
 }
 
-// Slideshow controlli
-function nextImage() {
-  if (!window.slideshowImages) return;
-  window.currentImageIndex = (window.currentImageIndex + 1) % window.slideshowImages.length;
-  updateSlideshowImage();
+function updateMenuLabels() {
+  // Aggiorna le etichette della sidebar
+  document.getElementById('menuLanguageTitle').textContent = labels[currentLanguage].language;
+  document.getElementById('menuAbbeyTitle').textContent = labels[currentLanguage].abbey;
+
+  // Lingue
+  document.getElementById('btnLangIt').textContent = labels[currentLanguage].languages.it;
+  document.getElementById('btnLangEn').textContent = labels[currentLanguage].languages.en;
+  document.getElementById('btnLangEs').textContent = labels[currentLanguage].languages.es;
+
+  // Sezioni abbazia
+  document.getElementById('btnSection1').textContent = labels[currentLanguage].abbeySections.section1;
+  document.getElementById('btnSection2').textContent = labels[currentLanguage].abbeySections.section2;
+  document.getElementById('btnSection3').textContent = labels[currentLanguage].abbeySections.section3;
+  document.getElementById('btnSection4').textContent = labels[currentLanguage].abbeySections.section4;
+  document.getElementById('btnSection5').textContent = labels[currentLanguage].abbeySections.section5;
 }
 
-function prevImage() {
-  if (!window.slideshowImages) return;
-  window.currentImageIndex = (window.currentImageIndex - 1 + window.slideshowImages.length) % window.slideshowImages.length;
-  updateSlideshowImage();
-}
-
-function updateSlideshowImage() {
-  const imgElement = document.getElementById('slideshow-image');
-  if (imgElement) {
-    imgElement.src = window.slideshowImages[window.currentImageIndex];
-  }
-}
-
-// Inizializzazione al caricamento pagina
+// Carica la prima sezione all'avvio e imposta etichette
 document.addEventListener('DOMContentLoaded', () => {
   updateMenuLabels();
   showContent(currentSection);
