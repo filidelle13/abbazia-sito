@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Abbazia di San Siro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/style.css" />
   <script src="js/script.js" defer></script>
 </head>
 <body>
+  <header>
+    <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
+  </header>
 
-  <!-- Pulsante per dispositivi mobili -->
-  <button class="menu-toggle" onclick="toggleSidebar()">☰ Menu</button>
-
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-
+  <div class="sidebar">
     <!-- Sezione Lingua -->
     <div class="menu-section">
-      <div class="menu-title" id="languageTitle" onclick="toggleMenu('languageMenu')">Lingua</div>
+      <div class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
       <div id="languageMenu" class="submenu">
         <button onclick="changeLanguage('it')">Italiano</button>
         <button onclick="changeLanguage('en')">English</button>
@@ -27,22 +25,19 @@
 
     <!-- Sezione L'abbazia -->
     <div class="menu-section">
-      <div class="menu-title" id="abbeyTitle" onclick="toggleMenu('abbeyMenu')">L'abbazia</div>
+      <div class="menu-title" onclick="toggleMenu('abbeyMenu')">L'abbazia</div>
       <div id="abbeyMenu" class="submenu">
-        <button id="btn-section1" onclick="showContent('section1')">Storia</button>
-        <button id="btn-section2" onclick="showContent('section2')">Interni</button>
-        <button id="btn-section3" onclick="showContent('section3')">Facciata</button>
-        <button id="btn-section4" onclick="showContent('section4')">Retro</button>
-        <button id="btn-section5" onclick="showContent('section5')">Polittico di San Siro</button>
+        <button onclick="showContent('section1')">Storia</button>
+        <button onclick="showContent('section2')">Interni</button>
+        <button onclick="showContent('section3')">Facciata</button> 
+        <button onclick="showContent('section4')">Retro</button> 
+        <button onclick="showContent('section5')">Polittico di San Siro</button> 
       </div>
     </div>
-
   </div>
 
-  <!-- Contenuto principale -->
   <div class="content" id="mainContent">
-    <!-- Caricato dinamicamente -->
+    <!-- Il contenuto della sezione viene caricato tramite JS -->
   </div>
-
 </body>
 </html>

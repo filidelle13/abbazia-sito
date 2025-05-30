@@ -1,87 +1,176 @@
-body {
+/* Reset e base */
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: Arial, sans-serif;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #fafafa;
+  color: #333;
   display: flex;
-  flex-direction: row;
+  min-height: 100vh;
 }
 
 /* Sidebar */
 .sidebar {
-  width: 250px;
+  width: 270px;
   background-color: #4e47b6;
   color: white;
+  padding: 15px;
+  flex-shrink: 0;
+  overflow-y: auto;
   height: 100vh;
-  padding: 20px;
-  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease;
+  z-index: 100;
 }
 
-/* Menu sections */
-.menu-section {
+.sidebar .menu-section {
   margin-bottom: 20px;
 }
 
-.menu-title {
+.sidebar .menu-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 10px 0;
   cursor: pointer;
-  font-weight: bold;
-  margin-bottom: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  user-select: none;
 }
 
-/* Submenus (hidden by default) */
-.submenu {
-  display: none;
-  margin-left: 10px;
+.sidebar .submenu {
+  margin-top: 10px;
+  display: block; /* di default aperto */
 }
 
-.submenu button {
+.sidebar .submenu button {
   display: block;
-  background: none;
+  width: 100%;
+  background: transparent;
   border: none;
   color: white;
   text-align: left;
-  padding: 5px 0;
+  padding: 8px 10px;
+  font-size: 1rem;
   cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
 }
 
-/* Main content */
+.sidebar .submenu button:hover,
+.sidebar .submenu button:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  outline: none;
+}
+
+/* Contenuto principale */
 .content {
-  padding: 20px;
+  margin-left: 270px;
+  padding: 30px 40px;
+  max-width: 900px;
   flex-grow: 1;
 }
 
-/* Menu toggle button (mobile) */
-.menu-toggle {
-  display: none;
-  background-color: #4e47b6;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  font-size: 16px;
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
+.content h1 {
+  margin-bottom: 15px;
+  color: #4e47b6;
 }
 
-/* Responsive layout */
-@media (max-width: 768px) {
-  body {
-    flex-direction: column;
-  }
+.content p {
+  font-size: 1.1rem;
+  margin-bottom: 25px;
+  white-space: pre-line; /* per mantenere gli eventuali \n */
+}
 
+/* Slideshow */
+.slideshow-container {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.slideshow-container img {
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  user-select: none;
+}
+
+.slideshow-controls {
+  margin-top: 12px;
+}
+
+.slideshow-controls button {
+  background-color: #4e47b6;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin: 0 8px;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.25s ease;
+  user-select: none;
+}
+
+.slideshow-controls button:hover,
+.slideshow-controls button:focus {
+  background-color: #3b3890;
+  outline: none;
+}
+
+/* Pulsante toggle menu mobile */
+.menu-toggle {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  background: #4e47b6;
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 110;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    height: 100vh;
+  }
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  .content {
+    margin-left: 0;
+    padding: 20px 15px;
+    width: 100%;
+  }
   .menu-toggle {
     display: block;
   }
+}
 
-  .sidebar {
-    width: 100%;
-    height: auto;
-    display: none;
-  }
-
-  .sidebar.active {
-    display: block;
-  }
-
-  .content {
-    padding: 15px;
-  }
+/* Scrollbar personalizzata per sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255,255,255,0.25);
+  border-radius: 4px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background-color: transparent;
 }
