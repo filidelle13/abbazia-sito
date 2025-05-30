@@ -125,8 +125,8 @@ const labels = {
 };
 
 function toggleMenu(id) {
-  const submenu = document.getElementById(id);
-  submenu.classList.toggle("show");
+  const menu = document.getElementById(id);
+  menu.classList.toggle('show');
 }
 
 function changeLanguage(lang) {
@@ -138,12 +138,11 @@ function changeLanguage(lang) {
 function showContent(sectionKey) {
   currentSection = sectionKey;
   const section = content[currentLanguage][sectionKey];
-  const html = `
+  document.getElementById('mainContent').innerHTML = `
     <h1>${section.title}</h1>
     <p>${section.text}</p>
     <img src="${section.image}" alt="${section.title}" style="max-width: 100%;">
   `;
-  document.getElementById('mainContent').innerHTML = html;
 }
 
 function updateMenuLabels() {
@@ -160,17 +159,13 @@ function updateMenuLabels() {
   document.getElementById('btnSection2').textContent = l.abbeySections.section2;
   document.getElementById('btnSection3').textContent = l.abbeySections.section3;
   document.getElementById('btnSection4').textContent = l.abbeySections.section4;
-  document.getElementById('btnSection5').textContent = l.abbeySections.section5;
+  document.getElementById('btnSection5').textContent = l.abbeySections.section5
+;
 }
-
-// Hamburger menu
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('hamburgerBtn').addEventListener('click', () => {
-    document.getElementById('sidebar').classList.toggle('active');
-  });
-
-  updateMenuLabels();
-  showContent(currentSection);
+document.getElementById('hamburgerBtn').addEventListener('click', () => {
+document.getElementById('sidebar').classList.toggle('active');
 });
-
-  
+updateMenuLabels();
+showContent(currentSection);
+});

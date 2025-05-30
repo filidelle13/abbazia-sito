@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
+  flex-direction: row;
 }
 
 /* Sidebar */
@@ -11,7 +12,7 @@ body {
   color: white;
   height: 100vh;
   padding: 20px;
-  transition: transform 0.3s ease;
+  box-sizing: border-box;
 }
 
 .menu-section {
@@ -43,16 +44,28 @@ body {
   cursor: pointer;
 }
 
+/* Contenuto */
 .content {
   padding: 20px;
   flex-grow: 1;
 }
 
-/* Hamburger button */
+/* Pulsante hamburger */
 .menu-toggle {
   display: none;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: #4e47b6;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 1000;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
@@ -70,16 +83,6 @@ body {
 
   .menu-toggle {
     display: block;
-    position: absolute;
-    top: 15px;
-    left: 15px;
-    background-color: #4e47b6;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 18px;
-    cursor: pointer;
-    z-index: 999;
   }
 
   .content {
