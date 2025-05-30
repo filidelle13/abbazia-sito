@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>Abbazia di San Siro</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js" defer></script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abbazia di San Siro</title>
+<link rel="stylesheet" href="css/style.css" />
+<script src="js/script.js" defer></script>
 </head>
 <body>
 
-  <!-- Bottone hamburger -->
-  <button class="menu-toggle" id="hamburgerBtn">☰ Menu</button>
+<button id="hamburgerBtn" class="menu-toggle">☰ Menu</button>
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <div class="menu-section">
-      <div id="menuLanguageTitle" class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
-      <div id="languageMenu" class="submenu">
-        <button id="btnLangIt" onclick="changeLanguage('it')">Italiano</button>
-        <button id="btnLangEn" onclick="changeLanguage('en')">English</button>
-        <button id="btnLangEs" onclick="changeLanguage('es')">Español</button>
-      </div>
-    </div>
-
-    <div class="menu-section">
-      <div id="menuAbbeyTitle" class="menu-title" onclick="toggleMenu('abbeyMenu')">L'abbazia</div>
-      <div id="abbeyMenu" class="submenu">
-        <button id="btnSection1" onclick="showContent('section1')">Storia</button>
-        <button id="btnSection2" onclick="showContent('section2')">Interni</button>
-        <button id="btnSection3" onclick="showContent('section3')">Facciata</button>
-        <button id="btnSection4" onclick="showContent('section4')">Retro</button>
-        <button id="btnSection5" onclick="showContent('section5')">Polittico di San Siro</button>
-      </div>
+<div id="sidebar" class="sidebar">
+  <div class="menu-section">
+    <div id="menuLanguageTitle" class="menu-title">Lingua</div>
+    <div id="languageMenu" class="submenu">
+      <button id="btnLangIt">Italiano</button>
+      <button id="btnLangEn">English</button>
+      <button id="btnLangEs">Español</button>
     </div>
   </div>
 
-  <!-- Contenuto principale -->
-  <div class="content" id="mainContent"></div>
+  <div class="menu-section">
+    <div id="menuAbbeyTitle" class="menu-title">L'abbazia</div>
+    <div id="abbeyMenu" class="submenu">
+      <button id="btnSection1">Storia</button>
+      <button id="btnSection2">Interni</button>
+      <button id="btnSection3">Facciata</button>
+      <button id="btnSection4">Retro</button>
+      <button id="btnSection5">Polittico di San Siro</button>
+    </div>
+  </div>
+</div>
+
+<div id="mainContent" class="content"></div>
 
 </body>
 </html>

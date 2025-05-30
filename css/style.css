@@ -1,8 +1,15 @@
-body {
+/* Reset */
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: row;
+  min-height: 100vh;
+  background: #fafafa;
 }
 
 /* Sidebar */
@@ -10,19 +17,21 @@ body {
   width: 250px;
   background-color: #4e47b6;
   color: white;
-  height: 100vh;
   padding: 20px;
   box-sizing: border-box;
+  height: 100vh;
+  overflow-y: auto;
 }
 
 .menu-section {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .menu-title {
-  cursor: pointer;
   font-weight: bold;
   margin-bottom: 10px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .submenu {
@@ -35,34 +44,54 @@ body {
 }
 
 .submenu button {
-  display: block;
   background: none;
   border: none;
   color: white;
+  padding: 8px 0;
+  width: 100%;
   text-align: left;
-  padding: 5px 0;
+  font-size: 15px;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Contenuto */
+.submenu button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Content */
 .content {
-  padding: 20px;
   flex-grow: 1;
+  padding: 25px;
+  background: white;
+  overflow-y: auto;
 }
 
-/* Pulsante hamburger */
+.content h1 {
+  margin-bottom: 15px;
+}
+
+.content img {
+  max-width: 100%;
+  margin-top: 15px;
+  border-radius: 6px;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+}
+
+/* Hamburger button */
 .menu-toggle {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 15px;
   left: 15px;
   background-color: #4e47b6;
-  color: white;
   border: none;
-  padding: 10px 15px;
-  font-size: 18px;
+  color: white;
+  font-size: 22px;
+  padding: 10px 14px;
   cursor: pointer;
-  z-index: 1000;
+  border-radius: 4px;
+  z-index: 1001;
 }
 
 /* Responsive */
@@ -86,6 +115,6 @@ body {
   }
 
   .content {
-    margin-top: 60px;
+    padding-top: 70px;
   }
 }
