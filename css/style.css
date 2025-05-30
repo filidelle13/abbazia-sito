@@ -1,176 +1,87 @@
-/* Reset e base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  background-color: #fafafa;
-  color: #333;
+  margin: 0;
+  font-family: Arial, sans-serif;
   display: flex;
-  min-height: 100vh;
+  flex-direction: row;
 }
 
 /* Sidebar */
 .sidebar {
-  width: 270px;
+  width: 250px;
   background-color: #4e47b6;
   color: white;
-  padding: 15px;
-  flex-shrink: 0;
-  overflow-y: auto;
   height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  transition: transform 0.3s ease;
-  z-index: 100;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.sidebar .menu-section {
+/* Menu sections */
+.menu-section {
   margin-bottom: 20px;
 }
 
-.sidebar .menu-title {
-  font-weight: 700;
-  font-size: 1.2rem;
-  padding: 10px 0;
+.menu-title {
   cursor: pointer;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  user-select: none;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
-.sidebar .submenu {
-  margin-top: 10px;
-  display: block; /* di default aperto */
+/* Submenus (hidden by default) */
+.submenu {
+  display: none;
+  margin-left: 10px;
 }
 
-.sidebar .submenu button {
+.submenu button {
   display: block;
-  width: 100%;
-  background: transparent;
+  background: none;
   border: none;
   color: white;
   text-align: left;
-  padding: 8px 10px;
-  font-size: 1rem;
+  padding: 5px 0;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
 }
 
-.sidebar .submenu button:hover,
-.sidebar .submenu button:focus {
-  background-color: rgba(255, 255, 255, 0.15);
-  outline: none;
-}
-
-/* Contenuto principale */
+/* Main content */
 .content {
-  margin-left: 270px;
-  padding: 30px 40px;
-  max-width: 900px;
+  padding: 20px;
   flex-grow: 1;
 }
 
-.content h1 {
-  margin-bottom: 15px;
-  color: #4e47b6;
-}
-
-.content p {
-  font-size: 1.1rem;
-  margin-bottom: 25px;
-  white-space: pre-line; /* per mantenere gli eventuali \n */
-}
-
-/* Slideshow */
-.slideshow-container {
-  position: relative;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.slideshow-container img {
-  max-width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  user-select: none;
-}
-
-.slideshow-controls {
-  margin-top: 12px;
-}
-
-.slideshow-controls button {
-  background-color: #4e47b6;
-  color: white;
-  border: none;
-  padding: 8px 15px;
-  margin: 0 8px;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.25s ease;
-  user-select: none;
-}
-
-.slideshow-controls button:hover,
-.slideshow-controls button:focus {
-  background-color: #3b3890;
-  outline: none;
-}
-
-/* Pulsante toggle menu mobile */
+/* Menu toggle button (mobile) */
 .menu-toggle {
   display: none;
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  background: #4e47b6;
-  border: none;
+  background-color: #4e47b6;
   color: white;
-  font-size: 24px;
   padding: 10px 15px;
-  border-radius: 6px;
+  border: none;
+  font-size: 16px;
   cursor: pointer;
-  z-index: 110;
-  user-select: none;
+  width: 100%;
+  text-align: left;
 }
 
-/* Responsive */
+/* Responsive layout */
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    position: fixed;
-    height: 100vh;
+  body {
+    flex-direction: column;
   }
-  .sidebar.active {
-    transform: translateX(0);
-  }
-  .content {
-    margin-left: 0;
-    padding: 20px 15px;
-    width: 100%;
-  }
+
   .menu-toggle {
     display: block;
   }
-}
 
-/* Scrollbar personalizzata per sidebar */
-.sidebar::-webkit-scrollbar {
-  width: 8px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background-color: rgba(255,255,255,0.25);
-  border-radius: 4px;
-}
-.sidebar::-webkit-scrollbar-track {
-  background-color: transparent;
+  .sidebar {
+    width: 100%;
+    height: auto;
+    display: none;
+  }
+
+  .sidebar.active {
+    display: block;
+  }
+
+  .content {
+    padding: 15px;
+  }
 }
