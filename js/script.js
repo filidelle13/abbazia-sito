@@ -132,7 +132,7 @@ function toggleMenu(id) {
 function changeLanguage(lang) {
   currentLanguage = lang;
   updateMenuLabels();
-  showContent(currentSection); // NON torna alla sezione "Storia"
+  showContent(currentSection); // Mantieni la sezione attuale
 }
 
 function showContent(sectionKey) {
@@ -161,7 +161,6 @@ function updateMenuLabels() {
   document.getElementById('btnSection5').textContent = labels[currentLanguage].abbeySections.section5;
 }
 
-// Hamburger toggle
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('hamburgerBtn').addEventListener('click', () => {
     document.querySelector('.sidebar').classList.toggle('active');
