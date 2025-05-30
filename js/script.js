@@ -124,30 +124,15 @@ const content = {
   }
 };
 
-function toggleSidebar() {
-  document.getElementById('sidebar').classList.toggle('active');
-}
-
 function toggleMenu(id) {
   const menu = document.getElementById(id);
-  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  menu.classList.toggle('show');
 }
 
 function changeLanguage(lang) {
   currentLanguage = lang;
-  updateMenuLabels();            // Aggiorna le etichette
-  showContent(currentSection);   // 🔁 Mostra la sezione attuale, NON forzare section1
-}
-
-function updateMenuLabels() {
-  const langLabels = labels[currentLanguage];
-
-  document.getElementById('languageTitle').textContent = langLabels.menu.language;
-  document.getElementById('abbeyTitle').textContent = langLabels.menu.abbey;
-
-  for (let i = 1; i <= 5; i++) {
-    document.getElementById(`btn-section1`.replace('1', i)).textContent = langLabels.menu[`section${i}`];
-  }
+  updateMenuLabels();
+  showContent(currentSection); // NON torna alla sezione "Storia"
 }
 
 function showContent(sectionKey) {
@@ -156,12 +141,32 @@ function showContent(sectionKey) {
   const html = `
     <h1>${section.title}</h1>
     <p>${section.text}</p>
-    <img src="${section.image}" alt="${section.title}" style="max-width:100%; margin-top:15px;">
+    <img src="${section.image}" alt="${section.title}">
   `;
   document.getElementById('mainContent').innerHTML = html;
 }
 
+function updateMenuLabels() {
+  document.getElementById('menuLanguageTitle').textContent = labels[currentLanguage].language;
+  document.getElementById('menuAbbeyTitle').textContent = labels[currentLanguage].abbey;
+
+  document.getElementById('btnLangIt').textContent = labels[currentLanguage].languages.it;
+  document.getElementById('btnLangEn').textContent = labels[currentLanguage].languages.en;
+  document.getElementById('btnLangEs').textContent = labels[currentLanguage].languages.es;
+
+  document.getElementById('btnSection1').textContent = labels[currentLanguage].abbeySections.section1;
+  document.getElementById('btnSection2').textContent = labels[currentLanguage].abbeySections.section2;
+  document.getElementById('btnSection3').textContent = labels[currentLanguage].abbeySections.section3;
+  document.getElementById('btnSection4').textContent = labels[currentLanguage].abbeySections.section4;
+  document.getElementById('btnSection5').textContent = labels[currentLanguage].abbeySections.section5;
+}
+
+// Hamburger toggle
 document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('hamburgerBtn').addEventListener('click', () => {
+    document.querySelector('.sidebar').classList.toggle('active');
+  });
+
   updateMenuLabels();
-  showContent(currentSection); // Avvia con section1 ma mantiene la logica aggiornata
+  showContent(currentSection);
 });

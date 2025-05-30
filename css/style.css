@@ -1,4 +1,4 @@
-/* Reset base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +9,6 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   min-height: 100vh;
-  background: #f9f9f9;
-  color: #333;
 }
 
 /* Sidebar */
@@ -28,7 +26,6 @@ body {
   z-index: 1000;
 }
 
-/* Menu Section */
 .menu-section {
   margin-bottom: 20px;
 }
@@ -39,10 +36,13 @@ body {
   margin-bottom: 10px;
 }
 
-/* Sottomenu */
 .submenu {
   display: none;
   margin-left: 10px;
+}
+
+.submenu.show {
+  display: block;
 }
 
 .submenu button {
@@ -53,18 +53,13 @@ body {
   text-align: left;
   padding: 5px 0;
   cursor: pointer;
-  font-size: 16px;
 }
 
-.submenu button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-/* Contenuto principale */
+/* Content */
 .content {
-  flex-grow: 1;
   margin-left: 250px;
   padding: 20px;
+  flex-grow: 1;
 }
 
 .content h1 {
@@ -80,11 +75,10 @@ body {
 .content img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(78, 71, 182, 0.3);
+  border-radius: 5px;
 }
 
-/* Pulsante hamburger */
+/* Hamburger */
 .menu-toggle {
   display: none;
   position: fixed;
@@ -96,33 +90,30 @@ body {
   padding: 10px 15px;
   cursor: pointer;
   font-size: 18px;
-  z-index: 1100;
+  z-index: 1101;
   border-radius: 4px;
 }
 
-/* Responsive per schermi piccoli */
+/* Responsive */
 @media (max-width: 768px) {
   body {
     flex-direction: column;
   }
 
   .sidebar {
+    position: absolute;
     width: 100%;
     height: auto;
-    position: relative;
-    transform: translateX(-100%);
-    padding: 10px;
-    display: block;
+    transform: translateY(-100%);
   }
 
   .sidebar.active {
-    transform: translateX(0);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transform: translateY(0);
   }
 
   .content {
     margin-left: 0;
-    padding: 20px 15px;
+    padding-top: 70px;
   }
 
   .menu-toggle {
