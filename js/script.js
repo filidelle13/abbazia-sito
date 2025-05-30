@@ -135,8 +135,8 @@ function toggleMenu(id) {
 
 function changeLanguage(lang) {
   currentLanguage = lang;
-  updateMenuLabels();         // aggiorna i testi dei menu
-  showContent(currentSection); // NON cambia sezione
+  updateMenuLabels();            // Aggiorna le etichette
+  showContent(currentSection);   // 🔁 Mostra la sezione attuale, NON forzare section1
 }
 
 function updateMenuLabels() {
@@ -146,7 +146,7 @@ function updateMenuLabels() {
   document.getElementById('abbeyTitle').textContent = langLabels.menu.abbey;
 
   for (let i = 1; i <= 5; i++) {
-    document.getElementById(`btn-section${i}`).textContent = langLabels.menu[`section${i}`];
+    document.getElementById(`btn-section1`.replace('1', i)).textContent = langLabels.menu[`section${i}`];
   }
 }
 
@@ -163,5 +163,5 @@ function showContent(sectionKey) {
 
 document.addEventListener('DOMContentLoaded', () => {
   updateMenuLabels();
-  showContent(currentSection);
+  showContent(currentSection); // Avvia con section1 ma mantiene la logica aggiornata
 });
