@@ -132,7 +132,7 @@ function toggleMenu(id) {
 function changeLanguage(lang) {
   currentLanguage = lang;
   updateMenuLabels();
-  showContent(currentSection); // NON torna alla sezione "Storia"
+  showContent(currentSection); // Mantiene la sezione attuale
 }
 
 function showContent(sectionKey) {
@@ -161,10 +161,13 @@ function updateMenuLabels() {
   document.getElementById('btnSection5').textContent = labels[currentLanguage].abbeySections.section5;
 }
 
-// Hamburger toggle
+// Mostra sidebar mobile
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('hamburgerBtn').addEventListener('click', () => {
-    document.querySelector('.sidebar').classList.toggle('active');
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const sidebar = document.querySelector('.sidebar');
+
+  hamburgerBtn.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
   });
 
   updateMenuLabels();
