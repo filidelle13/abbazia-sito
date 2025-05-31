@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>L'Abbazia di San Siro di Struppa</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>L'Abbazia di San Siro di Struppa</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-<header class="topbar">
+<header>
   <button id="hamburger" aria-label="Apri menu" aria-expanded="false">☰</button>
-  <nav id="menu" class="menu" aria-hidden="true">
+  <nav id="menu" aria-hidden="true">
     <ul>
       <li>
         <button class="menu-toggle" data-target="submenu-lingua" aria-expanded="false">Lingua ▾</button>
@@ -35,23 +35,23 @@
 </header>
 
 <main>
-  <section id="storia" class="content-section" hidden>
+  <section id="storia" class="content-section active" aria-label="Storia">
     <h1></h1>
     <p></p>
   </section>
-  <section id="interni" class="content-section" hidden>
+  <section id="interni" class="content-section" aria-label="Interni">
     <h1></h1>
     <p></p>
   </section>
-  <section id="facciata" class="content-section" hidden>
+  <section id="facciata" class="content-section" aria-label="Facciata">
     <h1></h1>
     <p></p>
   </section>
-  <section id="retro" class="content-section" hidden>
+  <section id="retro" class="content-section" aria-label="Retro">
     <h1></h1>
     <p></p>
   </section>
-  <section id="polittico" class="content-section" hidden>
+  <section id="polittico" class="content-section" aria-label="Polittico di San Siro">
     <h1></h1>
     <p></p>
   </section>
@@ -62,6 +62,5 @@
 </footer>
 
 <script src="script.js"></script>
-
 </body>
 </html>

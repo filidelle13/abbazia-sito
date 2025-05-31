@@ -31,7 +31,7 @@ const translations = {
     facciata_title: "Fachada de la Abadía",
     facciata_content: "La fachada es simple y de estilo románico, con piedras antiguas y una puerta central.",
     retro_title: "Parte trasera de la Abadía",
-    retro_content: "La parte trasera muestra elementos originales bien conservados y un pequeño jardín.",
+    retro_content: "La parte posterior muestra elementos originales bien conservados y un pequeño jardín.",
     polittico_title: "Políptico de San Siro",
     polittico_content: "El políptico es una de las principales obras conservadas en el interior, que data del siglo XIV."
   }
@@ -42,69 +42,76 @@ let currentSection = localStorage.getItem("section") || "storia";
 
 const hamburgerBtn = document.getElementById("hamburger");
 const menu = document.getElementById("menu");
-
-const submenuLingua = document.getElementById("submenu-lingua");
-const submenuAbbazia = document.getElementById("submenu-abbazia");
-
 const menuToggleButtons = document.querySelectorAll(".menu-toggle");
-const sectionButtons = document.querySelectorAll(".section-btn");
 const langButtons = document.querySelectorAll(".lang-btn");
+const sectionButtons = document.querySelectorAll(".section-btn");
+const contentSections = document.querySelectorAll(".content-section");
 
-// Toggle menu hamburger
+// Aggiorna contenuti e traduzioni
+function updateContent() {
+  contentSections.forEach(section => {
+    section.classList.remove("active");
+    section.hidden = true;
+  });
+  const visibleSection = document.getElementById(currentSection);
+  visibleSection.classList.add("active");
+  visibleSection.hidden = false;
+
+  const t = translations[currentLang];
+  visibleSection.querySelector("h1").textContent = t[`${currentSection}_title`];
+  visibleSection.querySelector("p").textContent = t[`${currentSection}_content`];
+}
+
+// Inizializza
+updateContent();
+
+// Toggle menu principale
 hamburgerBtn.addEventListener("click", () => {
   const expanded = hamburgerBtn.getAttribute("aria-expanded") === "true";
-  hamburgerBtn.setAttribute("aria-expanded", !expanded);
-  if (!expanded) {
-    menu.classList.add("active");
-  } else {
-    menu.classList.remove("active");
+  hamburgerBtn.setAttribute("aria-expanded", String(!expanded));
+  menu.classList.toggle("active");
+  if (!menu.classList.contains("active")) {
     closeAllSubmenus();
   }
 });
 
-// Toggle submenu open/close
-menuToggleButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    const targetId = btn.dataset.target;
-    const submenu = document.getElementById(targetId);
-    const expanded = btn.getAttribute("aria-expanded") === "true";
-
-    // Close all other submenus first
-    closeAllSubmenus();
-
-    if (!expanded) {
-      submenu.classList.add("active");
-      submenu.setAttribute("aria-hidden", "false");
-      btn.setAttribute("aria-expanded", "true");
-    } else {
-      submenu.classList.remove("active");
-      submenu.setAttribute("aria-hidden", "true");
-      btn.setAttribute("aria-expanded", "false");
-    }
-  });
-});
-
+// Chiude tutti i sottomenu
 function closeAllSubmenus() {
   menuToggleButtons.forEach(btn => {
-    const targetId = btn.dataset.target;
-    const submenu = document.getElementById(targetId);
+    const target = btn.dataset.target;
+    const submenu = document.getElementById(target);
     submenu.classList.remove("active");
     submenu.setAttribute("aria-hidden", "true");
     btn.setAttribute("aria-expanded", "false");
   });
 }
 
-// Cambia lingua senza ricaricare, mantieni sezione
+// Toggle sottomenu lingua e abbazia
+menuToggleButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.dataset.target;
+    const submenu = document.getElementById(targetId);
+    const isActive = submenu.classList.contains("active");
+
+    closeAllSubmenus();
+
+    if (!isActive) {
+      submenu.classList.add("active");
+      submenu.setAttribute("aria-hidden", "false");
+      btn.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+// Cambia lingua senza cambiare sezione
 langButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const newLang = btn.dataset.lang;
-    if (newLang === currentLang) return; // niente se stessa lingua
-
+    if (newLang === currentLang) return;
     currentLang = newLang;
     localStorage.setItem("lang", currentLang);
     updateContent();
-
-    // Chiudi menu e submenu dopo scelta lingua
+    // Chiudi menu
     menu.classList.remove("active");
     hamburgerBtn.setAttribute("aria-expanded", "false");
     closeAllSubmenus();
@@ -116,36 +123,12 @@ sectionButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const newSection = btn.dataset.section;
     if (newSection === currentSection) return;
-
     currentSection = newSection;
     localStorage.setItem("section", currentSection);
     updateContent();
-
-    // Chiudi menu e submenu dopo scelta sezione
+    // Chiudi menu
     menu.classList.remove("active");
     hamburgerBtn.setAttribute("aria-expanded", "false");
     closeAllSubmenus();
   });
 });
-
-// Funzione per aggiornare il contenuto visibile in base a lingua e sezione
-function updateContent() {
-  // Nascondi tutte le sezioni
-  document.querySelectorAll(".content-section").forEach(section => {
-    section.classList.remove("active");
-    section.hidden = true;
-  });
-
-  // Mostra solo sezione corrente
-  const visibleSection = document.getElementById(currentSection);
-  visibleSection.hidden = false;
-  visibleSection.classList.add("active");
-
-  // Aggiorna titolo e testo tradotto
-  const t = translations[currentLang];
-  visibleSection.querySelector("h1").textContent = t[`${currentSection}_title`];
-  visibleSection.querySelector("p").textContent = t[`${currentSection}_content`];
-}
-
-// All’avvio pagina
-updateContent();
