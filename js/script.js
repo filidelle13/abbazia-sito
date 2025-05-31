@@ -9,7 +9,6 @@ const translations = {
     retro: "Retro",
     polittico: "Polittico di San Siro",
 
-    // Titoli e contenuti per sezioni
     storia_title: "Storia dell'Abbazia",
     storia_content: "L'Abbazia di San Siro di Struppa ha origini antiche... [aggiungi contenuto in italiano qui]",
     
@@ -23,7 +22,7 @@ const translations = {
     retro_content: "Il retro dell'edificio è stato restaurato... [aggiungi contenuto in italiano qui]",
     
     polittico_title: "Polittico di San Siro",
-    polittico_content: "Il polittico è un'opera d'arte famosa... [aggiungi contenuto in italiano qui]",
+    polittico_content: "Il polittico è un'opera d'arte famosa... [aggiungi contenuto in italiano qui]"
   },
   en: {
     language: "Language",
@@ -35,19 +34,19 @@ const translations = {
     polittico: "Polyptych of San Siro",
 
     storia_title: "History of the Abbey",
-    storia_content: "The Abbey of San Siro di Struppa has ancient origins... [add content in English here]",
-
+    storia_content: "The Abbey of San Siro di Struppa has ancient origins... [add English content here]",
+    
     interni_title: "Interiors of the Abbey",
-    interni_content: "The interiors are characterized by... [add content in English here]",
-
+    interni_content: "The interiors are characterized by... [add English content here]",
+    
     facciata_title: "Facade of the Abbey",
-    facciata_content: "The facade features Romanesque elements... [add content in English here]",
-
+    facciata_content: "The facade shows Romanesque elements... [add English content here]",
+    
     retro_title: "Back of the Abbey",
-    retro_content: "The back of the building has been restored... [add content in English here]",
-
+    retro_content: "The back of the building has been restored... [add English content here]",
+    
     polittico_title: "Polyptych of San Siro",
-    polittico_content: "The polyptych is a famous artwork... [add content in English here]",
+    polittico_content: "The polyptych is a famous artwork... [add English content here]"
   },
   es: {
     language: "Idioma",
@@ -55,93 +54,109 @@ const translations = {
     storia: "Historia",
     interni: "Interiores",
     facciata: "Fachada",
-    retro: "Parte trasera",
+    retro: "Trasera",
     polittico: "Políptico de San Siro",
 
     storia_title: "Historia de la Abadía",
-    storia_content: "La Abadía de San Siro di Struppa tiene orígenes antiguos... [agrega contenido en español aquí]",
-
+    storia_content: "La Abadía de San Siro di Struppa tiene orígenes antiguos... [añade contenido en español aquí]",
+    
     interni_title: "Interiores de la Abadía",
-    interni_content: "Los interiores están caracterizados por... [agrega contenido en español aquí]",
-
+    interni_content: "Los interiores están caracterizados por... [añade contenido en español aquí]",
+    
     facciata_title: "Fachada de la Abadía",
-    facciata_content: "La fachada presenta elementos románicos... [agrega contenido en español aquí]",
-
-    retro_title: "Parte trasera de la Abadía",
-    retro_content: "La parte trasera del edificio ha sido restaurada... [agrega contenido en español aquí]",
-
+    facciata_content: "La fachada presenta elementos románicos... [añade contenido en español aquí]",
+    
+    retro_title: "Parte Trasera de la Abadía",
+    retro_content: "La parte trasera del edificio ha sido restaurada... [añade contenido en español aquí]",
+    
     polittico_title: "Políptico de San Siro",
-    polittico_content: "El políptico es una obra de arte famosa... [agrega contenido en español aquí]",
+    polittico_content: "El políptico es una obra de arte famosa... [añade contenido en español aquí]"
   }
 };
 
-const menuToggle = document.getElementById("menu-toggle");
-const sidebar = document.getElementById("sidebar");
-const languageSelect = document.getElementById("language-select");
-const abbaziaMenuButtons = document.querySelectorAll("#abbazia-menu button");
-const contentSections = document.querySelectorAll(".content-section");
+const menuToggle = document.getElementById('menu-toggle');
+const topbar = document.getElementById('topbar');
+const menuContent = document.getElementById('menu-content');
+const languageSelect = document.getElementById('language-select');
+const abbaziaButtons = document.querySelectorAll('#abbazia-menu button');
+const contentSections = document.querySelectorAll('.content-section');
+const headerTitles = document.querySelectorAll('[data-key]');
+const footer = document.querySelector('footer');
 
-let currentLanguage = localStorage.getItem("language") || "it";
-let currentSection = localStorage.getItem("section") || "storia";
+let currentLang = localStorage.getItem('lang') || 'it';
+let currentSection = null; // id sezione attiva
 
-languageSelect.value = currentLanguage;
+// Funzione per tradurre menu e contenuti
+function translatePage(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
 
-function translatePage() {
-  // Traduci le intestazioni del menu
-  document.querySelectorAll("[data-key]").forEach(el => {
-    const key = el.getAttribute("data-key");
-    el.textContent = translations[currentLanguage][key];
-  });
-
-  // Traduci le sezioni di contenuto (titolo e testo)
-  contentSections.forEach(section => {
-    const titleKey = section.getAttribute("data-key-title");
-    const contentKey = section.getAttribute("data-key-content");
-    section.querySelector("h1").textContent = translations[currentLanguage][titleKey];
-    section.querySelector("p").textContent = translations[currentLanguage][contentKey];
-  });
-}
-
-function showSection(sectionId) {
-  contentSections.forEach(section => {
-    if (section.id === sectionId) {
-      section.hidden = false;
-      // Evidenzia il bottone attivo nel menu
-      abbaziaMenuButtons.forEach(btn => {
-        btn.classList.toggle("active", btn.dataset.section === sectionId);
-      });
-    } else {
-      section.hidden = true;
+  // Traduci testi fissi nel menu
+  headerTitles.forEach(el => {
+    const key = el.getAttribute('data-key');
+    if (translations[lang][key]) {
+      el.textContent = translations[lang][key];
     }
   });
-  currentSection = sectionId;
-  localStorage.setItem("section", currentSection);
+
+  // Traduci contenuti della sezione attiva
+  if (currentSection) {
+    const section = document.getElementById(currentSection);
+    if (section) {
+      const titleEl = section.querySelector('h1');
+      const pEl = section.querySelector('p');
+      const keyTitle = section.getAttribute('data-key-title');
+      const keyContent = section.getAttribute('data-key-content');
+      titleEl.textContent = translations[lang][keyTitle] || "";
+      pEl.textContent = translations[lang][keyContent] || "";
+    }
+  }
+
+  // Traduci footer fisso (puoi anche tradurlo se vuoi)
+  footer.textContent = "Made by F.Dellepiane, L.Santovito, R.Carpi.";
 }
 
-menuToggle.addEventListener("click", () => {
-  const isOpen = sidebar.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", isOpen);
-  sidebar.setAttribute("aria-hidden", !isOpen);
+// Apri/chiudi menu
+menuToggle.addEventListener('click', () => {
+  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+  menuToggle.setAttribute('aria-expanded', String(!expanded));
+  topbar.classList.toggle('expanded');
+  menuContent.setAttribute('aria-hidden', String(expanded));
 });
 
-languageSelect.addEventListener("change", () => {
-  currentLanguage = languageSelect.value;
-  localStorage.setItem("language", currentLanguage);
-  translatePage();
-  // Restiamo sulla stessa sezione, non cambiamo pagina
-  showSection(currentSection);
+// Cambio lingua senza cambiare sezione
+languageSelect.value = currentLang;
+languageSelect.addEventListener('change', () => {
+  translatePage(languageSelect.value);
 });
 
-abbaziaMenuButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    showSection(button.dataset.section);
-    // Chiudi il menu dopo la selezione (per mobile)
-    sidebar.classList.remove("open");
-    menuToggle.setAttribute("aria-expanded", false);
-    sidebar.setAttribute("aria-hidden", true);
+// Cambio sezione contenuto
+abbaziaButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Rimuovi active da tutti
+    abbaziaButtons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Nascondi tutte le sezioni
+    contentSections.forEach(section => section.hidden = true);
+
+    // Mostra la sezione selezionata
+    const id = btn.getAttribute('data-section');
+    currentSection = id;
+    const activeSection = document.getElementById(id);
+    if (activeSection) {
+      activeSection.hidden = false;
+      // Traduci contenuto nella lingua attuale
+      translatePage(currentLang);
+      activeSection.querySelector('h1').focus();
+    }
   });
 });
 
-// Inizializzazione pagina
-translatePage();
-showSection(currentSection);
+// All’avvio pagina: traduci e mostra sezione 1 (storia) di default
+window.addEventListener('DOMContentLoaded', () => {
+  translatePage(currentLang);
+  // Mostra sezione default (storia)
+  const defaultBtn = document.querySelector('#abbazia-menu button[data-section="storia"]');
+  if (defaultBtn) defaultBtn.click();
+});
