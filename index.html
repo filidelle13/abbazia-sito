@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abbazia</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abbazia</title>
+<link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
-    <button id="hamburgerBtn" aria-label="Toggle menu">
-      &#9776; <span id="menuText">Menu</span>
-    </button>
-    <nav id="topmenu" class="hidden">
-      <div class="menu-sections">
-        <button data-section="section1" class="menu-btn"></button>
-        <button data-section="section2" class="menu-btn"></button>
-        <button data-section="section3" class="menu-btn"></button>
-        <button data-section="section4" class="menu-btn"></button>
-        <button data-section="section5" class="menu-btn"></button>
-      </div>
-      <div class="language-buttons">
-        <button data-lang="it" class="lang-btn"></button>
-        <button data-lang="en" class="lang-btn"></button>
-        <button data-lang="es" class="lang-btn"></button>
-      </div>
-    </nav>
-  </header>
+<header>
+  <button id="hamburgerBtn" aria-label="Toggle menu">
+    &#9776; <span id="menuText">Menu</span>
+  </button>
+  <nav id="menuDropdown" class="hidden" aria-label="Menu dropdown">
+    <section id="languageMenu" aria-label="Lingue">
+      <h2 id="menuLanguageTitle">Lingua</h2>
+      <button data-lang="it" class="lang-btn">Italiano</button>
+      <button data-lang="en" class="lang-btn">English</button>
+      <button data-lang="es" class="lang-btn">Español</button>
+    </section>
+    <section id="abbeyMenu" aria-label="Sezioni Abbazia">
+      <h2 id="menuAbbeyTitle">L'abbazia</h2>
+      <button data-section="section1" class="section-btn">Storia</button>
+      <button data-section="section2" class="section-btn">Interni</button>
+      <button data-section="section3" class="section-btn">Facciata</button>
+      <button data-section="section4" class="section-btn">Retro</button>
+      <button data-section="section5" class="section-btn">Polittico di San Siro</button>
+    </section>
+  </nav>
+</header>
 
-  <main id="mainContent" tabindex="0"></main>
+<main id="mainContent" tabindex="0">
+  <!-- Contenuto dinamico qui -->
+</main>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
