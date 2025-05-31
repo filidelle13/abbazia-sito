@@ -124,6 +124,11 @@ const menuLabels = {
   }
 };
 
+function toggleTopMenu() {
+  const topmenu = document.getElementById('topmenu');
+  topmenu.classList.toggle('active');
+}
+
 function toggleMenu(id) {
   const menu = document.getElementById(id);
   menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
@@ -131,7 +136,22 @@ function toggleMenu(id) {
 
 function changeLanguage(lang) {
   currentLanguage = lang;
-  showContent(currentSection); // NON reimposta section1
+  updateMenuLabels();
+  showContent(currentSection);
+}
+
+function updateMenuLabels() {
+  document.getElementById('menuLabel').innerText = content[currentLanguage].menuLabel;
+  document.getElementById('abbeyTitle').innerText = content[currentLanguage].abbey;
+
+  // Aggiorna i nomi delle sezioni
+  const sectionNames = ['section1', 'section2', 'section3', 'section4', 'section5'];
+  const abbeyMenu = document.getElementById('abbeyMenu');
+  const buttons = abbeyMenu.querySelectorAll('button');
+
+  buttons.forEach((btn, index) => {
+    btn.innerText = content[currentLanguage][sectionNames[index]].title;
+  });
 }
 
 function showContent(sectionKey) {
@@ -145,11 +165,7 @@ function showContent(sectionKey) {
   document.getElementById('mainContent').innerHTML = html;
 }
 
-function toggleTopMenu() {
-  const topmenu = document.getElementById('topmenu');
-  topmenu.classList.toggle('active');
-}
-
 document.addEventListener('DOMContentLoaded', () => {
+  updateMenuLabels();
   showContent(currentSection);
 });

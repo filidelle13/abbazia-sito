@@ -1,4 +1,3 @@
-/* === Stili di base === */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -12,7 +11,6 @@ body {
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
 }
 
 .menu-toggle {
@@ -20,19 +18,18 @@ body {
   font-size: 18px;
 }
 
-/* === Menu in alto (inizialmente nascosto) === */
 .topmenu {
   display: none;
-  flex-direction: row;
   flex-wrap: wrap;
   background-color: #4e47b6;
   color: white;
   padding: 10px 20px;
-  z-index: 999;
 }
 
 .topmenu.active {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .menu-section {
@@ -56,9 +53,8 @@ body {
   border: none;
   color: white;
   text-align: left;
-  padding: 4px 0;
+  padding: 5px 0;
   cursor: pointer;
-  font-size: 15px;
 }
 
 .submenu button:hover {
@@ -75,20 +71,14 @@ img {
   margin-top: 10px;
 }
 
-/* === Responsive === */
+/* Responsive design */
 @media (max-width: 768px) {
-  .topbar {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
   .topmenu {
     flex-direction: column;
-    padding: 10px;
   }
 
   .menu-section {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .submenu button {
@@ -96,16 +86,3 @@ img {
   }
 }
 
-@media (max-width: 480px) {
-  .menu-toggle {
-    font-size: 16px;
-  }
-
-  .submenu button {
-    font-size: 15px;
-  }
-
-  .content {
-    padding: 15px;
-  }
-}
