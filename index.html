@@ -1,39 +1,43 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abbazia di San Siro</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abbazia - Traduzione Dinamica</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <header>
-    <nav class="top-nav">
-      <div class="menu-section">
-        <div id="languageTitle" class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
-        <div id="languageMenu" class="submenu">
-          <button id="btnLangIt" onclick="changeLanguage('it')">Italiano</button>
-          <button id="btnLangEn" onclick="changeLanguage('en')">Inglese</button>
-          <button id="btnLangEs" onclick="changeLanguage('es')">Spagnolo</button>
-        </div>
+  <!-- Sidebar / Menu -->
+  <nav id="sidebar">
+    <div class="menu-header">
+      <button id="hamburgerBtn" aria-label="Apri menu" onclick="toggleSidebar()">
+        &#9776; <span id="menuLabel">Menu</span>
+      </button>
+    </div>
+
+    <div id="sidebarContent" class="sidebar-content">
+      <div id="languageTitle" class="menu-title">Lingua</div>
+      <div class="language-buttons">
+        <button id="btnLangIt" onclick="changeLanguage('it')">Italiano</button>
+        <button id="btnLangEn" onclick="changeLanguage('en')">Inglese</button>
+        <button id="btnLangEs" onclick="changeLanguage('es')">Spagnolo</button>
       </div>
 
-      <div class="menu-section">
-        <div id="abbeyTitle" class="menu-title" onclick="toggleMenu('abbeyMenu')">L'abbazia</div>
-        <div id="abbeyMenu" class="submenu">
-          <button onclick="showContent('section1')">Storia</button>
-          <button onclick="showContent('section2')">Interni</button>
-          <button onclick="showContent('section3')">Facciata</button>
-          <button onclick="showContent('section4')">Retro</button>
-          <button onclick="showContent('section5')">Polittico di San Siro</button>
-        </div>
+      <div id="abbeyTitle" class="menu-title">L'abbazia</div>
+      <div id="abbeyMenu" class="menu-sections">
+        <button onclick="showContent('section1')">Storia</button>
+        <button onclick="showContent('section2')">Interni</button>
+        <button onclick="showContent('section3')">Facciata</button>
+        <button onclick="showContent('section4')">Retro</button>
+        <button onclick="showContent('section5')">Polittico di San Siro</button>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
 
-  <main id="mainContent" class="main-content">
-    <!-- Il contenuto della sezione viene caricato dinamicamente qui -->
+  <!-- Main Content -->
+  <main id="mainContent" tabindex="0">
+    <!-- Contenuto dinamico qui -->
   </main>
 
   <script src="script.js"></script>
