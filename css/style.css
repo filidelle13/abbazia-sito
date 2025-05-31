@@ -1,4 +1,4 @@
-/* Reset base */
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -9,11 +9,11 @@ body {
   font-family: Arial, sans-serif;
   background: #f9f9f9;
   min-height: 100vh;
+  padding-bottom: 30px; /* spazio per footer */
   position: relative;
-  padding-bottom: 30px; /* per footer */
 }
 
-/* Barra viola in alto */
+/* Top bar viola orizzontale */
 .topbar {
   background-color: purple;
   color: white;
@@ -21,28 +21,25 @@ body {
   align-items: center;
   padding: 10px 15px;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
+  gap: 15px;
 }
 
 /* Hamburger */
 #hamburger {
   font-size: 24px;
-  color: white;
   background: none;
   border: none;
+  color: white;
   cursor: pointer;
   user-select: none;
 }
 
 /* Menu */
 .menu {
-  margin-left: 20px;
-  flex-grow: 1;
   display: none;
-  flex-direction: row;
+  flex-grow: 1;
 }
 
 .menu ul {
@@ -69,19 +66,19 @@ body {
 /* Sottomenu */
 .submenu {
   position: absolute;
-  top: 28px;
+  top: 32px;
   left: 0;
   background: purple;
   border-radius: 0 0 6px 6px;
   display: none;
   flex-direction: column;
-  min-width: 150px;
-  box-shadow: 0 3px 5px rgba(0,0,0,0.3);
+  min-width: 170px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
   z-index: 2000;
 }
 
 .submenu li {
-  border-bottom: 1px solid rgba(255,255,255,0.2);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
 .submenu li:last-child {
@@ -93,7 +90,7 @@ body {
   background: none;
   border: none;
   color: white;
-  padding: 8px 12px;
+  padding: 10px 12px;
   text-align: left;
   cursor: pointer;
   font-size: 15px;
@@ -152,17 +149,23 @@ footer {
   user-select: none;
 }
 
-/* Responsive */
+/* Responsive per mobile */
 @media (max-width: 600px) {
   .menu {
-    flex-direction: column;
-    background: purple;
-    position: absolute;
+    display: none;
+    position: fixed;
     top: 50px;
     left: 0;
     right: 0;
+    background: purple;
     border-radius: 0 0 6px 6px;
+    flex-direction: column;
     padding: 10px 0;
+    z-index: 1000;
+  }
+
+  .menu.active {
+    display: flex;
   }
 
   .menu ul {

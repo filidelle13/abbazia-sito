@@ -46,41 +46,51 @@ const menu = document.getElementById("menu");
 const submenuLingua = document.getElementById("submenu-lingua");
 const submenuAbbazia = document.getElementById("submenu-abbazia");
 
+const menuToggleButtons = document.querySelectorAll(".menu-toggle");
 const sectionButtons = document.querySelectorAll(".section-btn");
 const langButtons = document.querySelectorAll(".lang-btn");
 
-function toggleMenu() {
+// Toggle menu on hamburger click
+hamburgerBtn.addEventListener("click", () => {
   const expanded = hamburgerBtn.getAttribute("aria-expanded") === "true";
   if (expanded) {
     hamburgerBtn.setAttribute("aria-expanded", "false");
     menu.setAttribute("aria-hidden", "true");
     menu.classList.remove("active");
-    closeSubmenus();
+    closeAllSubmenus();
   } else {
     hamburgerBtn.setAttribute("aria-expanded", "true");
     menu.setAttribute("aria-hidden", "false");
     menu.classList.add("active");
   }
-}
+});
 
-function closeSubmenus() {
+// Toggle submenu open/close on click, independently
+menuToggleButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.dataset.target;
+    const submenu = document.getElementById(targetId);
+    const isActive = submenu.classList.contains("active");
+
+    // Chiude solo il submenu cliccato se aperto, altrimenti lo apre
+    if (isActive) {
+      submenu.classList.remove("active");
+      submenu.setAttribute("aria-hidden", "true");
+      btn.setAttribute("aria-expanded", "false");
+    } else {
+      submenu.classList.add("active");
+      submenu.setAttribute("aria-hidden", "false");
+      btn.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+function closeAllSubmenus() {
   submenuLingua.classList.remove("active");
   submenuLingua.setAttribute("aria-hidden", "true");
   submenuAbbazia.classList.remove("active");
   submenuAbbazia.setAttribute("aria-hidden", "true");
-}
-
-function toggleSubmenu(id) {
-  const submenu = document.getElementById(id);
-  if (submenu.classList.contains("active")) {
-    submenu.classList.remove("active");
-    submenu.setAttribute("aria-hidden", "true");
-  } else {
-    // Chiude altri submenu prima
-    closeSubmenus();
-    submenu.classList.add("active");
-    submenu.setAttribute("aria-hidden", "false");
-  }
+  menuToggleButtons.forEach(btn => btn.setAttribute("aria-expanded", "false"));
 }
 
 function showSection(section) {
@@ -103,29 +113,23 @@ function updateContent() {
   sec.querySelector("p").textContent = t[`${currentSection}_content`];
 }
 
-hamburgerBtn.addEventListener("click", toggleMenu);
-
-document.querySelectorAll(".menu-toggle").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const targetId = btn.dataset.target;
-    toggleSubmenu(targetId);
-  });
-});
-
+// Cambia sezione senza chiudere il menu (ma qui chiudiamo menu)
 sectionButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     currentSection = btn.dataset.section;
     localStorage.setItem("section", currentSection);
     showSection(currentSection);
     updateContent();
-    // Chiude menu
+
+    // Chiudi menu dopo scelta se mobile
     menu.classList.remove("active");
     menu.setAttribute("aria-hidden", "true");
     hamburgerBtn.setAttribute("aria-expanded", "false");
-    closeSubmenus();
+    closeAllSubmenus();
   });
 });
 
+// Cambia lingua senza cambiare sezione
 langButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const lang = btn.dataset.lang;
@@ -134,14 +138,16 @@ langButtons.forEach(btn => {
       localStorage.setItem("lang", currentLang);
       updateContent();
     }
-    // Chiude menu
+
+    // Chiudi menu dopo scelta
     menu.classList.remove("active");
     menu.setAttribute("aria-hidden", "true");
     hamburgerBtn.setAttribute("aria-expanded", "false");
-    closeSubmenus();
+    closeAllSubmenus();
   });
 });
 
+// All'avvio pagina mostra sezione e contenuti corretti
 window.addEventListener("DOMContentLoaded", () => {
   showSection(currentSection);
   updateContent();
