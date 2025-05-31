@@ -1,18 +1,17 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abbazia</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abbazia</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <header>
-  <button id="hamburgerBtn" aria-label="Toggle menu">
+  <button id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="topmenu">
     &#9776; <span id="menuText">Menu</span>
   </button>
-
   <nav id="topmenu" class="hidden" aria-label="Main menu">
     <div class="menu-sections" role="menu" aria-label="L'Abbazia">
       <button data-section="section1" class="menu-btn" role="menuitem"></button>
@@ -21,7 +20,6 @@
       <button data-section="section4" class="menu-btn" role="menuitem"></button>
       <button data-section="section5" class="menu-btn" role="menuitem"></button>
     </div>
-
     <div class="language-buttons" role="menu" aria-label="Lingue">
       <button data-lang="it" class="lang-btn" role="menuitem"></button>
       <button data-lang="en" class="lang-btn" role="menuitem"></button>
