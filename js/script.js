@@ -50,105 +50,102 @@ const menuToggleButtons = document.querySelectorAll(".menu-toggle");
 const sectionButtons = document.querySelectorAll(".section-btn");
 const langButtons = document.querySelectorAll(".lang-btn");
 
-// Toggle menu on hamburger click
+// Toggle menu hamburger
 hamburgerBtn.addEventListener("click", () => {
   const expanded = hamburgerBtn.getAttribute("aria-expanded") === "true";
-  if (expanded) {
-    hamburgerBtn.setAttribute("aria-expanded", "false");
-    menu.setAttribute("aria-hidden", "true");
+  hamburgerBtn.setAttribute("aria-expanded", !expanded);
+  if (!expanded) {
+    menu.classList.add("active");
+  } else {
     menu.classList.remove("active");
     closeAllSubmenus();
-  } else {
-    hamburgerBtn.setAttribute("aria-expanded", "true");
-    menu.setAttribute("aria-hidden", "false");
-    menu.classList.add("active");
   }
 });
 
-// Toggle submenu open/close on click, independently
+// Toggle submenu open/close
 menuToggleButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const targetId = btn.dataset.target;
     const submenu = document.getElementById(targetId);
-    const isActive = submenu.classList.contains("active");
+    const expanded = btn.getAttribute("aria-expanded") === "true";
 
-    // Chiude solo il submenu cliccato se aperto, altrimenti lo apre
-    if (isActive) {
-      submenu.classList.remove("active");
-      submenu.setAttribute("aria-hidden", "true");
-      btn.setAttribute("aria-expanded", "false");
-    } else {
+    // Close all other submenus first
+    closeAllSubmenus();
+
+    if (!expanded) {
       submenu.classList.add("active");
       submenu.setAttribute("aria-hidden", "false");
       btn.setAttribute("aria-expanded", "true");
+    } else {
+      submenu.classList.remove("active");
+      submenu.setAttribute("aria-hidden", "true");
+      btn.setAttribute("aria-expanded", "false");
     }
   });
 });
 
 function closeAllSubmenus() {
-  submenuLingua.classList.remove("active");
-  submenuLingua.setAttribute("aria-hidden", "true");
-  submenuAbbazia.classList.remove("active");
-  submenuAbbazia.setAttribute("aria-hidden", "true");
-  menuToggleButtons.forEach(btn => btn.setAttribute("aria-expanded", "false"));
-}
-
-function showSection(section) {
-  document.querySelectorAll(".content-section").forEach(sec => {
-    sec.hidden = true;
-    sec.classList.remove("active");
+  menuToggleButtons.forEach(btn => {
+    const targetId = btn.dataset.target;
+    const submenu = document.getElementById(targetId);
+    submenu.classList.remove("active");
+    submenu.setAttribute("aria-hidden", "true");
+    btn.setAttribute("aria-expanded", "false");
   });
-  const sec = document.getElementById(section);
-  if (sec) {
-    sec.hidden = false;
-    sec.classList.add("active");
-  }
 }
 
-function updateContent() {
-  const t = translations[currentLang];
-  const sec = document.getElementById(currentSection);
-  if (!sec) return;
-  sec.querySelector("h1").textContent = t[`${currentSection}_title`];
-  sec.querySelector("p").textContent = t[`${currentSection}_content`];
-}
-
-// Cambia sezione senza chiudere il menu (ma qui chiudiamo menu)
-sectionButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    currentSection = btn.dataset.section;
-    localStorage.setItem("section", currentSection);
-    showSection(currentSection);
-    updateContent();
-
-    // Chiudi menu dopo scelta se mobile
-    menu.classList.remove("active");
-    menu.setAttribute("aria-hidden", "true");
-    hamburgerBtn.setAttribute("aria-expanded", "false");
-    closeAllSubmenus();
-  });
-});
-
-// Cambia lingua senza cambiare sezione
+// Cambia lingua senza ricaricare, mantieni sezione
 langButtons.forEach(btn => {
   btn.addEventListener("click", () => {
-    const lang = btn.dataset.lang;
-    if (lang !== currentLang) {
-      currentLang = lang;
-      localStorage.setItem("lang", currentLang);
-      updateContent();
-    }
+    const newLang = btn.dataset.lang;
+    if (newLang === currentLang) return; // niente se stessa lingua
 
-    // Chiudi menu dopo scelta
+    currentLang = newLang;
+    localStorage.setItem("lang", currentLang);
+    updateContent();
+
+    // Chiudi menu e submenu dopo scelta lingua
     menu.classList.remove("active");
-    menu.setAttribute("aria-hidden", "true");
     hamburgerBtn.setAttribute("aria-expanded", "false");
     closeAllSubmenus();
   });
 });
 
-// All'avvio pagina mostra sezione e contenuti corretti
-window.addEventListener("DOMContentLoaded", () => {
-  showSection(currentSection);
-  updateContent();
+// Cambia sezione e aggiorna contenuto
+sectionButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const newSection = btn.dataset.section;
+    if (newSection === currentSection) return;
+
+    currentSection = newSection;
+    localStorage.setItem("section", currentSection);
+    updateContent();
+
+    // Chiudi menu e submenu dopo scelta sezione
+    menu.classList.remove("active");
+    hamburgerBtn.setAttribute("aria-expanded", "false");
+    closeAllSubmenus();
+  });
 });
+
+// Funzione per aggiornare il contenuto visibile in base a lingua e sezione
+function updateContent() {
+  // Nascondi tutte le sezioni
+  document.querySelectorAll(".content-section").forEach(section => {
+    section.classList.remove("active");
+    section.hidden = true;
+  });
+
+  // Mostra solo sezione corrente
+  const visibleSection = document.getElementById(currentSection);
+  visibleSection.hidden = false;
+  visibleSection.classList.add("active");
+
+  // Aggiorna titolo e testo tradotto
+  const t = translations[currentLang];
+  visibleSection.querySelector("h1").textContent = t[`${currentSection}_title`];
+  visibleSection.querySelector("p").textContent = t[`${currentSection}_content`];
+}
+
+// All’avvio pagina
+updateContent();

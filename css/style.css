@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset base */
 * {
   margin: 0;
   padding: 0;
@@ -9,11 +9,11 @@ body {
   font-family: Arial, sans-serif;
   background: #f9f9f9;
   min-height: 100vh;
-  padding-bottom: 30px; /* spazio per footer */
+  padding-bottom: 30px; /* spazio footer */
   position: relative;
 }
 
-/* Top bar viola orizzontale */
+/* Barra viola in alto, fissa */
 .topbar {
   background-color: purple;
   color: white;
@@ -26,7 +26,7 @@ body {
   gap: 15px;
 }
 
-/* Hamburger */
+/* Pulsante hamburger */
 #hamburger {
   font-size: 24px;
   background: none;
@@ -36,23 +36,25 @@ body {
   user-select: none;
 }
 
-/* Menu */
+/* Menu inizialmente nascosto */
 .menu {
   display: none;
   flex-grow: 1;
 }
 
+/* Lista principale orizzontale */
 .menu ul {
   list-style: none;
   display: flex;
   gap: 30px;
 }
 
+/* Lista opzioni */
 .menu li {
   position: relative;
 }
 
-/* Pulsanti top menu */
+/* Pulsanti opzioni principali */
 .menu > ul > li > button.menu-toggle {
   background: none;
   border: none;
@@ -63,7 +65,7 @@ body {
   padding: 5px 0;
 }
 
-/* Sottomenu */
+/* Sottomenu nascosti */
 .submenu {
   position: absolute;
   top: 32px;
@@ -100,12 +102,11 @@ body {
   background: #5e00a8;
 }
 
-/* Mostra menu attivo */
+/* Menu e sottomenu attivi */
 .menu.active {
   display: flex;
 }
 
-/* Mostra submenu attivo */
 .submenu.active {
   display: flex;
 }
@@ -149,7 +150,7 @@ footer {
   user-select: none;
 }
 
-/* Responsive per mobile */
+/* Responsive mobile */
 @media (max-width: 600px) {
   .menu {
     display: none;
