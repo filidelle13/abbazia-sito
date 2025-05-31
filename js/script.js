@@ -124,108 +124,33 @@ const menuLabels = {
   }
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  // Toggle sidebar on hamburger click (mobile)
-  const hamburgerBtn = document.getElementById("hamburgerBtn");
-  const sidebar = document.getElementById("sidebar");
+function toggleMenu(id) {
+  const menu = document.getElementById(id);
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+}
 
-  hamburgerBtn.addEventListener("click", () => {
-    sidebar.classList.toggle("active");
-  });
+function changeLanguage(lang) {
+  currentLanguage = lang;
+  showContent(currentSection);
+}
 
-  // Toggle submenu on title click
-  document.getElementById("menuLanguageTitle").addEventListener("click", () => {
-    toggleSubmenu("languageMenu");
-  });
-  document.getElementById("menuAbbeyTitle").addEventListener("click", () => {
-    toggleSubmenu("abbeyMenu");
-  });
+function showContent(sectionKey) {
+  currentSection = sectionKey;
+  const section = content[currentLanguage][sectionKey];
+  const html = `
+    <h1>${section.title}</h1>
+    <p>${section.text}</p>
+    <img src="${section.image}" alt="${section.title}">
+  `;
+  document.getElementById('mainContent').innerHTML = html;
+}
 
-  function toggleSubmenu(id) {
-    const submenu = document.getElementById(id);
-    if (submenu.classList.contains("show")) {
-      submenu.classList.remove("show");
-    } else {
-      submenu.classList.add("show");
-    }
-  }
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('active');
+}
 
-  // Language buttons
-  document.getElementById("btnLangIt").addEventListener("click", () => {
-    changeLanguage("it");
-  });
-  document.getElementById("btnLangEn").addEventListener("click", () => {
-    changeLanguage("en");
-  });
-  document.getElementById("btnLangEs").addEventListener("click", () => {
-    changeLanguage("es");
-  });
-
-  // Section buttons
-  document.getElementById("btnSection1").addEventListener("click", () => {
-    changeSection("section1");
-  });
-  document.getElementById("btnSection2").addEventListener("click", () => {
-    changeSection("section2");
-  });
-  document.getElementById("btnSection3").addEventListener("click", () => {
-    changeSection("section3");
-  });
-  document.getElementById("btnSection4").addEventListener("click", () => {
-    changeSection("section4");
-  });
-  document.getElementById("btnSection5").addEventListener("click", () => {
-    changeSection("section5");
-  });
-
-  function changeLanguage(lang) {
-    currentLanguage = lang;
-    updateMenuLabels();
-    updateContent();
-  }
-
-  function changeSection(section) {
-    currentSection = section;
-    updateContent();
-    if(window.innerWidth <= 768){
-      sidebar.classList.remove("active"); // chiudi menu dopo scelta su mobile
-    }
-  }
-
-  function updateMenuLabels() {
-    // Aggiorna titoli menu
-    document.getElementById("menuLanguageTitle").textContent = menuLabels[currentLanguage].menuLanguage;
-    document.getElementById("menuAbbeyTitle").textContent = menuLabels[currentLanguage].menuAbbey;
-
-    // Aggiorna nomi lingue
-    document.getElementById("btnLangIt").textContent = menuLabels[currentLanguage].langIt;
-    document.getElementById("btnLangEn").textContent = menuLabels[currentLanguage].langEn;
-    document.getElementById("btnLangEs").textContent = menuLabels[currentLanguage].langEs;
-
-    // Aggiorna sezioni abbazia
-    document.getElementById("btnSection1").textContent = menuLabels[currentLanguage].section1;
-    document.getElementById("btnSection2").textContent = menuLabels[currentLanguage].section2;
-    document.getElementById("btnSection3").textContent = menuLabels[currentLanguage].section3;
-    document.getElementById("btnSection4").textContent = menuLabels[currentLanguage].section4;
-    document.getElementById("btnSection5").textContent = menuLabels[currentLanguage].section5;
-  }
-
-  function updateContent() {
-    const mainContent = document.getElementById("mainContent");
-    const data = content[currentLanguage][currentSection];
-
-    mainContent.innerHTML = `
-      <h1>${data.title}</h1>
-      <p>${data.text}</p>
-      <img src="${data.image}" alt="${data.title}">
-    `;
-  }
-
-  // Inizializza menu aperti (mostra sottomenù Lingua e Abbazia all'avvio)
-  document.getElementById("languageMenu").classList.add("show");
-  document.getElementById("abbeyMenu").classList.add("show");
-
-  // Imposta etichette e contenuto iniziale
-  updateMenuLabels();
-  updateContent();
+document.addEventListener('DOMContentLoaded', () => {
+  showContent(currentSection);
 });
+   
