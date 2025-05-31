@@ -1,24 +1,23 @@
-// Contenuti tradotti + testi menu
 const content = {
   it: {
     section1: {
       title: "Storia",
-      text: "Secondo la tradizione la chiesa sorse nel luogo dove nacque Siro, vescovo di Genova nel IV sec. Non si può fissare una data precisa per l’edificazione, ma nel 1025, il vescovo Landolfo la consegnò ai monaci benedettini: ecco il motivo per cui quest’anno celebriamo il millenario.",
+      text: "Secondo la tradizione la chiesa fu edificata sul luogo di nascita di Siro, vescovo di Genova nel IV secolo. Non è possibile fissare una data precisa, ma nel 1025 il vescovo Landolfo la donò ai monaci benedettini: per questo quest'anno festeggiamo il millenario.",
       image: "images/abbazia.jpg"
     },
     section2: {
       title: "Interni",
-      text: "La pianta basilicale senza transetto è a 3 navate. Ci sono 11 colonne di circa 4 m di altezza che dividono lo spazio in 3 navate. In fondo troviamo una colonna più robusta che sostiene il campanile. Nelle tredici monofore sono state inserite le vetrate di Ilario Cuoghi, artista che ha realizzato anche il portale maggiore e le sculture per la Via Crucis. Il soffitto della navata centrale è una capriata in legno di Corsica del 1923.",
+      text: "La pianta basilicale senza transetto ha 3 navate. Ci sono 11 colonne alte circa 4 m che dividono lo spazio in 3 navate. In fondo c’è una colonna più robusta che sostiene il campanile. Nelle tredici monofore sono le vetrate di Ilario Cuoghi, artista che ha realizzato anche il portale maggiore e le sculture per la Via Crucis. Il soffitto della navata centrale è una capriata lignea della Corsica del 1923.",
       image: "images/interni.jpg"
     },
     section3: {
       title: "Facciata",
-      text: "La facciata evidenzia la ripartizione interna in tre navate, con un unico ingresso centrale e un semplice portale. Orientata verso Est, ha forma a salienti con quattro falde del tetto e presenta elementi tipici dell’architettura romanica: arcatelle, rosone e pavimentazione a ciottoli (risseu).",
+      text: "La facciata mette in risalto la divisione interna in tre navate, con un ingresso centrale unico e un portale semplice. Orientata ad Est, ha forma a salienti con quattro falde di tetto e presenta elementi tipici dell’architettura romanica: archi, rosone e pavimento a ciottoli (risseu).",
       image: "images/facciata.jpg"
     },
     section4: {
       title: "Retro",
-      text: "Il campanile è robusto e slanciato, alto più di 30 metri, ha pianta quadrata con tetto piramidale ed è basato sull’ultima campata della navata di destra. Nella cella campanaria si aprono trifore e sotto una bifora. Sul retro si vedono le tre absidi.",
+      text: "Il campanile è robusto e slanciato, alto più di 30 metri, con pianta quadrata e tetto piramidale, appoggiato all’ultima campata della navata destra. Nella cella campanaria ci sono trifore e sotto una bifora. Sul retro si vedono i tre absidi.",
       image: "images/retro.jpg"
     },
     section5: {
@@ -124,33 +123,30 @@ const langGroupTitle = document.getElementById("langGroupTitle");
 const abbeyGroupTitle = document.getElementById("abbeyGroupTitle");
 const menuTextSpan = document.getElementById("menuText");
 
-// Aggiorna testi bottoni lingua e sezioni + titoli gruppi + scritta menu
 function updateMenuTexts() {
   const langData = content[currentLanguage];
-
-  // Aggiorna gruppi titoli
+  
   langGroupTitle.textContent = langData.menuLanguage;
   abbeyGroupTitle.textContent = langData.menuAbbey;
-  menuTextSpan.textContent = langData.menuAbbey === "L'abbazia" ? "Menu" : "Menu"; // puoi cambiare in base a lingua
+  menuTextSpan.textContent = "Menu";
 
   // Aggiorna bottoni lingua
-  const langBtns = document.querySelectorAll(".lang-btn");
-  langBtns.forEach((btn) => {
+  document.querySelectorAll(".lang-btn").forEach(btn => {
     const lang = btn.getAttribute("data-lang");
-    if (lang === "it") btn.textContent = langData.langIt;
-    if (lang === "en") btn.textContent = langData.langEn;
-    if (lang === "es") btn.textContent = langData.langEs;
+    if(lang === "it") btn.textContent = langData.langIt;
+    if(lang === "en") btn.textContent = langData.langEn;
+    if(lang === "es") btn.textContent = langData.langEs;
+    btn.classList.toggle("active", lang === currentLanguage);
   });
 
-  // Aggiorna bottoni sezioni abbazia
-  const sectionBtns = document.querySelectorAll(".section-btn");
-  sectionBtns.forEach((btn, i) => {
+  // Aggiorna bottoni sezioni
+  document.querySelectorAll(".section-btn").forEach((btn, i) => {
     const key = "section" + (i + 1) + "Name";
     btn.textContent = langData[key];
+    btn.classList.toggle("active", btn.getAttribute("data-section") === currentSection);
   });
 }
 
-// Aggiorna contenuto principale (titolo, testo, immagine)
 function updateContent() {
   const langData = content[currentLanguage];
   const sectionData = langData[currentSection];
@@ -163,81 +159,65 @@ function updateContent() {
   mainContent.focus();
 }
 
-// Controlla se siamo su mobile o desktop
 function isMobile() {
   return window.innerWidth <= 700;
 }
 
-// Toggle sidebar per mobile
 function toggleSidebar() {
-  if (isMobile()) {
-    if (sidebar.classList.contains("open")) {
-      sidebar.classList.remove("open");
-      sidebar.classList.add("closed");
-    } else {
-      sidebar.classList.remove("closed");
-      sidebar.classList.add("open");
-    }
+  if(isMobile()) {
+    sidebar.classList.toggle("open");
+    sidebar.classList.toggle("closed");
   }
 }
 
-// Chiude sidebar mobile
 function closeSidebarMobile() {
-  if (isMobile()) {
+  if(isMobile()) {
     sidebar.classList.remove("open");
     sidebar.classList.add("closed");
   }
 }
 
-// Imposta visibilità sidebar e menu testo in base a dimensione
-function adjustLayout() {
-  if (isMobile()) {
-    sidebar.classList.add("closed");
-    sidebar.classList.remove("open");
-    mainContent.style.marginLeft = "0";
-    hamburgerBtn.style.display = "flex";
-  } else {
-    sidebar.classList.remove("closed");
-    sidebar.classList.remove("open");
-    mainContent.style.marginLeft = "220px";
-    hamburgerBtn.style.display = "none"; // su desktop non serve hamburger
-  }
-}
+// Event Listeners
 
-// Inizializza tutto
-function init() {
-  updateMenuTexts();
-  updateContent();
-  adjustLayout();
-}
+hamburgerBtn.addEventListener("click", () => {
+  toggleSidebar();
+});
 
-window.addEventListener("resize", adjustLayout);
-
-hamburgerBtn.addEventListener("click", toggleSidebar);
-
-// Click sui bottoni lingua
-document.querySelectorAll(".lang-btn").forEach((btn) => {
+document.querySelectorAll(".lang-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     const selectedLang = btn.getAttribute("data-lang");
-    if (selectedLang !== currentLanguage) {
+    if(selectedLang !== currentLanguage) {
       currentLanguage = selectedLang;
       updateMenuTexts();
-      updateContent(); // non resetta la sezione corrente
-    }
-    closeSidebarMobile();
-  });
-});
-
-// Click sulle sezioni abbazia
-document.querySelectorAll(".section-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const selectedSection = btn.getAttribute("data-section");
-    if (selectedSection !== currentSection) {
-      currentSection = selectedSection;
       updateContent();
     }
-    closeSidebarMobile();
+    if(isMobile()) closeSidebarMobile();
   });
 });
 
-init();
+document.querySelectorAll(".section-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const selectedSection = btn.getAttribute("data-section");
+    if(selectedSection !== currentSection) {
+      currentSection = selectedSection;
+      updateMenuTexts();
+      updateContent();
+    }
+    if(isMobile()) closeSidebarMobile();
+  });
+});
+
+// Init
+updateMenuTexts();
+updateContent();
+closeSidebarMobile();
+
+// Optional: chiudere sidebar se resize da mobile a desktop e viceversa
+window.addEventListener("resize", () => {
+  if(!isMobile()) {
+    sidebar.classList.remove("closed");
+    sidebar.classList.remove("open");
+  } else {
+    closeSidebarMobile();
+  }
+});
