@@ -1,38 +1,77 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abbazia Multilingue</title>
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L'abbazia di San Siro di Struppa</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- Menu hamburger -->
+  <button id="menu-toggle" aria-label="Apri menu" aria-expanded="false" aria-controls="sidebar">
+    &#9776;
+  </button>
 
-<header>
-  <button id="hamburgerBtn" aria-label="Apri menu" aria-expanded="false">&#9776; Menu</button>
-</header>
+  <!-- Sidebar -->
+  <nav id="sidebar" aria-hidden="true">
+    <div class="menu-section">
+      <h2 data-key="language">Lingua</h2>
+      <select id="language-select" aria-label="Seleziona lingua">
+        <option value="it">Italiano</option>
+        <option value="en">English</option>
+        <option value="es">Español</option>
+      </select>
+    </div>
+    <div class="menu-section">
+      <h2 data-key="abbazia">L'abbazia</h2>
+      <ul id="abbazia-menu">
+        <li><button data-section="storia" data-key="storia">Storia</button></li>
+        <li><button data-section="interni" data-key="interni">Interni</button></li>
+        <li><button data-section="facciata" data-key="facciata">Facciata</button></li>
+        <li><button data-section="retro" data-key="retro">Retro</button></li>
+        <li><button data-section="polittico" data-key="polittico">Polittico di San Siro</button></li>
+      </ul>
+    </div>
+  </nav>
 
-<nav id="sidebar" class="closed" aria-label="Menu di navigazione">
-  <div class="menu-group">
-    <h3 id="langGroupTitle">Lingua</h3>
-    <button class="lang-btn" data-lang="it">Italiano</button>
-    <button class="lang-btn" data-lang="en">Inglese</button>
-    <button class="lang-btn" data-lang="es">Spagnolo</button>
-  </div>
-  <div class="menu-group">
-    <h3 id="abbeyGroupTitle">L'abbazia</h3>
-    <button class="section-btn" data-section="section1">Storia</button>
-    <button class="section-btn" data-section="section2">Interni</button>
-    <button class="section-btn" data-section="section3">Facciata</button>
-    <button class="section-btn" data-section="section4">Retro</button>
-    <button class="section-btn" data-section="section5">Polittico</button>
-  </div>
-</nav>
+  <!-- Contenuto -->
+  <main id="content">
+    <section id="storia" class="content-section" data-key-title="storia_title" data-key-content="storia_content" hidden>
+      <h1></h1>
+      <p></p>
+      <div class="images-container"></div>
+    </section>
 
-<main id="mainContent" tabindex="0">
-  <!-- Contenuto caricato qui -->
-</main>
+    <section id="interni" class="content-section" data-key-title="interni_title" data-key-content="interni_content" hidden>
+      <h1></h1>
+      <p></p>
+      <div class="images-container"></div>
+    </section>
 
-<script src="script.js"></script>
+    <section id="facciata" class="content-section" data-key-title="facciata_title" data-key-content="facciata_content" hidden>
+      <h1></h1>
+      <p></p>
+      <div class="images-container"></div>
+    </section>
+
+    <section id="retro" class="content-section" data-key-title="retro_title" data-key-content="retro_content" hidden>
+      <h1></h1>
+      <p></p>
+      <div class="images-container"></div>
+    </section>
+
+    <section id="polittico" class="content-section" data-key-title="polittico_title" data-key-content="polittico_content" hidden>
+      <h1></h1>
+      <p></p>
+      <div class="images-container"></div>
+    </section>
+  </main>
+
+  <!-- Footer fisso -->
+  <footer>
+    Made by F.Dellepiane, L.Santovito, R.Carpi.
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
