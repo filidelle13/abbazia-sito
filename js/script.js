@@ -1,4 +1,6 @@
-// Traduzioni complete con i tuoi testi
+let currentLanguage = 'it';
+let currentSection = 'section1';
+
 const content = {
   it: {
     section1: {
@@ -45,22 +47,22 @@ const content = {
     },
     section2: {
       title: "Interior",
-      text: "The basilical plan, without transept, has 3 aisles. There are 11 columns about 4 m high dividing the space into 3 aisles. At the end a more robust column supports the bell tower. In thirteen single-lancet windows there are stained glasses by Ilario Cuoghi, who also made the main portal and sculptures for the Stations of the Cross. The ceiling of the central nave is a wooden truss from Corsica dating back to 1923.",
+      text: "The basilical plan, without transept, has 3 aisles. There are 11 columns about 4 m high dividing the space into 3 aisles. At the end a more robust column supports the bell tower. In thirteen single-lancet windows there are stained glass windows by Ilario Cuoghi, who also made the main portal and sculptures for the Via Crucis. The ceiling of the central aisle is a wooden truss from Corsica, 1923.",
       image: "images/interni.jpg"
     },
     section3: {
       title: "Facade",
-      text: "The facade shows the internal division into three aisles, with a single central entrance and a simple portal. Facing east, it has a gable shape with four roof slopes and typical Romanesque elements: small arches, rose window and pebble pavement (risseu).",
+      text: "The facade highlights the internal division into three naves, with a single central entrance and a simple portal. Oriented eastward, it has a shape with salients and four roof slopes and typical Romanesque elements: small arches, rose window, and pebble paving (risseu).",
       image: "images/facciata.jpg"
     },
     section4: {
       title: "Back",
-      text: "The bell tower is sturdy and slender, over 30 meters high, with a square plan and pyramidal roof, resting on the last bay of the right nave. The bell cell has triple windows and below a double window. At the back the three apses can be seen.",
+      text: "The bell tower is sturdy and slender, over 30 meters high, square plan with pyramidal roof, based on the last span of the right nave. The bell chamber has triforas and below a bifora. At the back you can see the three apses.",
       image: "images/retro.jpg"
     },
     section5: {
       title: "Polyptych of San Siro",
-      text: "A remarkable artwork is the Polyptych of San Siro, made in 1516 by Pier Francesco Sacchi, called the Pavese. Restored in 1960. The saint is represented enthroned, blessing, with the pastoral staff crushing the Basilisk (symbol of Arian heresy). Around, 8 scenes of his life and vocation, topped by the bust of the Virgin nursing the Holy Child.",
+      text: "A notable artwork is the Polyptych of San Siro, made in 1516 by Pier Francesco Sacchi, called il Pavese. Restored in 1960. The saint is shown seated on a throne, blessing, with the pastoral staff crushing the Basilisk (symbol of Arian heresy). Around him, 8 scenes of his life and vocation, topped by the bust of the Virgin nursing the Holy Child.",
       image: "images/polittico.jpg"
     },
     menuLanguage: "Language",
@@ -77,27 +79,27 @@ const content = {
   es: {
     section1: {
       title: "Historia",
-      text: "Según la tradición, la iglesia fue construida en el lugar donde nació Siro, obispo de Génova en el siglo IV. No hay fecha precisa de construcción, pero en 1025 el obispo Landolfo la entregó a los monjes benedictinos, por lo que este año celebramos el milenario.",
+      text: "Según la tradición, la iglesia se construyó en el lugar donde nació Siro, obispo de Génova en el siglo IV. No hay una fecha precisa para la edificación, pero en 1025, el obispo Landolfo la entregó a los monjes benedictinos: por eso este año celebramos el milenario.",
       image: "images/abbazia.jpg"
     },
     section2: {
       title: "Interiores",
-      text: "La planta basilical sin transepto tiene 3 naves. Hay 11 columnas de aproximadamente 4 m de altura que dividen el espacio en 3 naves. Al final, una columna más robusta sostiene el campanario. En trece ventanas ojivales hay vitrales de Ilario Cuoghi, quien también hizo el portal principal y las esculturas del Vía Crucis. El techo de la nave central es una armadura de madera de Córcega de 1923.",
+      text: "La planta basilical sin transepto tiene 3 naves. Hay 11 columnas de unos 4 m de altura que dividen el espacio en 3 naves. Al fondo hay una columna más robusta que sostiene el campanario. En las trece ventanas monoforas están las vidrieras de Ilario Cuoghi, artista que también realizó el portal mayor y las esculturas para el Vía Crucis. El techo de la nave central es una cercha de madera de Córcega de 1923.",
       image: "images/interni.jpg"
     },
     section3: {
       title: "Fachada",
-      text: "La fachada muestra la división interna en tres naves, con una sola entrada central y un portal simple. Orientada al este, tiene forma a dos aguas con cuatro faldones de techo y elementos típicos románicos: arcos pequeños, rosetón y pavimento de guijarros (risseu).",
+      text: "La fachada muestra la división interna en tres naves, con una única entrada central y un portal sencillo. Orientada hacia el este, tiene forma con salientes y cuatro faldones del techo y presenta elementos típicos de la arquitectura románica: arcos, rosetón y pavimento de guijarros (risseu).",
       image: "images/facciata.jpg"
     },
     section4: {
       title: "Parte trasera",
-      text: "El campanario es robusto y delgado, de más de 30 metros de altura, con planta cuadrada y techo piramidal, apoyado en la última bóveda de la nave derecha. La celda de las campanas tiene triforas y debajo una bifora. En la parte trasera se ven los tres ábsides.",
+      text: "El campanario es robusto y esbelto, con más de 30 metros de altura, planta cuadrada con techo piramidal y se basa en el último tramo de la nave derecha. En la sala del campanario hay triforas y debajo una bifora. En la parte trasera se ven los tres ábsides.",
       image: "images/retro.jpg"
     },
     section5: {
       title: "Políptico de San Siro",
-      text: "Una obra destacada es el Políptico de San Siro, realizado en 1516 por Pier Francesco Sacchi, llamado el Pavese. Restaurado en 1960. El santo está representado entronizado, bendiciendo, con el báculo aplastando al Basilisco (símbolo de la herejía aria). Alrededor, 8 escenas de su vida y vocación, coronadas por el busto de la Virgen amamantando al Niño Santo.",
+      text: "Una obra de arte notable es el Políptico de San Siro, realizado en 1516 por Pier Francesco Sacchi, llamado el Pavese. Restaurado en 1960. El santo está representado en un trono, bendiciendo, con el pastor que aplasta al Basilisco (símbolo de la herejía arriana). Alrededor, 8 escenas de su vida y vocación, coronadas por el busto de la Virgen que amamanta al Santo Niño.",
       image: "images/polittico.jpg"
     },
     menuLanguage: "Idioma",
@@ -113,100 +115,73 @@ const content = {
   }
 };
 
-let currentLanguage = 'it';
-let currentSection = 'section1';
-
-const menuToggleBtn = document.getElementById('menuToggle');
-const sidebar = document.getElementById('sidebar');
-const sectionsMenu = document.getElementById('sectionsMenu');
-const langMenu = document.getElementById('langMenu');
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const topMenu = document.getElementById('topmenu');
+const menuTextSpan = document.getElementById('menuText');
+const menuButtons = document.querySelectorAll('.menu-btn');
+const langButtons = document.querySelectorAll('.lang-btn');
 const mainContent = document.getElementById('mainContent');
 
-function createSectionsMenu() {
-  sectionsMenu.innerHTML = '';
-  for(let i=1; i<=2; i++) {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'section-btn';
-    btn.dataset.section = `section${i}`;
-    btn.textContent = content[currentLanguage][`section${i}Name`];
-    if(`section${i}` === currentSection) {
-      btn.style.fontWeight = 'bold';
-    }
-    btn.addEventListener('click', () => {
-      currentSection = btn.dataset.section;
-      renderContent();
-      updateSectionsMenuHighlight();
-      sidebar.classList.remove('visible');
-      menuToggleBtn.setAttribute('aria-expanded', 'false');
-      sidebar.setAttribute('aria-hidden', 'true');
-    });
-    sectionsMenu.appendChild(btn);
-  }
-}
-
-function createLangMenu() {
-  langMenu.innerHTML = '';
-
-  const languages = [
-    {code:'it', label: content[currentLanguage].langIt},
-    {code:'en', label: content[currentLanguage].langEn},
-    {code:'es', label: content[currentLanguage].langEs}
-  ];
-
-  languages.forEach(lang => {
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'lang-btn';
-    btn.dataset.lang = lang.code;
-    btn.textContent = lang.label;
-
-    if(lang.code === currentLanguage){
-      btn.style.fontWeight = 'bold';
-    }
-
-    btn.addEventListener('click', () => {
-      if(lang.code !== currentLanguage) {
-        currentLanguage = lang.code;
-        createSectionsMenu();
-        createLangMenu();
-        renderContent();
-      }
-      sidebar.classList.remove('visible');
-      menuToggleBtn.setAttribute('aria-expanded', 'false');
-      sidebar.setAttribute('aria-hidden', 'true');
-    });
-    langMenu.appendChild(btn);
+function renderMenu() {
+  // Set menu buttons text
+  menuButtons.forEach(btn => {
+    const sectionKey = btn.getAttribute('data-section');
+    btn.textContent = content[currentLanguage][sectionKey + 'Name'];
   });
-}
 
-function updateSectionsMenuHighlight() {
-  document.querySelectorAll('.section-btn').forEach(btn => {
-    btn.style.fontWeight = (btn.dataset.section === currentSection) ? 'bold' : 'normal';
+  // Set language buttons text
+  langButtons.forEach(btn => {
+    const lang = btn.getAttribute('data-lang');
+    btn.textContent = content[currentLanguage]['lang' + lang.charAt(0).toUpperCase() + lang.slice(1)];
   });
+
+  // Optional: you could also set aria-labels or titles here if needed
 }
 
 function renderContent() {
-  const data = content[currentLanguage][currentSection];
-  if(!data) return;
+  const sectionData = content[currentLanguage][currentSection];
   mainContent.innerHTML = `
-    <h1>${data.title}</h1>
-    <p>${data.text}</p>
-    <img src="${data.image}" alt="${data.title}" />
+    <h1>${sectionData.title}</h1>
+    <p>${sectionData.text}</p>
+    <img src="${sectionData.image}" alt="${sectionData.title}" />
   `;
-  mainContent.focus();
 }
 
-menuToggleBtn.addEventListener('click', () => {
-  const visible = sidebar.classList.toggle('visible');
-  menuToggleBtn.setAttribute('aria-expanded', visible.toString());
-  sidebar.setAttribute('aria-hidden', (!visible).toString());
+function setLanguage(lang) {
+  if (lang === currentLanguage) return;
+  currentLanguage = lang;
+  renderMenu();
+  renderContent();
+}
+
+function setSection(section) {
+  if (section === currentSection) return;
+  currentSection = section;
+  renderContent();
+}
+
+// Toggle menu visibility
+hamburgerBtn.addEventListener('click', () => {
+  topMenu.classList.toggle('visible');
 });
 
-window.addEventListener('DOMContentLoaded', () => {
-  createSectionsMenu();
-  createLangMenu();
-  renderContent();
-  sidebar.setAttribute('aria-hidden', 'true');
-  menuToggleBtn.setAttribute('aria-expanded', 'false');
+// Menu sections click
+menuButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    setSection(btn.getAttribute('data-section'));
+    // Close menu after selection for UX
+    topMenu.classList.remove('visible');
+  });
 });
+
+// Language buttons click
+langButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    setLanguage(btn.getAttribute('data-lang'));
+    topMenu.classList.remove('visible');
+  });
+});
+
+// Inizializza
+renderMenu();
+renderContent();
