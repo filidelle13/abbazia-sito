@@ -114,11 +114,9 @@ const content = {
 
 const sidebar = document.getElementById("sidebar");
 const hamburgerBtn = document.getElementById("hamburgerBtn");
-const menuText = document.getElementById("menuText");
 const langBtns = document.querySelectorAll(".lang-btn");
 const sectionBtns = document.querySelectorAll(".section-btn");
 const mainContent = document.getElementById("mainContent");
-
 const langGroupTitle = document.getElementById("langGroupTitle");
 const abbeyGroupTitle = document.getElementById("abbeyGroupTitle");
 
@@ -142,20 +140,18 @@ hamburgerBtn.addEventListener("click", toggleSidebar);
 function updateMenuTexts() {
   const langData = content[currentLang];
 
-  menuText.textContent = currentLang === "it" ? "Menu" :
-                         currentLang === "en" ? "Menu" : "Menú";
-
+  // Aggiorna titoli gruppi
   langGroupTitle.textContent = langData.menuLanguage;
   abbeyGroupTitle.textContent = langData.menuAbbey;
 
-  // Aggiorna i bottoni lingua
+  // Aggiorna pulsanti lingua
   langBtns.forEach(btn => {
     const key = "lang" + btn.dataset.lang.charAt(0).toUpperCase() + btn.dataset.lang.slice(1);
     btn.textContent = langData[key] || btn.textContent;
     btn.classList.toggle("active", btn.dataset.lang === currentLang);
   });
 
-  // Aggiorna i bottoni sezioni
+  // Aggiorna pulsanti sezione
   sectionBtns.forEach(btn => {
     const key = btn.dataset.section + "Name";
     btn.textContent = langData[key] || btn.textContent;
@@ -165,12 +161,10 @@ function updateMenuTexts() {
 
 function updateContent() {
   const sec = content[currentLang][currentSection];
-
   if (!sec) {
     mainContent.innerHTML = "<p>Contenuto non disponibile.</p>";
     return;
   }
-
   mainContent.innerHTML = `
     <h1>${sec.title}</h1>
     <p>${sec.text}</p>
@@ -178,25 +172,26 @@ function updateContent() {
   `;
 }
 
+// Cambio lingua (non ritorna a section1)
 langBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     if (btn.dataset.lang !== currentLang) {
       currentLang = btn.dataset.lang;
       updateMenuTexts();
       updateContent();
-      // NON tornare a section1, resta sulla sezione corrente
-      if (isMobile()) toggleSidebar(); // chiude menu in mobile dopo scelta
+      if (isMobile()) toggleSidebar();
     }
   });
 });
 
+// Cambio sezione
 sectionBtns.forEach(btn => {
   btn.addEventListener("click", () => {
     if (btn.dataset.section !== currentSection) {
       currentSection = btn.dataset.section;
       updateMenuTexts();
       updateContent();
-      if (isMobile()) toggleSidebar(); // chiude menu in mobile dopo scelta
+      if (isMobile()) toggleSidebar();
     }
   });
 });

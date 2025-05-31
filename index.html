@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Abbazia Multilingue</title>
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Abbazia Multilingue</title>
+<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <header>
-    <button id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
-      &#9776; <span id="menuText">Menu</span>
-    </button>
-  </header>
+<header>
+  <button id="hamburgerBtn" aria-label="Apri menu" aria-expanded="false">&#9776; Menu</button>
+</header>
 
-  <nav id="sidebar" class="sidebar closed" aria-label="Menu di navigazione">
-    <div class="menu-group">
-      <h3 id="langGroupTitle">Lingua</h3>
-      <button class="lang-btn" data-lang="it">Italiano</button>
-      <button class="lang-btn" data-lang="en">Inglese</button>
-      <button class="lang-btn" data-lang="es">Spagnolo</button>
-    </div>
-    <div class="menu-group">
-      <h3 id="abbeyGroupTitle">L'abbazia</h3>
-      <button class="section-btn" data-section="section1">Storia</button>
-      <button class="section-btn" data-section="section2">Interni</button>
-      <button class="section-btn" data-section="section3">Facciata</button>
-      <button class="section-btn" data-section="section4">Retro</button>
-      <button class="section-btn" data-section="section5">Polittico</button>
-    </div>
-  </nav>
+<nav id="sidebar" class="closed" aria-label="Menu di navigazione">
+  <div class="menu-group">
+    <h3 id="langGroupTitle">Lingua</h3>
+    <button class="lang-btn" data-lang="it">Italiano</button>
+    <button class="lang-btn" data-lang="en">Inglese</button>
+    <button class="lang-btn" data-lang="es">Spagnolo</button>
+  </div>
+  <div class="menu-group">
+    <h3 id="abbeyGroupTitle">L'abbazia</h3>
+    <button class="section-btn" data-section="section1">Storia</button>
+    <button class="section-btn" data-section="section2">Interni</button>
+    <button class="section-btn" data-section="section3">Facciata</button>
+    <button class="section-btn" data-section="section4">Retro</button>
+    <button class="section-btn" data-section="section5">Polittico</button>
+  </div>
+</nav>
 
-  <main id="mainContent" tabindex="0">
-    <!-- Contenuto dinamico qui -->
-  </main>
+<main id="mainContent" tabindex="0">
+  <!-- Contenuto caricato qui -->
+</main>
 
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
