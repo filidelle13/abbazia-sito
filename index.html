@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abbazia</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Abbazia dinamica</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -14,24 +14,26 @@
   </button>
 </header>
 
-<nav id="sidebar" class="sidebar hidden" aria-label="Menu principale">
-  <div class="menu-sections">
-    <button data-section="section1" class="menu-btn"></button>
-    <button data-section="section2" class="menu-btn"></button>
-    <button data-section="section3" class="menu-btn"></button>
-    <button data-section="section4" class="menu-btn"></button>
-    <button data-section="section5" class="menu-btn"></button>
-  </div>
+<nav id="sidebar" class="sidebar" aria-label="Menu principale">
+  <section class="menu-group" id="langGroup">
+    <h2 id="langGroupTitle">Lingua</h2>
+    <button class="lang-btn" data-lang="it">Italiano</button>
+    <button class="lang-btn" data-lang="en">English</button>
+    <button class="lang-btn" data-lang="es">Español</button>
+  </section>
 
-  <div class="language-buttons">
-    <button data-lang="it" class="lang-btn"></button>
-    <button data-lang="en" class="lang-btn"></button>
-    <button data-lang="es" class="lang-btn"></button>
-  </div>
+  <section class="menu-group" id="abbeyGroup">
+    <h2 id="abbeyGroupTitle">L'abbazia</h2>
+    <button class="section-btn" data-section="section1">Storia</button>
+    <button class="section-btn" data-section="section2">Interni</button>
+    <button class="section-btn" data-section="section3">Facciata</button>
+    <button class="section-btn" data-section="section4">Retro</button>
+    <button class="section-btn" data-section="section5">Polittico</button>
+  </section>
 </nav>
 
 <main id="mainContent" tabindex="0">
-  <!-- contenuto dinamico qui -->
+  <!-- contenuto dinamico -->
 </main>
 
 <script src="script.js"></script>

@@ -1,6 +1,4 @@
-let currentLanguage = 'it';
-let currentSection = 'section1';
-
+// Contenuti tradotti + testi menu
 const content = {
   it: {
     section1: {
@@ -25,7 +23,7 @@ const content = {
     },
     section5: {
       title: "Polittico di San Siro",
-      text: "Opera d’arte notevole è il Polittico di San Siro, realizzato nel 1516 da Pier Francesco Sacchi detto il Pavese. Restaurato nel 1960. Il santo è rappresentato in trono, benedicente, con il pastorale che schiaccia il Basilisco (simbolo dell’eresia ariana). Intorno, 8 scene della sua vita e vocazione, sovrastate dal busto della Vergine che allatta il Santo bambino.",
+      text: "Opera d’arte notevole è il Polittico di San Siro, realizzato nel 1516 da Pier Francesco Sacchi detto il Pavese. Restaurato nel 1960. Il santo è rappresentato su un trono, benedicente, con il pastorale che schiaccia il Basilisco (simbolo dell’eresia ariana). Attorno, 8 scene della sua vita e vocazione, sormontate dal busto della Vergine che allatta il Bambino Santo.",
       image: "images/polittico.jpg"
     },
     menuLanguage: "Lingua",
@@ -42,12 +40,12 @@ const content = {
   en: {
     section1: {
       title: "History",
-      text: "According to tradition, the church was built on the site where Siro, bishop of Genoa, was born in the 4th century. There is no precise date for the construction, but in 1025 Bishop Landolfo handed it over to the Benedictine monks, which is why this year we celebrate the millennium.",
+      text: "According to tradition the church was built on the spot where Siro, bishop of Genoa in the IV century, was born. It is not possible to fix a precise date for the building, but in 1025, Bishop Landolfo gave it to the Benedictine monks: this is why this year we celebrate the millennium.",
       image: "images/abbazia.jpg"
     },
     section2: {
       title: "Interior",
-      text: "The basilical plan, without transept, has 3 aisles. There are 11 columns about 4 m high dividing the space into 3 aisles. At the end a more robust column supports the bell tower. In thirteen single-lancet windows there are stained glass windows by Ilario Cuoghi, who also made the main portal and sculptures for the Via Crucis. The ceiling of the central aisle is a wooden truss from Corsica, 1923.",
+      text: "The basilica plan without transept has 3 aisles. There are 11 columns about 4 m high that divide the space into 3 aisles. At the bottom we find a more robust column that supports the bell tower. In the thirteen single-light windows are stained glass by Ilario Cuoghi, an artist who also made the main portal and sculptures for the Way of the Cross. The ceiling of the central nave is a wooden truss from Corsica, 1923.",
       image: "images/interni.jpg"
     },
     section3: {
@@ -115,116 +113,131 @@ const content = {
   }
 };
 
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const sidebar = document.getElementById('sidebar');
-const mainContent = document.getElementById('mainContent');
+let currentLanguage = "it";
+let currentSection = "section1";
 
-function updateTexts() {
+const hamburgerBtn = document.getElementById("hamburgerBtn");
+const sidebar = document.getElementById("sidebar");
+const mainContent = document.getElementById("mainContent");
+
+const langGroupTitle = document.getElementById("langGroupTitle");
+const abbeyGroupTitle = document.getElementById("abbeyGroupTitle");
+const menuTextSpan = document.getElementById("menuText");
+
+// Aggiorna testi bottoni lingua e sezioni + titoli gruppi + scritta menu
+function updateMenuTexts() {
   const langData = content[currentLanguage];
 
-  // Aggiorna nomi bottoni sezioni
-  const sectionButtons = document.querySelectorAll('.menu-btn');
-  sectionButtons.forEach((btn, i) => {
-    const key = 'section' + (i + 1) + 'Name';
+  // Aggiorna gruppi titoli
+  langGroupTitle.textContent = langData.menuLanguage;
+  abbeyGroupTitle.textContent = langData.menuAbbey;
+  menuTextSpan.textContent = langData.menuAbbey === "L'abbazia" ? "Menu" : "Menu"; // puoi cambiare in base a lingua
+
+  // Aggiorna bottoni lingua
+  const langBtns = document.querySelectorAll(".lang-btn");
+  langBtns.forEach((btn) => {
+    const lang = btn.getAttribute("data-lang");
+    if (lang === "it") btn.textContent = langData.langIt;
+    if (lang === "en") btn.textContent = langData.langEn;
+    if (lang === "es") btn.textContent = langData.langEs;
+  });
+
+  // Aggiorna bottoni sezioni abbazia
+  const sectionBtns = document.querySelectorAll(".section-btn");
+  sectionBtns.forEach((btn, i) => {
+    const key = "section" + (i + 1) + "Name";
     btn.textContent = langData[key];
   });
-
-  // Aggiorna bottoni lingue
-  const langBtns = document.querySelectorAll('.lang-btn');
-  langBtns.forEach(btn => {
-    const lang = btn.getAttribute('data-lang');
-    if (lang === 'it') btn.textContent = langData.langIt;
-    if (lang === 'en') btn.textContent = langData.langEn;
-    if (lang === 'es') btn.textContent = langData.langEs;
-  });
-
-  // Aggiorna testo menu hamburger
-  document.getElementById('menuText').textContent = langData.menuAbbey; // puoi mettere "Menu" o "Abbey" dinamico
 }
 
+// Aggiorna contenuto principale (titolo, testo, immagine)
 function updateContent() {
   const langData = content[currentLanguage];
-  const section = langData[currentSection];
+  const sectionData = langData[currentSection];
 
   mainContent.innerHTML = `
-    <h1>${section.title}</h1>
-    <p>${section.text}</p>
-    <img src="${section.image}" alt="${section.title}" />
+    <h1>${sectionData.title}</h1>
+    <p>${sectionData.text}</p>
+    <img src="${sectionData.image}" alt="${sectionData.title}" />
   `;
   mainContent.focus();
 }
 
-function openSidebar() {
-  if (window.innerWidth <= 700) {
-    sidebar.classList.add('visible');
-    sidebar.classList.remove('hidden');
-  }
-}
-function closeSidebar() {
-  if (window.innerWidth <= 700) {
-    sidebar.classList.remove('visible');
-    sidebar.classList.add('hidden');
-  }
+// Controlla se siamo su mobile o desktop
+function isMobile() {
+  return window.innerWidth <= 700;
 }
 
-// Inizializza contenuti e testi
-function init() {
-  updateTexts();
-  updateContent();
-
-  // Imposta sidebar nascosta su mobile
-  if (window.innerWidth <= 700) {
-    sidebar.classList.add('hidden');
-  } else {
-    sidebar.classList.remove('hidden');
-    sidebar.classList.remove('visible');
-  }
-}
-init();
-
-// Toggle sidebar con bottone hamburger
-hamburgerBtn.addEventListener('click', () => {
-  if (sidebar.classList.contains('visible')) {
-    closeSidebar();
-  } else {
-    openSidebar();
-  }
-});
-
-// Gestione click menu sezioni
-document.querySelectorAll('.menu-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const newSection = btn.getAttribute('data-section');
-    if (newSection !== currentSection) {
-      currentSection = newSection;
-      updateContent();
+// Toggle sidebar per mobile
+function toggleSidebar() {
+  if (isMobile()) {
+    if (sidebar.classList.contains("open")) {
+      sidebar.classList.remove("open");
+      sidebar.classList.add("closed");
+    } else {
+      sidebar.classList.remove("closed");
+      sidebar.classList.add("open");
     }
-    // Chiudi menu mobile dopo selezione
-    if (window.innerWidth <= 700) closeSidebar();
-  });
-});
+  }
+}
 
-// Gestione cambio lingua
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const selectedLang = btn.getAttribute('data-lang');
+// Chiude sidebar mobile
+function closeSidebarMobile() {
+  if (isMobile()) {
+    sidebar.classList.remove("open");
+    sidebar.classList.add("closed");
+  }
+}
+
+// Imposta visibilità sidebar e menu testo in base a dimensione
+function adjustLayout() {
+  if (isMobile()) {
+    sidebar.classList.add("closed");
+    sidebar.classList.remove("open");
+    mainContent.style.marginLeft = "0";
+    hamburgerBtn.style.display = "flex";
+  } else {
+    sidebar.classList.remove("closed");
+    sidebar.classList.remove("open");
+    mainContent.style.marginLeft = "220px";
+    hamburgerBtn.style.display = "none"; // su desktop non serve hamburger
+  }
+}
+
+// Inizializza tutto
+function init() {
+  updateMenuTexts();
+  updateContent();
+  adjustLayout();
+}
+
+window.addEventListener("resize", adjustLayout);
+
+hamburgerBtn.addEventListener("click", toggleSidebar);
+
+// Click sui bottoni lingua
+document.querySelectorAll(".lang-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const selectedLang = btn.getAttribute("data-lang");
     if (selectedLang !== currentLanguage) {
       currentLanguage = selectedLang;
-      updateTexts();
-      updateContent();
+      updateMenuTexts();
+      updateContent(); // non resetta la sezione corrente
     }
-    // Chiudi menu mobile dopo selezione
-    if (window.innerWidth <= 700) closeSidebar();
+    closeSidebarMobile();
   });
 });
 
-// Adatta sidebar se si ridimensiona finestra
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 700) {
-    sidebar.classList.remove('hidden');
-    sidebar.classList.remove('visible');
-  } else {
-    sidebar.classList.add('hidden');
-    sidebar.classList.remove('visible');
-  }
+// Click sulle sezioni abbazia
+document.querySelectorAll(".section-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const selectedSection = btn.getAttribute("data-section");
+    if (selectedSection !== currentSection) {
+      currentSection = selectedSection;
+      updateContent();
+    }
+    closeSidebarMobile();
+  });
 });
+
+init();
