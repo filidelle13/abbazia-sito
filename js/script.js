@@ -1,4 +1,3 @@
-// Lingue + sezioni
 const translations = {
   it: {
     menuLanguage: "Lingua",
@@ -119,11 +118,9 @@ const translations = {
   }
 };
 
-// Variabili stato
 let currentLanguage = 'it';
 let currentSection = 'section1';
 
-// Elementi
 const hamburgerBtn = document.getElementById('hamburgerBtn');
 const menuDropdown = document.getElementById('menuDropdown');
 const mainContent = document.getElementById('mainContent');
@@ -134,26 +131,23 @@ const sectionButtons = document.querySelectorAll('.section-btn');
 const menuLanguageTitle = document.getElementById('menuLanguageTitle');
 const menuAbbeyTitle = document.getElementById('menuAbbeyTitle');
 
-// Funzione per aggiornare testi menu (lingue + sezioni)
 function updateMenuTexts() {
   menuLanguageTitle.textContent = translations[currentLanguage].menuLanguage;
   menuAbbeyTitle.textContent = translations[currentLanguage].menuAbbey;
 
   langButtons.forEach(btn => {
     if (btn.dataset.lang === 'it') btn.textContent = translations[currentLanguage].langIt;
-    if (btn.dataset.lang === 'en') btn.textContent = translations[currentLanguage].langEn;
-    if (btn.dataset.lang === 'es') btn.textContent = translations[currentLanguage].langEs;
+    else if (btn.dataset.lang === 'en') btn.textContent = translations[currentLanguage].langEn;
+    else if (btn.dataset.lang === 'es') btn.textContent = translations[currentLanguage].langEs;
   });
 
   sectionButtons.forEach(btn => {
     const sec = btn.dataset.section;
-    if (sec && translations[currentLanguage][`section${sec.slice(-1)}Name`]) {
-      btn.textContent = translations[currentLanguage][`section${sec.slice(-1)}Name`];
-    }
+    const index = sec.replace('section', '');
+    btn.textContent = translations[currentLanguage][`section${index}Name`];
   });
 }
 
-// Funzione per aggiornare contenuto principale (NON resetta section1 se cambia lingua)
 function updateMainContent() {
   const content = translations[currentLanguage].content[currentSection];
   if (!content) return;
@@ -165,12 +159,12 @@ function updateMainContent() {
   mainContent.focus();
 }
 
-// Toggle menu dropdown
+// Toggle menu visibility
 hamburgerBtn.addEventListener('click', () => {
   menuDropdown.classList.toggle('hidden');
 });
 
-// Cambia lingua
+// Change language
 langButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const selectedLang = btn.dataset.lang;
@@ -183,7 +177,7 @@ langButtons.forEach(btn => {
   });
 });
 
-// Cambia sezione
+// Change section
 sectionButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     const selectedSection = btn.dataset.section;
@@ -195,6 +189,6 @@ sectionButtons.forEach(btn => {
   });
 });
 
-// Inizializza
+// Inizializzazione
 updateMenuTexts();
 updateMainContent();
