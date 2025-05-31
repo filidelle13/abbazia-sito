@@ -113,21 +113,18 @@ const content = {
   }
 };
 
-// Stato iniziale
 let currentLanguage = 'it';
 let currentSection = 'section1';
 
-// Riferimenti DOM
 const menuToggleBtn = document.getElementById('menuToggle');
 const sidebar = document.getElementById('sidebar');
 const sectionsMenu = document.getElementById('sectionsMenu');
 const langMenu = document.getElementById('langMenu');
 const mainContent = document.getElementById('mainContent');
 
-// Funzione per creare bottoni delle sezioni
 function createSectionsMenu() {
-  sectionsMenu.innerHTML = ''; // reset
-  for(let i=1; i<=5; i++) {
+  sectionsMenu.innerHTML = '';
+  for(let i=1; i<=2; i++) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'section-btn';
@@ -140,7 +137,6 @@ function createSectionsMenu() {
       currentSection = btn.dataset.section;
       renderContent();
       updateSectionsMenuHighlight();
-      // Chiudi menu su mobile
       sidebar.classList.remove('visible');
       menuToggleBtn.setAttribute('aria-expanded', 'false');
       sidebar.setAttribute('aria-hidden', 'true');
@@ -149,9 +145,8 @@ function createSectionsMenu() {
   }
 }
 
-// Funzione per creare bottoni delle lingue
 function createLangMenu() {
-  langMenu.innerHTML = ''; // reset
+  langMenu.innerHTML = '';
 
   const languages = [
     {code:'it', label: content[currentLanguage].langIt},
@@ -173,11 +168,10 @@ function createLangMenu() {
     btn.addEventListener('click', () => {
       if(lang.code !== currentLanguage) {
         currentLanguage = lang.code;
-        createSectionsMenu();  // aggiorna nomi sezioni nella nuova lingua
-        createLangMenu();      // aggiorna nomi lingue
-        renderContent();       // render contenuto nella lingua nuova (stessa sezione)
+        createSectionsMenu();
+        createLangMenu();
+        renderContent();
       }
-      // Chiudi menu su mobile
       sidebar.classList.remove('visible');
       menuToggleBtn.setAttribute('aria-expanded', 'false');
       sidebar.setAttribute('aria-hidden', 'true');
@@ -186,14 +180,12 @@ function createLangMenu() {
   });
 }
 
-// Aggiorna evidenziazione sezione attiva
 function updateSectionsMenuHighlight() {
   document.querySelectorAll('.section-btn').forEach(btn => {
     btn.style.fontWeight = (btn.dataset.section === currentSection) ? 'bold' : 'normal';
   });
 }
 
-// Renderizza contenuto principale
 function renderContent() {
   const data = content[currentLanguage][currentSection];
   if(!data) return;
@@ -205,20 +197,16 @@ function renderContent() {
   mainContent.focus();
 }
 
-// Toggle sidebar menu
 menuToggleBtn.addEventListener('click', () => {
   const visible = sidebar.classList.toggle('visible');
   menuToggleBtn.setAttribute('aria-expanded', visible.toString());
   sidebar.setAttribute('aria-hidden', (!visible).toString());
 });
 
-// Inizializza la pagina
-function init() {
+window.addEventListener('DOMContentLoaded', () => {
   createSectionsMenu();
   createLangMenu();
   renderContent();
   sidebar.setAttribute('aria-hidden', 'true');
   menuToggleBtn.setAttribute('aria-expanded', 'false');
-}
-
-window.addEventListener('DOMContentLoaded', init);
+});
