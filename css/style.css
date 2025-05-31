@@ -1,4 +1,3 @@
-/* Reset base */
 * {
   margin: 0;
   padding: 0;
@@ -10,18 +9,14 @@ body {
   background: #fff;
   color: #222;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
-
-/* Header e menu */
 
 header {
   background: #eee;
   padding: 10px 20px;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   position: relative;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
@@ -37,44 +32,33 @@ header {
   gap: 8px;
 }
 
-#hamburgerBtn:focus {
-  outline: 2px solid #333;
-  outline-offset: 2px;
-}
-
 #menuText {
   font-weight: bold;
-  user-select: none;
 }
 
-/* Nav menu */
-
 #topmenu {
+  background: #e8d4ff;
+  padding: 10px 20px;
   position: absolute;
   top: 100%;
-  right: 20px;
-  background: #5c2aad; /* viola chiaro */
-  border-radius: 4px;
-  padding: 10px 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  left: 10px;
   display: none;
   flex-direction: column;
-  min-width: 180px;
-  z-index: 100;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 #topmenu.visible {
   display: flex;
 }
 
-/* Bottoni menu */
-
 .menu-sections,
 .language-buttons {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 12px;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .menu-btn,
@@ -91,68 +75,51 @@ header {
 }
 
 .menu-btn:hover,
-.lang-btn:hover,
-.menu-btn:focus,
-.lang-btn:focus {
-  background: #9e78e1;
+.lang-btn:hover {
+  background: #d2b4ff;
   color: white;
-  outline: none;
 }
-
-/* Main content */
 
 main#mainContent {
   padding: 25px 20px;
-  flex-grow: 1;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 main#mainContent h1 {
-  margin-bottom: 15px;
   color: #3a0ca3;
+  margin-bottom: 12px;
 }
 
 main#mainContent p {
   font-size: 1.1rem;
-  line-height: 1.5;
   margin-bottom: 20px;
+  line-height: 1.5;
 }
 
 main#mainContent img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* Media Query per schermi piccoli */
-
 @media (max-width: 600px) {
-  header {
-    justify-content: flex-end;
-  }
-
   #topmenu {
     position: static;
     width: 100%;
-    border-radius: 0;
-    padding: 10px 0;
     box-shadow: none;
-  }
-
-  #topmenu.visible {
-    display: flex;
+    border-radius: 0;
   }
 
   .menu-sections,
   .language-buttons {
-    flex-direction: column;
-    margin-bottom: 15px;
-    padding: 0 20px;
+    padding: 0;
   }
 
   .menu-btn,
   .lang-btn {
     font-size: 1.2rem;
-    padding: 10px 15px;
+    padding: 10px;
   }
 }

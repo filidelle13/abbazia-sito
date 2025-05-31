@@ -2,36 +2,34 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abbazia</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-  <button id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="topmenu">
-    &#9776; <span id="menuText">Menu</span>
-  </button>
-  <nav id="topmenu" class="hidden" aria-label="Main menu">
-    <div class="menu-sections" role="menu" aria-label="L'Abbazia">
-      <button data-section="section1" class="menu-btn" role="menuitem"></button>
-      <button data-section="section2" class="menu-btn" role="menuitem"></button>
-      <button data-section="section3" class="menu-btn" role="menuitem"></button>
-      <button data-section="section4" class="menu-btn" role="menuitem"></button>
-      <button data-section="section5" class="menu-btn" role="menuitem"></button>
-    </div>
-    <div class="language-buttons" role="menu" aria-label="Lingue">
-      <button data-lang="it" class="lang-btn" role="menuitem"></button>
-      <button data-lang="en" class="lang-btn" role="menuitem"></button>
-      <button data-lang="es" class="lang-btn" role="menuitem"></button>
-    </div>
-  </nav>
-</header>
+  <header>
+    <button id="hamburgerBtn" aria-label="Toggle menu">
+      &#9776; <span id="menuText">Menu</span>
+    </button>
+    <nav id="topmenu" class="hidden">
+      <div class="menu-sections">
+        <button data-section="section1" class="menu-btn"></button>
+        <button data-section="section2" class="menu-btn"></button>
+        <button data-section="section3" class="menu-btn"></button>
+        <button data-section="section4" class="menu-btn"></button>
+        <button data-section="section5" class="menu-btn"></button>
+      </div>
+      <div class="language-buttons">
+        <button data-lang="it" class="lang-btn"></button>
+        <button data-lang="en" class="lang-btn"></button>
+        <button data-lang="es" class="lang-btn"></button>
+      </div>
+    </nav>
+  </header>
 
-<main id="mainContent" tabindex="0" aria-live="polite" aria-atomic="true">
-  <!-- contenuto dinamico -->
-</main>
+  <main id="mainContent" tabindex="0"></main>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
