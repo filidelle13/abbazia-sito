@@ -1,6 +1,4 @@
-let currentLanguage = 'it';
-let currentSection = 'section1';
-
+// Traduzioni complete con i tuoi testi
 const content = {
   it: {
     section1: {
@@ -115,31 +113,90 @@ const content = {
   }
 };
 
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const topmenu = document.getElementById('topmenu');
-const menuText = document.getElementById('menuText');
+// Stato iniziale
+let currentLanguage = 'it';
+let currentSection = 'section1';
+
+// Riferimenti DOM
+const menuToggleBtn = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+const sectionsMenu = document.getElementById('sectionsMenu');
+const langMenu = document.getElementById('langMenu');
 const mainContent = document.getElementById('mainContent');
 
-function renderMenu() {
-  // Aggiorna i bottoni del menu con i titoli corretti della lingua
-  document.querySelectorAll('.menu-btn').forEach((btn, i) => {
-    const key = `section${i + 1}Name`;
-    btn.textContent = content[currentLanguage][key];
-  });
-
-  // Aggiorna i bottoni lingua
-  const langBtns = document.querySelectorAll('.lang-btn');
-  langBtns[0].textContent = content[currentLanguage].langIt;
-  langBtns[1].textContent = content[currentLanguage].langEn;
-  langBtns[2].textContent = content[currentLanguage].langEs;
-
-  menuText.textContent = "Menu";  // testo fisso del bottone hamburger
+// Funzione per creare bottoni delle sezioni
+function createSectionsMenu() {
+  sectionsMenu.innerHTML = ''; // reset
+  for(let i=1; i<=5; i++) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'section-btn';
+    btn.dataset.section = `section${i}`;
+    btn.textContent = content[currentLanguage][`section${i}Name`];
+    if(`section${i}` === currentSection) {
+      btn.style.fontWeight = 'bold';
+    }
+    btn.addEventListener('click', () => {
+      currentSection = btn.dataset.section;
+      renderContent();
+      updateSectionsMenuHighlight();
+      // Chiudi menu su mobile
+      sidebar.classList.remove('visible');
+      menuToggleBtn.setAttribute('aria-expanded', 'false');
+      sidebar.setAttribute('aria-hidden', 'true');
+    });
+    sectionsMenu.appendChild(btn);
+  }
 }
 
-function renderContent(section) {
-  const data = content[currentLanguage][section];
-  if (!data) return;
+// Funzione per creare bottoni delle lingue
+function createLangMenu() {
+  langMenu.innerHTML = ''; // reset
 
+  const languages = [
+    {code:'it', label: content[currentLanguage].langIt},
+    {code:'en', label: content[currentLanguage].langEn},
+    {code:'es', label: content[currentLanguage].langEs}
+  ];
+
+  languages.forEach(lang => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'lang-btn';
+    btn.dataset.lang = lang.code;
+    btn.textContent = lang.label;
+
+    if(lang.code === currentLanguage){
+      btn.style.fontWeight = 'bold';
+    }
+
+    btn.addEventListener('click', () => {
+      if(lang.code !== currentLanguage) {
+        currentLanguage = lang.code;
+        createSectionsMenu();  // aggiorna nomi sezioni nella nuova lingua
+        createLangMenu();      // aggiorna nomi lingue
+        renderContent();       // render contenuto nella lingua nuova (stessa sezione)
+      }
+      // Chiudi menu su mobile
+      sidebar.classList.remove('visible');
+      menuToggleBtn.setAttribute('aria-expanded', 'false');
+      sidebar.setAttribute('aria-hidden', 'true');
+    });
+    langMenu.appendChild(btn);
+  });
+}
+
+// Aggiorna evidenziazione sezione attiva
+function updateSectionsMenuHighlight() {
+  document.querySelectorAll('.section-btn').forEach(btn => {
+    btn.style.fontWeight = (btn.dataset.section === currentSection) ? 'bold' : 'normal';
+  });
+}
+
+// Renderizza contenuto principale
+function renderContent() {
+  const data = content[currentLanguage][currentSection];
+  if(!data) return;
   mainContent.innerHTML = `
     <h1>${data.title}</h1>
     <p>${data.text}</p>
@@ -148,47 +205,20 @@ function renderContent(section) {
   mainContent.focus();
 }
 
-// Eventi click su sezioni
-document.querySelectorAll('.menu-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    currentSection = btn.dataset.section;
-    renderContent(currentSection);
-    if (window.innerWidth <= 700) topmenu.classList.remove('visible');
-  });
+// Toggle sidebar menu
+menuToggleBtn.addEventListener('click', () => {
+  const visible = sidebar.classList.toggle('visible');
+  menuToggleBtn.setAttribute('aria-expanded', visible.toString());
+  sidebar.setAttribute('aria-hidden', (!visible).toString());
 });
 
-// Eventi click su lingue
-document.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const lang = btn.dataset.lang;
-    if (lang !== currentLanguage) {
-      currentLanguage = lang;
-      renderMenu();
-      renderContent(currentSection); // mantieni la sezione senza reset
-      if (window.innerWidth <= 700) topmenu.classList.remove('visible');
-    }
-  });
-});
+// Inizializza la pagina
+function init() {
+  createSectionsMenu();
+  createLangMenu();
+  renderContent();
+  sidebar.setAttribute('aria-hidden', 'true');
+  menuToggleBtn.setAttribute('aria-expanded', 'false');
+}
 
-// Hamburger toggle menu mobile
-hamburgerBtn.addEventListener('click', () => {
-  topmenu.classList.toggle('visible');
-});
-
-// Nascondi o mostra menu in base a larghezza finestra
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 700) {
-    topmenu.classList.remove('visible');
-    topmenu.classList.remove('hidden');
-  } else {
-    topmenu.classList.add('hidden');
-  }
-});
-
-window.addEventListener('DOMContentLoaded', () => {
-  if (window.innerWidth <= 700) {
-    topmenu.classList.add('hidden');
-  }
-  renderMenu();
-  renderContent(currentSection);
-});
+window.addEventListener('DOMContentLoaded', init);

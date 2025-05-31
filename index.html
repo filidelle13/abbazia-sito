@@ -9,29 +9,25 @@
 <body>
 
 <header>
-  <button id="hamburgerBtn" aria-label="Toggle menu">
-    &#9776; <span id="menuText">Menu</span>
+  <button id="menuToggle" aria-expanded="false" aria-controls="sidebar">
+    &#9776; Menu
   </button>
-
-  <nav id="topmenu" class="hidden">
-    <div class="menu-sections">
-      <button data-section="section1" class="menu-btn"></button>
-      <button data-section="section2" class="menu-btn"></button>
-      <button data-section="section3" class="menu-btn"></button>
-      <button data-section="section4" class="menu-btn"></button>
-      <button data-section="section5" class="menu-btn"></button>
-    </div>
-
-    <div class="language-buttons">
-      <button data-lang="it" class="lang-btn"></button>
-      <button data-lang="en" class="lang-btn"></button>
-      <button data-lang="es" class="lang-btn"></button>
-    </div>
-  </nav>
 </header>
 
-<main id="mainContent" tabindex="0">
-  <!-- contenuto dinamico qui -->
+<aside id="sidebar" aria-hidden="true">
+  <nav>
+    <div class="menu-group" id="sectionsMenu">
+      <!-- sezioni abbazia saranno inserite da JS -->
+    </div>
+    <hr />
+    <div class="menu-group" id="langMenu">
+      <!-- lingue saranno inserite da JS -->
+    </div>
+  </nav>
+</aside>
+
+<main id="mainContent" tabindex="0" aria-live="polite">
+  <!-- contenuto dinamico -->
 </main>
 
 <script src="script.js"></script>
