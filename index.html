@@ -1,60 +1,56 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>L'Abbazia di San Siro di Struppa</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <!-- Top Bar -->
-  <div id="sidebar" class="sidebar">
-    <button id="menu-toggle" aria-expanded="false">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-    <div id="menu-content" class="menu-content" aria-hidden="true">
-      <div class="language-selector">
-        <button id="lang-it">IT</button>
-        <button id="lang-en">EN</button>
-        <button id="lang-es">ES</button>
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+      <div class="menu-group">
+        <div class="section-buttons">
+          <button data-section="storia">Storia</button>
+          <button data-section="interni">Interni</button>
+          <button data-section="facciata">Facciata</button>
+          <button data-section="retro">Retro</button>
+          <button data-section="polittico">Polittico</button>
+        </div>
+        <div class="language-buttons">
+          <button id="lang-it">IT</button>
+          <button id="lang-en">EN</button>
+          <button id="lang-es">ES</button>
+        </div>
       </div>
-      <div class="abbazia-menu">
-        <button data-section="storia">Storia</button>
-        <button data-section="interni">Interni</button>
-        <button data-section="facciata">Facciata</button>
-        <button data-section="retro">Retro</button>
-        <button data-section="polittico">Polittico</button>
-      </div>
-    </div>
+    </nav>
+
+    <!-- Contenuto -->
+    <main class="content" id="content">
+      <section id="storia" class="content-section">
+        <h1></h1>
+        <p></p>
+      </section>
+      <section id="interni" class="content-section">
+        <h1></h1>
+        <p></p>
+      </section>
+      <section id="facciata" class="content-section">
+        <h1></h1>
+        <p></p>
+      </section>
+      <section id="retro" class="content-section">
+        <h1></h1>
+        <p></p>
+      </section>
+      <section id="polittico" class="content-section">
+        <h1></h1>
+        <p></p>
+      </section>
+    </main>
   </div>
 
-  <!-- Main Content -->
-  <main id="content">
-    <section id="storia" class="content-section">
-      <h1></h1>
-      <p></p>
-    </section>
-    <section id="interni" class="content-section">
-      <h1></h1>
-      <p></p>
-    </section>
-    <section id="facciata" class="content-section">
-      <h1></h1>
-      <p></p>
-    </section>
-    <section id="retro" class="content-section">
-      <h1></h1>
-      <p></p>
-    </section>
-    <section id="polittico" class="content-section">
-      <h1></h1>
-      <p></p>
-    </section>
-  </main>
-
-  <!-- Footer -->
   <footer>
     Made by F.Dellepiane, L.Santovito, R.Carpi.
   </footer>

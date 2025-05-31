@@ -4,90 +4,104 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #f0f0f0;
-  padding-top: 60px;
+body, html {
+  height: 100%;
+  font-family: sans-serif;
 }
 
-/* Sidebar/topbar */
+.container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+}
+
+/* Sidebar layout */
 .sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   background-color: purple;
   color: white;
-  display: flex;
-  align-items: center;
-  padding: 10px 20px;
-  z-index: 999;
-}
-
-/* Hamburger icon */
-#menu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 4px;
-  padding: 5px;
+  justify-content: space-between;
+  width: 220px;
+  min-height: 100vh;
 }
 
-#menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-}
-
-/* Hidden menu initially */
-.menu-content {
-  display: none;
+.menu-group {
+  display: flex;
   flex-direction: column;
-  margin-left: 20px;
+  gap: 20px;
 }
 
-.menu-content button {
+.sidebar button {
   background: none;
   border: none;
   color: white;
   font-size: 16px;
-  margin: 4px 0;
+  margin: 5px 0;
+  text-align: left;
   cursor: pointer;
 }
 
-.menu-content button:hover {
+.sidebar button:hover {
   text-decoration: underline;
 }
 
-/* Sections */
+/* Contenuto principale */
+.content {
+  flex: 1;
+  padding: 30px;
+  background-color: #f5f5f5;
+}
+
 .content-section {
   display: none;
-  padding: 20px;
-  background-color: white;
-  margin: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
 .content-section.active {
   display: block;
 }
 
+.content-section h1 {
+  margin-bottom: 10px;
+}
+
 /* Footer */
 footer {
   position: fixed;
   bottom: 10px;
-  right: 10px;
-  font-size: 12px;
-  color: #444;
+  right: 15px;
+  font-size: 11px;
+  color: #333;
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .menu-content {
+/* Responsive layout */
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
+  }
+
+  .sidebar {
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .menu-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .sidebar button {
+    font-size: 14px;
+  }
+
+  .content {
+    padding: 15px;
   }
 }
