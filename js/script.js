@@ -131,7 +131,7 @@ function toggleMenu(id) {
 
 function changeLanguage(lang) {
   currentLanguage = lang;
-  showContent(currentSection);
+  showContent(currentSection); // NON reimposta section1
 }
 
 function showContent(sectionKey) {
@@ -145,12 +145,11 @@ function showContent(sectionKey) {
   document.getElementById('mainContent').innerHTML = html;
 }
 
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.classList.toggle('active');
+function toggleTopMenu() {
+  const topmenu = document.getElementById('topmenu');
+  topmenu.classList.toggle('active');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   showContent(currentSection);
 });
-   

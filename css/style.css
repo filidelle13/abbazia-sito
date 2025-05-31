@@ -1,3 +1,4 @@
+/* === Stili di base === */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -11,6 +12,7 @@ body {
   padding: 10px 20px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .menu-toggle {
@@ -18,55 +20,53 @@ body {
   font-size: 18px;
 }
 
-.container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.sidebar {
-  width: 250px;
+/* === Menu in alto (inizialmente nascosto) === */
+.topmenu {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
   background-color: #4e47b6;
   color: white;
-  padding: 20px;
-  display: none;
-  flex-shrink: 0;
-  flex-direction: column;
+  padding: 10px 20px;
+  z-index: 999;
 }
 
-.sidebar.active {
+.topmenu.active {
   display: flex;
 }
 
 .menu-section {
-  margin-bottom: 20px;
+  margin-right: 40px;
 }
 
 .menu-title {
   cursor: pointer;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .submenu {
   display: none;
-  margin-left: 10px;
+  flex-direction: column;
+  margin-top: 5px;
 }
 
 .submenu button {
-  display: block;
   background: none;
   border: none;
   color: white;
   text-align: left;
-  padding: 5px 0;
+  padding: 4px 0;
   cursor: pointer;
+  font-size: 15px;
+}
+
+.submenu button:hover {
+  text-decoration: underline;
 }
 
 .content {
   padding: 20px;
-  flex-grow: 1;
-  overflow-y: auto;
 }
 
 img {
@@ -75,17 +75,37 @@ img {
   margin-top: 10px;
 }
 
-/* Responsive */
-@media (min-width: 769px) {
-  .sidebar {
-    display: flex !important;
-  }
-
-  .topbar .menu-toggle {
-    display: none;
-  }
-
-  .container {
+/* === Responsive === */
+@media (max-width: 768px) {
+  .topbar {
     flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .topmenu {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .menu-section {
+    margin-bottom: 20px;
+  }
+
+  .submenu button {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-toggle {
+    font-size: 16px;
+  }
+
+  .submenu button {
+    font-size: 15px;
+  }
+
+  .content {
+    padding: 15px;
   }
 }
