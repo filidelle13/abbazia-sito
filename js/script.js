@@ -27,7 +27,8 @@ const content = {
       title: "Polittico di San Siro",
       text: "Opera d’arte notevole è il Polittico di San Siro, realizzato nel 1516 da Pier Francesco Sacchi detto il Pavese. Restaurato nel 1960. Il santo è rappresentato in trono, benedicente, con il pastorale che schiaccia il Basilisco (simbolo dell’eresia ariana). Intorno, 8 scene della sua vita e vocazione, sovrastate dal busto della Vergine che allatta il Santo bambino.",
       image: "images/polittico.jpg"
-    }
+    },
+
   },
   en: {
     section1: {
@@ -124,9 +125,14 @@ const menuLabels = {
   }
 };
 
-function toggleSidebar() {
-  const sidebarContent = document.getElementById('sidebarContent');
-  sidebarContent.classList.toggle('active');
+function toggleTopMenu() {
+  const topmenu = document.getElementById('topmenu');
+  topmenu.classList.toggle('active');
+}
+
+function toggleMenu(id) {
+  const menu = document.getElementById(id);
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
 
 function changeLanguage(lang) {
@@ -136,21 +142,16 @@ function changeLanguage(lang) {
 }
 
 function updateMenuLabels() {
-  const labels = menuLabels[currentLanguage];
+  document.getElementById('menuLabel').innerText = content[currentLanguage].menuLabel;
+  document.getElementById('abbeyTitle').innerText = content[currentLanguage].abbey;
 
-  document.getElementById('languageTitle').innerText = labels.menuLanguage;
-  document.getElementById('abbeyTitle').innerText = labels.menuAbbey;
-  document.getElementById('btnLangIt').innerText = labels.langIt;
-  document.getElementById('btnLangEn').innerText = labels.langEn;
-  document.getElementById('btnLangEs').innerText = labels.langEs;
-  document.getElementById('menuLabel').innerText = labels.menu;
-
-  const sectionKeys = ['section1', 'section2', 'section3', 'section4', 'section5'];
+  // Aggiorna i nomi delle sezioni
+  const sectionNames = ['section1', 'section2', 'section3', 'section4', 'section5'];
   const abbeyMenu = document.getElementById('abbeyMenu');
   const buttons = abbeyMenu.querySelectorAll('button');
 
   buttons.forEach((btn, index) => {
-    btn.innerText = labels[sectionKeys[index]];
+    btn.innerText = content[currentLanguage][sectionNames[index]].title;
   });
 }
 
@@ -160,12 +161,11 @@ function showContent(sectionKey) {
   const html = `
     <h1>${section.title}</h1>
     <p>${section.text}</p>
-    <img src="${section.image}" alt="${section.title}" />
+    <img src="${section.image}" alt="${section.title}">
   `;
   document.getElementById('mainContent').innerHTML = html;
 }
 
-// Inizializzazione al caricamento pagina
 document.addEventListener('DOMContentLoaded', () => {
   updateMenuLabels();
   showContent(currentSection);
