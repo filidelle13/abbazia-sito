@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Abbazia</title>
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Abbazia di San Siro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
 </head>
 <body>
+  <header class="topbar">
+    <div class="menu-toggle" onclick="toggleTopMenu()">☰ Menu</div>
+  </header>
 
-<header>
-  <button id="hamburgerBtn" aria-label="Toggle menu">
-    &#9776; <span id="menuText">Menu</span>
-  </button>
-
-  <nav id="topmenu" class="hidden">
-    <div class="menu-sections">
-      <button data-section="section1" class="menu-btn"></button>
-      <button data-section="section2" class="menu-btn"></button>
-      <button data-section="section3" class="menu-btn"></button>
-      <button data-section="section4" class="menu-btn"></button>
-      <button data-section="section5" class="menu-btn"></button>
+  <!-- Menu orizzontale che appare in alto -->
+  <div class="topmenu" id="topmenu">
+    <div class="menu-section">
+      <div class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
+      <div id="languageMenu" class="submenu">
+        <button onclick="changeLanguage('it')">Italiano</button>
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('es')">Español</button>
+      </div>
     </div>
 
-    <div class="language-buttons">
-      <button data-lang="it" class="lang-btn"></button>
-      <button data-lang="en" class="lang-btn"></button>
-      <button data-lang="es" class="lang-btn"></button>
+    <div class="menu-section">
+      <div class="menu-title" onclick="toggleMenu('abbeyMenu')">L'abbazia</div>
+      <div id="abbeyMenu" class="submenu">
+        <button onclick="showContent('section1')">Storia</button>
+        <button onclick="showContent('section2')">Interni</button>
+        <button onclick="showContent('section3')">Facciata</button>
+        <button onclick="showContent('section4')">Retro</button>
+        <button onclick="showContent('section5')">Polittico di San Siro</button>
+      </div>
     </div>
-  </nav>
-</header>
+  </div>
 
-<main id="mainContent" tabindex="0">
-  <!-- contenuto dinamico qui -->
-</main>
-
-<script src="script.js"></script>
+  <div class="content" id="mainContent"></div>
 </body>
 </html>

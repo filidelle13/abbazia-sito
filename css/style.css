@@ -1,110 +1,111 @@
-/* Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* === Stili di base === */
 body {
+  margin: 0;
   font-family: Arial, sans-serif;
-  background: #f9f9f9;
-  color: #222;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-header {
-  background: #2c3e50;
+
+.topbar {
+  background-color: #4e47b6;
   color: white;
-  padding: 10px 15px;
+  padding: 10px 20px;
   display: flex;
   align-items: center;
-  position: relative;
-  user-select: none;
-}
-#hamburgerBtn {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1.4rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-#hamburgerBtn:focus {
-  outline: 2px solid #1abc9c;
-}
-nav#topmenu {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-nav#topmenu.hidden {
-  display: none;
-}
-.menu-sections, .language-buttons {
-  display: flex;
-  gap: 15px;
-}
-.menu-btn, .lang-btn {
-  background: transparent;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  padding: 6px 8px;
-  border-radius: 3px;
-  transition: background-color 0.2s ease;
-}
-.menu-btn:hover, .lang-btn:hover,
-.menu-btn:focus, .lang-btn:focus {
-  background-color: #1abc9c;
-  outline: none;
-}
-main#mainContent {
-  padding: 25px;
-  max-width: 900px;
-  margin: 20px auto;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
-}
-main#mainContent h1 {
-  margin-bottom: 12px;
-  color: #2c3e50;
-}
-main#mainContent p {
-  margin-bottom: 18px;
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-main#mainContent img {
-  max-width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 0 6px rgb(0 0 0 / 0.15);
+  justify-content: space-between;
 }
 
-/* Responsive: su schermi piccoli il menu è nascosto e si apre col bottone hamburger */
-@media (max-width: 700px) {
-  nav#topmenu {
-    position: absolute;
-    top: 48px;
-    left: 0;
-    right: 0;
-    background: #2c3e50;
+.menu-toggle {
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* === Menu in alto (inizialmente nascosto) === */
+.topmenu {
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #4e47b6;
+  color: white;
+  padding: 10px 20px;
+  z-index: 999;
+}
+
+.topmenu.active {
+  display: flex;
+}
+
+.menu-section {
+  margin-right: 40px;
+}
+
+.menu-title {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.submenu {
+  display: none;
+  flex-direction: column;
+  margin-top: 5px;
+}
+
+.submenu button {
+  background: none;
+  border: none;
+  color: white;
+  text-align: left;
+  padding: 4px 0;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.submenu button:hover {
+  text-decoration: underline;
+}
+
+.content {
+  padding: 20px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .topmenu {
     flex-direction: column;
-    gap: 10px;
-    padding: 10px 15px;
-    display: none;
+    padding: 10px;
   }
-  nav#topmenu.visible {
-    display: flex;
+
+  .menu-section {
+    margin-bottom: 20px;
   }
-  .menu-sections, .language-buttons {
-    flex-direction: column;
+
+  .submenu button {
+    font-size: 16px;
   }
-  #hamburgerBtn {
-    font-size: 1.6rem;
+}
+
+@media (max-width: 480px) {
+  .menu-toggle {
+    font-size: 16px;
+  }
+
+  .submenu button {
+    font-size: 15px;
+  }
+
+  .content {
+    padding: 15px;
   }
 }

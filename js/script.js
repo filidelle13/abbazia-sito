@@ -28,16 +28,6 @@ const content = {
       text: "Opera d’arte notevole è il Polittico di San Siro, realizzato nel 1516 da Pier Francesco Sacchi detto il Pavese. Restaurato nel 1960. Il santo è rappresentato in trono, benedicente, con il pastorale che schiaccia il Basilisco (simbolo dell’eresia ariana). Intorno, 8 scene della sua vita e vocazione, sovrastate dal busto della Vergine che allatta il Santo bambino.",
       image: "images/polittico.jpg"
     },
-    menuLanguage: "Lingua",
-    menuAbbey: "L'abbazia",
-    langIt: "Italiano",
-    langEn: "Inglese",
-    langEs: "Spagnolo",
-    section1Name: "Storia",
-    section2Name: "Interni",
-    section3Name: "Facciata",
-    section4Name: "Retro",
-    section5Name: "Polittico"
   },
   en: {
     section1: {
@@ -65,16 +55,7 @@ const content = {
       text: "A notable artwork is the Polyptych of San Siro, made in 1516 by Pier Francesco Sacchi, called il Pavese. Restored in 1960. The saint is shown seated on a throne, blessing, with the pastoral staff crushing the Basilisk (symbol of Arian heresy). Around him, 8 scenes of his life and vocation, topped by the bust of the Virgin nursing the Holy Child.",
       image: "images/polittico.jpg"
     },
-    menuLanguage: "Language",
-    menuAbbey: "Abbey",
-    langIt: "Italian",
-    langEn: "English",
-    langEs: "Spanish",
-    section1Name: "History",
-    section2Name: "Interior",
-    section3Name: "Facade",
-    section4Name: "Back",
-    section5Name: "Polyptych"
+    
   },
   es: {
     section1: {
@@ -102,96 +83,36 @@ const content = {
       text: "Una obra destacada es el Políptico de San Siro, realizado en 1516 por Pier Francesco Sacchi llamado il Pavese. Restaurado en 1960. El santo está representado en trono, bendiciendo, con el pastor que aplasta al Basilisco (símbolo de la herejía aria). Alrededor, 8 escenas de su vida y vocación, coronadas por el busto de la Virgen que amamanta al Niño Santo.",
       image: "images/polittico.jpg"
     },
-    menuLanguage: "Idioma",
-    menuAbbey: "La abadía",
-    langIt: "Italiano",
-    langEn: "Inglés",
-    langEs: "Español",
-    section1Name: "Historia",
-    section2Name: "Interiores",
-    section3Name: "Fachada",
-    section4Name: "Parte trasera",
-    section5Name: "Políptico"
+    
   }
 };
 
-const hamburgerBtn = document.getElementById('hamburgerBtn');
-const topmenu = document.getElementById('topmenu');
-const mainContent = document.getElementById('mainContent');
-const menuText = document.getElementById('menuText');
-
-function renderMenu() {
-  // Render menu buttons and language buttons with currentLanguage
-  // Menu section buttons text
-  const menuButtons = topmenu.querySelectorAll('.menu-btn');
-  menuButtons[0].textContent = content[currentLanguage].section1Name;
-  menuButtons[1].textContent = content[currentLanguage].section2Name;
-  menuButtons[2].textContent = content[currentLanguage].section3Name;
-  menuButtons[3].textContent = content[currentLanguage].section4Name;
-  menuButtons[4].textContent = content[currentLanguage].section5Name;
-
-  // Language buttons text
-  const langButtons = topmenu.querySelectorAll('.lang-btn');
-  langButtons[0].textContent = content[currentLanguage].langIt;
-  langButtons[1].textContent = content[currentLanguage].langEn;
-  langButtons[2].textContent = content[currentLanguage].langEs;
-
-  // Menu text next to hamburger
-  menuText.textContent = content[currentLanguage].menuAbbey + " - " + content[currentLanguage].menuLanguage;
+function toggleMenu(id) {
+  const menu = document.getElementById(id);
+  menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
 }
 
-function renderContent(section) {
-  const sec = content[currentLanguage][section];
-  if (!sec) return;
+function changeLanguage(lang) {
+  currentLanguage = lang;
+  showContent(currentSection); // NON reimposta section1
+}
 
-  mainContent.innerHTML = `
-    <h1>${sec.title}</h1>
-    <p>${sec.text}</p>
-    <img src="${sec.image}" alt="${sec.title}" />
+function showContent(sectionKey) {
+  currentSection = sectionKey;
+  const section = content[currentLanguage][sectionKey];
+  const html = `
+    <h1>${section.title}</h1>
+    <p>${section.text}</p>
+    <img src="${section.image}" alt="${section.title}">
   `;
-  // Focus main content for accessibility
-  mainContent.focus();
+  document.getElementById('mainContent').innerHTML = html;
 }
 
-// Change section when clicking menu buttons
-topmenu.querySelectorAll('.menu-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    currentSection = btn.dataset.section;
-    renderContent(currentSection);
-    // Close menu on small screens
-    if (window.innerWidth <= 700) {
-      topmenu.classList.remove('visible');
-    }
-  });
-});
+function toggleTopMenu() {
+  const topmenu = document.getElementById('topmenu');
+  topmenu.classList.toggle('active');
+}
 
-// Change language when clicking lang buttons
-topmenu.querySelectorAll('.lang-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const selectedLang = btn.dataset.lang;
-    if (selectedLang === currentLanguage) return;
-    currentLanguage = selectedLang;
-    renderMenu();
-    renderContent(currentSection);
-    // Close menu on small screens
-    if (window.innerWidth <= 700) {
-      topmenu.classList.remove('visible');
-    }
-  });
-});
-
-// Toggle menu on hamburger click (for mobile)
-hamburgerBtn.addEventListener('click', () => {
-  topmenu.classList.toggle('visible');
-});
-
-// On page load
-renderMenu();
-renderContent(currentSection);
-
-// Optional: close menu if window resized larger than mobile
-window.addEventListener('resize', () => {
-  if (window.innerWidth > 700) {
-    topmenu.classList.remove('visible');
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  showContent(currentSection);
 });
