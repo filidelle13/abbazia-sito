@@ -2,40 +2,40 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Abbazia di San Siro</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js" defer></script>
+  <title>Abbazia di San Siro</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="menu-toggle" onclick="toggleTopMenu()">☰ <span id="menuLabel">Menu</span></div>
+  <header>
+    <nav class="top-nav">
+      <div class="menu-section">
+        <div id="languageTitle" class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
+        <div id="languageMenu" class="submenu">
+          <button id="btnLangIt" onclick="changeLanguage('it')">Italiano</button>
+          <button id="btnLangEn" onclick="changeLanguage('en')">Inglese</button>
+          <button id="btnLangEs" onclick="changeLanguage('es')">Spagnolo</button>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <div id="abbeyTitle" class="menu-title" onclick="toggleMenu('abbeyMenu')">L'abbazia</div>
+        <div id="abbeyMenu" class="submenu">
+          <button onclick="showContent('section1')">Storia</button>
+          <button onclick="showContent('section2')">Interni</button>
+          <button onclick="showContent('section3')">Facciata</button>
+          <button onclick="showContent('section4')">Retro</button>
+          <button onclick="showContent('section5')">Polittico di San Siro</button>
+        </div>
+      </div>
+    </nav>
   </header>
 
-  <nav class="topmenu" id="topmenu">
-    <div class="menu-section">
-      <div class="menu-title" onclick="toggleMenu('languageMenu')">Lingua</div>
-      <div id="languageMenu" class="submenu">
-        <button onclick="changeLanguage('it')">Italiano</button>
-        <button onclick="changeLanguage('en')">English</button>
-        <button onclick="changeLanguage('es')">Español</button>
-      </div>
-    </div>
+  <main id="mainContent" class="main-content">
+    <!-- Il contenuto della sezione viene caricato dinamicamente qui -->
+  </main>
 
-    <div class="menu-section">
-      <div class="menu-title" onclick="toggleMenu('abbeyMenu')" id="abbeyTitle">L'abbazia</div>
-      <div id="abbeyMenu" class="submenu">
-        <button onclick="showContent('section1')">Storia</button>
-        <button onclick="showContent('section2')">Interni</button>
-        <button onclick="showContent('section3')">Facciata</button>
-        <button onclick="showContent('section4')">Retro</button>
-        <button onclick="showContent('section5')">Polittico di San Siro</button>
-      </div>
-    </div>
-  </nav>
-
-  <main class="content" id="mainContent"></main>
-
+  <script src="script.js"></script>
 </body>
 </html>

@@ -27,7 +27,12 @@ const content = {
       title: "Polittico di San Siro",
       text: "Opera d’arte notevole è il Polittico di San Siro, realizzato nel 1516 da Pier Francesco Sacchi detto il Pavese. Restaurato nel 1960. Il santo è rappresentato in trono, benedicente, con il pastorale che schiaccia il Basilisco (simbolo dell’eresia ariana). Intorno, 8 scene della sua vita e vocazione, sovrastate dal busto della Vergine che allatta il Santo bambino.",
       image: "images/polittico.jpg"
-    }
+    },
+    menuLanguage: "Lingua",
+    menuAbbey: "L'abbazia",
+    langIt: "Italiano",
+    langEn: "Inglese",
+    langEs: "Spagnolo"
   },
   en: {
     section1: {
@@ -54,7 +59,12 @@ const content = {
       title: "Polyptych of San Siro",
       text: "A notable artwork is the Polyptych of San Siro, made in 1516 by Pier Francesco Sacchi, called il Pavese. Restored in 1960. The saint is shown seated on a throne, blessing, with the pastoral staff crushing the Basilisk (symbol of Arian heresy). Around him, 8 scenes of his life and vocation, topped by the bust of the Virgin nursing the Holy Child.",
       image: "images/polittico.jpg"
-    }
+    },
+    menuLanguage: "Language",
+    menuAbbey: "Abbey",
+    langIt: "Italian",
+    langEn: "English",
+    langEs: "Spanish"
   },
   es: {
     section1: {
@@ -81,49 +91,14 @@ const content = {
       title: "Políptico de San Siro",
       text: "Una obra destacada es el Políptico de San Siro, realizado en 1516 por Pier Francesco Sacchi llamado il Pavese. Restaurado en 1960. El santo está representado en trono, bendiciendo, con el pastor que aplasta al Basilisco (símbolo de la herejía aria). Alrededor, 8 escenas de su vida y vocación, coronadas por el busto de la Virgen que amamanta al Niño Santo.",
       image: "images/polittico.jpg"
-    }
-  }
-};
-
-const menuLabels = {
-  it: {
-    menuLanguage: "Lingua",
-    menuAbbey: "L'abbazia",
-    langIt: "Italiano",
-    langEn: "Inglese",
-    langEs: "Spagnolo",
-    section1: "Storia",
-    section2: "Interni",
-    section3: "Facciata",
-    section4: "Retro",
-    section5: "Polittico di San Siro"
-  },
-  en: {
-    menuLanguage: "Language",
-    menuAbbey: "Abbey",
-    langIt: "Italian",
-    langEn: "English",
-    langEs: "Spanish",
-    section1: "History",
-    section2: "Interior",
-    section3: "Facade",
-    section4: "Back",
-    section5: "Polyptych of San Siro"
-  },
-  es: {
+    },
     menuLanguage: "Idioma",
     menuAbbey: "La abadía",
     langIt: "Italiano",
     langEn: "Inglés",
-    langEs: "Español",
-    section1: "Historia",
-    section2: "Interiores",
-    section3: "Fachada",
-    section4: "Parte trasera",
-    section5: "Políptico de San Siro"
+    langEs: "Español"
   }
 };
-
 function toggleTopMenu() {
   const topmenu = document.getElementById('topmenu');
   topmenu.classList.toggle('active');
@@ -137,20 +112,22 @@ function toggleMenu(id) {
 function changeLanguage(lang) {
   currentLanguage = lang;
   updateMenuLabels();
-  showContent(currentSection);
+  showContent(currentSection); // Mostra la sezione attuale, non resetta
 }
 
 function updateMenuLabels() {
-  document.getElementById('menuLabel').innerText = content[currentLanguage].menuLabel;
-  document.getElementById('abbeyTitle').innerText = content[currentLanguage].abbey;
+  document.getElementById('languageTitle').innerText = content[currentLanguage].menuLanguage;
+  document.getElementById('abbeyTitle').innerText = content[currentLanguage].menuAbbey;
 
-  // Aggiorna i nomi delle sezioni
-  const sectionNames = ['section1', 'section2', 'section3', 'section4', 'section5'];
-  const abbeyMenu = document.getElementById('abbeyMenu');
-  const buttons = abbeyMenu.querySelectorAll('button');
+  document.getElementById('btnLangIt').innerText = content[currentLanguage].langIt;
+  document.getElementById('btnLangEn').innerText = content[currentLanguage].langEn;
+  document.getElementById('btnLangEs').innerText = content[currentLanguage].langEs;
 
-  buttons.forEach((btn, index) => {
-    btn.innerText = content[currentLanguage][sectionNames[index]].title;
+  // Sezioni abbazia
+  const sectionButtons = document.querySelectorAll('#abbeyMenu button');
+  const sectionKeys = ['section1', 'section2', 'section3', 'section4', 'section5'];
+  sectionButtons.forEach((btn, index) => {
+    btn.innerText = content[currentLanguage][sectionKeys[index]].title;
   });
 }
 
