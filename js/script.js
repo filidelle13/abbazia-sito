@@ -52,17 +52,17 @@ const content = {
     },
     section3: {
       title: "Facade",
-      text: "The facade highlights the internal division into three naves, with a single central entrance and a simple portal. Oriented eastward, it has a shape with salients and four roof slopes and typical Romanesque elements: small arches, rose window, and pebble paving (risseu).",
+      text: "The facade highlights the internal division into three aisles, with a single central entrance and a simple portal. Oriented eastward, it has a stepped form with four roof slopes and typical Romanesque architectural elements: small arches, rose window, and pebble pavement (risseu).",
       image: "images/facciata.jpg"
     },
     section4: {
-      title: "Back",
-      text: "The bell tower is sturdy and slender, over 30 meters high, square plan with pyramidal roof, based on the last span of the right nave. The bell chamber has triforas and below a bifora. At the back you can see the three apses.",
+      title: "Rear",
+      text: "The bell tower is robust and slender, more than 30 meters high, with a square plan and a pyramidal roof, based on the last bay of the right nave. The bell chamber has triforas and below a bifora. At the back, you can see the three apses.",
       image: "images/retro.jpg"
     },
     section5: {
       title: "Polyptych of San Siro",
-      text: "A notable artwork is the Polyptych of San Siro, made in 1516 by Pier Francesco Sacchi, called il Pavese. Restored in 1960. The saint is shown seated on a throne, blessing, with the pastoral staff crushing the Basilisk (symbol of Arian heresy). Around him, 8 scenes of his life and vocation, topped by the bust of the Virgin nursing the Holy Child.",
+      text: "A notable artwork is the Polyptych of San Siro, made in 1516 by Pier Francesco Sacchi called the Pavese. Restored in 1960. The saint is represented on a throne, blessing, with the pastoral staff crushing the Basilisk (symbol of Arian heresy). Around, 8 scenes of his life and vocation, topped by the bust of the Virgin nursing the Holy Child.",
       image: "images/polittico.jpg"
     },
     menuLanguage: "Language",
@@ -73,121 +73,158 @@ const content = {
     section1Name: "History",
     section2Name: "Interior",
     section3Name: "Facade",
-    section4Name: "Back",
+    section4Name: "Rear",
     section5Name: "Polyptych"
   },
   es: {
     section1: {
       title: "Historia",
-      text: "Según la tradición, la iglesia se construyó en el lugar donde nació Siro, obispo de Génova en el siglo IV. No hay una fecha precisa para la construcción, pero en 1025 el obispo Landolfo la entregó a los monjes benedictinos: por eso este año celebramos el milenario.",
+      text: "Según la tradición, la iglesia se construyó en el lugar donde nació Siro, obispo de Génova en el siglo IV. No se puede fijar una fecha precisa para la edificación, pero en 1025, el obispo Landolfo la entregó a los monjes benedictinos: por eso este año celebramos el milenario.",
       image: "images/abbazia.jpg"
     },
     section2: {
       title: "Interiores",
-      text: "La planta basilical sin transepto tiene 3 naves. Hay 11 columnas de unos 4 m de altura que dividen el espacio en 3 naves. Al fondo hay una columna más robusta que sostiene el campanario. En las trece ventanas ojivales están las vidrieras de Ilario Cuoghi, artista que también realizó el portal mayor y las esculturas para el Vía Crucis. El techo de la nave central es una armadura de madera de Córcega de 1923.",
+      text: "La planta basilical sin transepto tiene 3 naves. Hay 11 columnas de unos 4 m de altura que dividen el espacio en 3 naves. Al fondo hay una columna más robusta que sostiene el campanario. En las trece monóforas están las vidrieras de Ilario Cuoghi, artista que también realizó el portal mayor y las esculturas para el Vía Crucis. El techo de la nave central es una armadura de madera de Córcega del 1923.",
       image: "images/interni.jpg"
     },
     section3: {
       title: "Fachada",
-      text: "La fachada muestra la división interna en tres naves, con una sola entrada central y un portal simple. Orientada hacia el este, tiene forma a faldones con cuatro vertientes y presenta elementos típicos de la arquitectura románica: arquerías, rosetón y pavimento de guijarros (risseu).",
+      text: "La fachada destaca la división interna en tres naves, con una única entrada central y un portal simple. Orientada hacia el Este, tiene forma de salientes con cuatro faldones del techo y presenta elementos típicos de la arquitectura románica: arquitos, rosetón y pavimento de guijarros (risseu).",
       image: "images/facciata.jpg"
     },
     section4: {
-      title: "Parte trasera",
-      text: "El campanario es robusto y esbelto, de más de 30 metros de altura, con planta cuadrada y techo piramidal, apoyado en la última campata de la nave derecha. En la cámara de campanas se abren triforas y debajo una bifora. En la parte trasera se ven los tres ábsides.",
+      title: "Trasero",
+      text: "El campanario es robusto y esbelto, alto más de 30 metros, con planta cuadrada y techo piramidal, basado en la última campada de la nave derecha. En la celda del campanario hay triforas y debajo una bifora. En la parte trasera se ven los tres ábsides.",
       image: "images/retro.jpg"
     },
     section5: {
       title: "Políptico de San Siro",
-      text: "Una obra notable es el Políptico de San Siro, realizado en 1516 por Pier Francesco Sacchi llamado il Pavese. Restaurado en 1960. El santo está representado en un trono, bendiciendo, con el pastor que aplasta al Basilisco (símbolo de la herejía arriana). Alrededor, 8 escenas de su vida y vocación, rematadas por el busto de la Virgen que amamanta al Santo Niño.",
+      text: "Una obra de arte notable es el Políptico de San Siro, realizado en 1516 por Pier Francesco Sacchi llamado il Pavese. Restaurado en 1960. El santo está representado en un trono, bendiciendo, con el pastor que aplasta al Basilisco (símbolo de la herejía arriana). Alrededor, 8 escenas de su vida y vocación, sobre ellas el busto de la Virgen que amamanta al Niño Santo.",
       image: "images/polittico.jpg"
     },
     menuLanguage: "Idioma",
-    menuAbbey: "La Abadía",
+    menuAbbey: "La abadía",
     langIt: "Italiano",
     langEn: "Inglés",
     langEs: "Español",
     section1Name: "Historia",
     section2Name: "Interiores",
     section3Name: "Fachada",
-    section4Name: "Parte trasera",
+    section4Name: "Trasero",
     section5Name: "Políptico"
   }
 };
 
 const hamburgerBtn = document.getElementById('hamburgerBtn');
-const topmenu = document.getElementById('topmenu');
-const menuText = document.getElementById('menuText');
+const sidebar = document.getElementById('sidebar');
 const mainContent = document.getElementById('mainContent');
 
-const menuButtons = [...document.querySelectorAll('.menu-btn')];
-const langButtons = [...document.querySelectorAll('.lang-btn')];
+function updateTexts() {
+  const langData = content[currentLanguage];
 
-function populateMenu() {
-  // Aggiorna i testi dei bottoni menu e lingue
-  const lang = content[currentLanguage];
-  menuText.textContent = lang.menuAbbey;
+  // Aggiorna nomi bottoni sezioni
+  const sectionButtons = document.querySelectorAll('.menu-btn');
+  sectionButtons.forEach((btn, i) => {
+    const key = 'section' + (i + 1) + 'Name';
+    btn.textContent = langData[key];
+  });
 
-  // Imposta testo bottoni sezioni
-  if(menuButtons.length === 5){
-    menuButtons[0].textContent = lang.section1Name;
-    menuButtons[1].textContent = lang.section2Name;
-    menuButtons[2].textContent = lang.section3Name;
-    menuButtons[3].textContent = lang.section4Name;
-    menuButtons[4].textContent = lang.section5Name;
-  }
+  // Aggiorna bottoni lingue
+  const langBtns = document.querySelectorAll('.lang-btn');
+  langBtns.forEach(btn => {
+    const lang = btn.getAttribute('data-lang');
+    if (lang === 'it') btn.textContent = langData.langIt;
+    if (lang === 'en') btn.textContent = langData.langEn;
+    if (lang === 'es') btn.textContent = langData.langEs;
+  });
 
-  // Imposta testo bottoni lingue
-  if(langButtons.length === 3){
-    langButtons[0].textContent = lang.langIt;
-    langButtons[1].textContent = lang.langEn;
-    langButtons[2].textContent = lang.langEs;
-  }
+  // Aggiorna testo menu hamburger
+  document.getElementById('menuText').textContent = langData.menuAbbey; // puoi mettere "Menu" o "Abbey" dinamico
 }
 
-function renderContent() {
-  // Non resettare section1 alla lingua cambiata, mantieni currentSection
-  const lang = content[currentLanguage][currentSection];
+function updateContent() {
+  const langData = content[currentLanguage];
+  const section = langData[currentSection];
+
   mainContent.innerHTML = `
-    <h1>${lang.title}</h1>
-    <p>${lang.text}</p>
-    <img src="${lang.image}" alt="${lang.title}" />
+    <h1>${section.title}</h1>
+    <p>${section.text}</p>
+    <img src="${section.image}" alt="${section.title}" />
   `;
+  mainContent.focus();
 }
 
-// Toggle menu visibilità
+function openSidebar() {
+  if (window.innerWidth <= 700) {
+    sidebar.classList.add('visible');
+    sidebar.classList.remove('hidden');
+  }
+}
+function closeSidebar() {
+  if (window.innerWidth <= 700) {
+    sidebar.classList.remove('visible');
+    sidebar.classList.add('hidden');
+  }
+}
+
+// Inizializza contenuti e testi
+function init() {
+  updateTexts();
+  updateContent();
+
+  // Imposta sidebar nascosta su mobile
+  if (window.innerWidth <= 700) {
+    sidebar.classList.add('hidden');
+  } else {
+    sidebar.classList.remove('hidden');
+    sidebar.classList.remove('visible');
+  }
+}
+init();
+
+// Toggle sidebar con bottone hamburger
 hamburgerBtn.addEventListener('click', () => {
-  topmenu.classList.toggle('hidden');
+  if (sidebar.classList.contains('visible')) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
 });
 
-// Cambio sezione
-menuButtons.forEach(btn => {
+// Gestione click menu sezioni
+document.querySelectorAll('.menu-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    currentSection = btn.getAttribute('data-section');
-    renderContent();
-    // Chiudi il menu dopo la scelta (su mobile)
-    if(window.innerWidth <= 700){
-      topmenu.classList.add('hidden');
+    const newSection = btn.getAttribute('data-section');
+    if (newSection !== currentSection) {
+      currentSection = newSection;
+      updateContent();
     }
+    // Chiudi menu mobile dopo selezione
+    if (window.innerWidth <= 700) closeSidebar();
   });
 });
 
-// Cambio lingua
-langButtons.forEach(btn => {
+// Gestione cambio lingua
+document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const newLang = btn.getAttribute('data-lang');
-    if(newLang !== currentLanguage){
-      currentLanguage = newLang;
-      populateMenu();
-      renderContent();
+    const selectedLang = btn.getAttribute('data-lang');
+    if (selectedLang !== currentLanguage) {
+      currentLanguage = selectedLang;
+      updateTexts();
+      updateContent();
     }
-    // Chiudi menu dopo scelta lingua (su mobile)
-    if(window.innerWidth <= 700){
-      topmenu.classList.add('hidden');
-    }
+    // Chiudi menu mobile dopo selezione
+    if (window.innerWidth <= 700) closeSidebar();
   });
 });
 
-// All'avvio
-populateMenu();
-renderContent();
+// Adatta sidebar se si ridimensiona finestra
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 700) {
+    sidebar.classList.remove('hidden');
+    sidebar.classList.remove('visible');
+  } else {
+    sidebar.classList.add('hidden');
+    sidebar.classList.remove('visible');
+  }
+});
