@@ -1,142 +1,137 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* Base styles */
 body {
   font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  margin: 0;
+  background: #f9f9f9;
   color: #222;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 0 15px 30px;
+  min-height: 100vh;
 }
 
-/* Header con menu a destra */
+/* Header */
 header {
-  width: 100%;
-  background-color: #b19cd9;
+  background-color: #a293c7; /* viola chiaro */
+  padding: 10px 15px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  gap: 20px;
   position: relative;
+  user-select: none;
 }
 
+/* Hamburger + menu text */
 #hamburgerBtn {
-  background: none;
+  background: transparent;
   border: none;
-  color: white;
-  font-size: 1.5rem;
+  color: #222;
+  font-size: 1.6rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 8px;
-  user-select: none;
-}
-
-#hamburgerBtn:focus {
-  outline: 2px solid #4b3a94;
-}
-
-#menuText {
   font-weight: bold;
 }
 
-/* Dropdown menu - hidden by default */
-#menuDropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 280px;
-  background-color: #b19cd9;
-  padding: 15px 20px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+#hamburgerBtn:focus {
+  outline: 2px solid #6c549f;
+}
+
+/* Navigation menu */
+nav#topmenu {
+  background-color: #a293c7;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  z-index: 10;
-}
-
-#menuDropdown.hidden {
-  display: none;
-}
-
-#menuDropdown section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-#menuDropdown h2 {
-  color: white;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
+  padding-left: 15px;
   user-select: none;
 }
 
-.lang-btn,
-.section-btn {
-  background: white;
+/* Hidden by default for mobile */
+nav#topmenu.hidden {
+  display: none;
+}
+
+/* Buttons in menu */
+.menu-sections, .language-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+/* Menu buttons */
+.menu-btn, .lang-btn {
+  background: transparent;
   border: none;
-  border-radius: 4px;
-  padding: 8px 12px;
+  color: #222;
+  font-size: 1rem;
   cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
   font-weight: 600;
-  transition: background-color 0.2s ease;
-  color: #5b3e96;
-  text-align: left;
+  white-space: nowrap;
 }
 
-.lang-btn:hover,
-.section-btn:hover {
-  background-color: #d7cfff;
-}
-
-.lang-btn:focus,
-.section-btn:focus {
-  outline: 2px solid #4b3a94;
+.menu-btn:hover, .lang-btn:hover,
+.menu-btn:focus, .lang-btn:focus {
+  background-color: #6c549f;
+  color: white;
+  outline: none;
 }
 
 /* Main content */
 main#mainContent {
+  padding: 25px;
   max-width: 900px;
+  margin: 20px auto;
   background: white;
-  margin-top: 30px;
   border-radius: 8px;
-  padding: 25px 30px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.1);
+  min-height: 300px;
 }
 
 main#mainContent h1 {
-  color: #3b2e6a;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
+  color: #4a3571;
 }
 
 main#mainContent p {
+  margin-bottom: 18px;
   font-size: 1.1rem;
   line-height: 1.5;
-  margin-bottom: 20px;
 }
 
 main#mainContent img {
   max-width: 100%;
   border-radius: 6px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.15);
+  box-shadow: 0 0 6px rgb(0 0 0 / 0.15);
 }
 
-/* Responsive */
+/* Responsive styles */
 @media (max-width: 700px) {
   header {
-    justify-content: flex-start;
+    justify-content: space-between;
   }
-  #menuDropdown {
-    width: 100%;
+  nav#topmenu {
+    flex-direction: column;
+    padding: 10px 15px;
+    position: absolute;
+    top: 48px;
     left: 0;
-    right: auto;
+    right: 0;
+    background-color: #a293c7;
+    border-top: 2px solid #6c549f;
+    z-index: 10;
+  }
+  nav#topmenu.hidden {
+    display: none;
+  }
+  .menu-sections, .language-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+  main#mainContent {
+    margin: 90px 15px 20px;
   }
 }

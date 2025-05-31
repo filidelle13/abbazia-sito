@@ -12,26 +12,26 @@
   <button id="hamburgerBtn" aria-label="Toggle menu">
     &#9776; <span id="menuText">Menu</span>
   </button>
-  <nav id="menuDropdown" class="hidden" aria-label="Menu dropdown">
-    <section id="languageMenu" aria-label="Lingue">
-      <h2 id="menuLanguageTitle">Lingua</h2>
-      <button data-lang="it" class="lang-btn">Italiano</button>
-      <button data-lang="en" class="lang-btn">English</button>
-      <button data-lang="es" class="lang-btn">Español</button>
-    </section>
-    <section id="abbeyMenu" aria-label="Sezioni Abbazia">
-      <h2 id="menuAbbeyTitle">L'abbazia</h2>
-      <button data-section="section1" class="section-btn">Storia</button>
-      <button data-section="section2" class="section-btn">Interni</button>
-      <button data-section="section3" class="section-btn">Facciata</button>
-      <button data-section="section4" class="section-btn">Retro</button>
-      <button data-section="section5" class="section-btn">Polittico di San Siro</button>
-    </section>
+
+  <nav id="topmenu" class="hidden" aria-label="Main menu">
+    <div class="menu-sections" role="menu">
+      <button data-section="section1" class="menu-btn" role="menuitem"></button>
+      <button data-section="section2" class="menu-btn" role="menuitem"></button>
+      <button data-section="section3" class="menu-btn" role="menuitem"></button>
+      <button data-section="section4" class="menu-btn" role="menuitem"></button>
+      <button data-section="section5" class="menu-btn" role="menuitem"></button>
+    </div>
+
+    <div class="language-buttons" role="menu">
+      <button data-lang="it" class="lang-btn" role="menuitem"></button>
+      <button data-lang="en" class="lang-btn" role="menuitem"></button>
+      <button data-lang="es" class="lang-btn" role="menuitem"></button>
+    </div>
   </nav>
 </header>
 
-<main id="mainContent" tabindex="0">
-  <!-- Contenuto dinamico -->
+<main id="mainContent" tabindex="0" aria-live="polite" aria-atomic="true">
+  <!-- contenuto dinamico qui -->
 </main>
 
 <script src="script.js"></script>
