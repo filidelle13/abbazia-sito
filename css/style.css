@@ -1,4 +1,3 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -7,210 +6,88 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #f5f5f5;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  background: #f0f0f0;
+  padding-top: 60px;
 }
 
-/* HEADER ORIZZONTALE FISSO IN ALTO */
-#topbar {
+/* Sidebar/topbar */
+.sidebar {
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  height: 50px;  /* altezza barra chiusa */
+  width: 100%;
   background-color: purple;
   color: white;
   display: flex;
   align-items: center;
-  padding: 0 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 1001;
-  overflow: hidden;
-  transition: height 0.3s ease;
+  padding: 10px 20px;
+  z-index: 999;
 }
 
-#topbar.expanded {
-  height: auto; /* si adatta al contenuto */
-  padding-bottom: 15px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-}
-
+/* Hamburger icon */
 #menu-toggle {
-  background-color: purple;
+  background: none;
   border: none;
-  color: white;
-  font-size: 28px;
   cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 4px;
-  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 5px;
 }
 
-/* Menu contenuto: nascosto di default */
-#menu-content {
+#menu-toggle .bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+}
+
+/* Hidden menu initially */
+.menu-content {
+  display: none;
+  flex-direction: column;
   margin-left: 20px;
-  display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
-  align-items: center;
-  height: 0;
-  overflow: hidden;
-  transition: height 0.3s ease;
-  color: white;
 }
 
-/* Quando menu aperto */
-#topbar.expanded #menu-content {
-  height: auto;
-  overflow: visible;
-}
-
-/* Menu sezioni */
-.menu-section h2 {
-  font-size: 1.2em;
-  margin-bottom: 5px;
-}
-
-#language-select {
-  padding: 6px 8px;
-  font-size: 1em;
-  border-radius: 4px;
-  border: none;
-}
-
-/* Menu abbazia */
-#abbazia-menu {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-#abbazia-menu li {
-  margin-bottom: 8px; /* oppure display: inline-block, o altro */
-}
-
-
-#abbazia-menu button {
+.menu-content button {
   background: none;
   border: none;
   color: white;
-  font-size: 1em;
+  font-size: 16px;
+  margin: 4px 0;
   cursor: pointer;
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
 }
 
-#abbazia-menu button:hover,
-#abbazia-menu button.active {
-  background-color: #9b59b6;
+.menu-content button:hover {
+  text-decoration: underline;
 }
 
-/* Contenuto */
-main#content {
-  margin-top: 50px;
+/* Sections */
+.content-section {
+  display: none;
   padding: 20px;
-  flex-grow: 1;
-  outline: none;
+  background-color: white;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
 }
 
-.content-section h1 {
-  margin-bottom: 10px;
-  color: purple;
+.content-section.active {
+  display: block;
 }
 
-.content-section p {
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
-
-.images-container {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.images-container img {
-  max-width: 150px;
-  border-radius: 6px;
-  box-shadow: 0 0 6px rgba(0,0,0,0.2);
-}
-
-/* Footer fisso */
+/* Footer */
 footer {
   position: fixed;
   bottom: 10px;
   right: 10px;
-  color: #555;
-  font-size: 0.9em;
-  font-style: italic;
-  user-select: none;
-  background: rgba(255, 255, 255, 0.7);
-  padding: 4px 8px;
-  border-radius: 6px;
-  max-width: 90vw;
-  box-shadow: 0 0 6px rgba(0,0,0,0.1);
-  z-index: 1002;
-  white-space: nowrap;
+  font-size: 12px;
+  color: #444;
 }
 
 /* Responsive */
 @media (max-width: 600px) {
-  #topbar {
-    height: 50px;
-    padding: 0 8px;
-  }
-  
-  #topbar.expanded {
-    height: auto;
-    padding-bottom: 10px;
-  }
-
-  #menu-toggle {
-    font-size: 34px;
-    padding: 8px 14px;
-  }
-
-  #menu-content {
-    margin-left: 10px;
-    gap: 20px;
-  }
-
-  .menu-section h2 {
-    font-size: 1.1em;
-  }
-
-  #language-select {
-    font-size: 0.9em;
-  }
-
-  #abbazia-menu {
-    gap: 10px;
-  }
-
-  #abbazia-menu button {
-    font-size: 0.95em;
-    padding: 5px 8px;
-  }
-
-  main#content {
-    margin-top: 60px;
-    padding: 15px 10px;
-  }
-
-  .images-container img {
-    max-width: 100px;
-  }
-
-  footer {
-    font-size: 0.8em;
-    bottom: 5px;
-    right: 5px;
-    max-width: 95vw;
-    white-space: normal;
+  .menu-content {
+    flex-direction: column;
   }
 }
