@@ -2,54 +2,62 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>L'Abbazia di San Siro di Struppa</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="container">
-    <!-- Sidebar -->
-    <nav class="sidebar" id="sidebar">
-      <div class="menu-group">
-        <div class="section-buttons">
-          <button data-section="storia">Storia</button>
-          <button data-section="interni">Interni</button>
-          <button data-section="facciata">Facciata</button>
-          <button data-section="retro">Retro</button>
-          <button data-section="polittico">Polittico</button>
-        </div>
-        <div class="language-buttons">
-          <button id="lang-it">IT</button>
-          <button id="lang-en">EN</button>
-          <button id="lang-es">ES</button>
-        </div>
-      </div>
-    </nav>
+  <header class="topbar">
+    <button id="hamburger" aria-label="Apri menu" aria-expanded="false">
+      ☰
+    </button>
 
-    <!-- Contenuto -->
-    <main class="content" id="content">
-      <section id="storia" class="content-section">
-        <h1></h1>
-        <p></p>
-      </section>
-      <section id="interni" class="content-section">
-        <h1></h1>
-        <p></p>
-      </section>
-      <section id="facciata" class="content-section">
-        <h1></h1>
-        <p></p>
-      </section>
-      <section id="retro" class="content-section">
-        <h1></h1>
-        <p></p>
-      </section>
-      <section id="polittico" class="content-section">
-        <h1></h1>
-        <p></p>
-      </section>
-    </main>
-  </div>
+    <nav id="menu" class="menu" aria-hidden="true">
+      <ul>
+        <li>
+          <button class="menu-toggle" data-target="submenu-lingua">Lingua ▾</button>
+          <ul id="submenu-lingua" class="submenu" aria-hidden="true">
+            <li><button class="lang-btn" data-lang="it">Italiano</button></li>
+            <li><button class="lang-btn" data-lang="en">English</button></li>
+            <li><button class="lang-btn" data-lang="es">Español</button></li>
+          </ul>
+        </li>
+        <li>
+          <button class="menu-toggle" data-target="submenu-abbazia">L'abbazia ▾</button>
+          <ul id="submenu-abbazia" class="submenu" aria-hidden="true">
+            <li><button class="section-btn" data-section="storia">Storia</button></li>
+            <li><button class="section-btn" data-section="interni">Interni</button></li>
+            <li><button class="section-btn" data-section="facciata">Facciata</button></li>
+            <li><button class="section-btn" data-section="retro">Retro</button></li>
+            <li><button class="section-btn" data-section="polittico">Polittico di San Siro</button></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="storia" class="content-section" hidden>
+      <h1></h1>
+      <p></p>
+    </section>
+    <section id="interni" class="content-section" hidden>
+      <h1></h1>
+      <p></p>
+    </section>
+    <section id="facciata" class="content-section" hidden>
+      <h1></h1>
+      <p></p>
+    </section>
+    <section id="retro" class="content-section" hidden>
+      <h1></h1>
+      <p></p>
+    </section>
+    <section id="polittico" class="content-section" hidden>
+      <h1></h1>
+      <p></p>
+    </section>
+  </main>
 
   <footer>
     Made by F.Dellepiane, L.Santovito, R.Carpi.
