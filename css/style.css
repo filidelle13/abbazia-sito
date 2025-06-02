@@ -352,14 +352,42 @@ footer {
     max-width: 100%; /* Adatta il carosello alla larghezza dello schermo */
     margin: 0 auto;
   }
-
   .carousel-inner img {
     height: 120px; /* Riduci l'altezza delle immagini per mobile */
     object-fit: cover;
   }
-
   footer {
     padding: 10px; /* Riduci il padding del footer */
     font-size: 14px; /* Riduci la dimensione del testo nel footer */
   }
+
+#menu button {
+  background: none;
+  border: none;
+  color: white;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+#menu button:hover {
+  background-color: #495057;
+}
+/* Mostra il menu quando aria-hidden è false */
+#menu[aria-hidden="false"] {
+  display: flex;
+}
+/* Stile per i sottomenu */
+.submenu {
+  display: none; /* Nascondi i sottomenu di default */
+  flex-direction: column;
+  padding-left: 15px;
+}
+.submenu li button {
+  font-size: 14px;
+}
+/* Mostra il sottomenu quando aria-hidden è false */
+.submenu[aria-hidden="false"] {
+  display: flex;
+}
 }
