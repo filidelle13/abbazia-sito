@@ -2,7 +2,7 @@
 header {
   position: relative;
   background-color: #343a40;
-  padding: 10px;
+
 }
 
 #hamburger {
@@ -312,10 +312,6 @@ footer {
 
 /* Stile per il menu mobile */
 @media (max-width: 768px) {
-  header {
-    padding: 10px;
-  }
-
  
 
   #menu {
