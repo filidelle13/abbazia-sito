@@ -309,10 +309,7 @@ footer {
     padding: 10px;
   }
 
-  #hamburger {
-    font-size: 28px; /* Aumenta la dimensione del pulsante hamburger */
-    left: 0px;
-  }
+ 
 
   #menu {
     position: fixed; /* Fissa il menu in alto */
