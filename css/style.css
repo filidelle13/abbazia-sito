@@ -402,4 +402,8 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+main {
+  min-height: calc(var(--vh, 1vh) * 100 - 60px); /* Altezza minima dinamica */
+}
 }
