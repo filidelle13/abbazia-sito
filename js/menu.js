@@ -1,7 +1,7 @@
 var dizionario={
     en: {
         lingua: "Language",
-        abbazia: "The Abbey",
+        abbazia: "The Abbey ▾",
         storia: "History",
         interni: "Interiors",
         facciata: "Facade",
@@ -10,7 +10,7 @@ var dizionario={
     },
     it: {
         lingua: "Lingua",
-        abbazia: "L'Abbazia",
+        abbazia: "L'Abbazia ▾",
         storia: "Storia",
         interni: "Interni",
         facciata: "Facciata",
@@ -20,7 +20,7 @@ var dizionario={
     },
     es: {
         lingua: "Idioma",
-        abbazia: "La Abadía",
+        abbazia: "La Abadía ▾",
         storia: "Historia",
         interni: "Interiores",
         facciata: "Fachada",

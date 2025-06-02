@@ -77,7 +77,7 @@ header {
   display: none;
   /* Nascondi i sottomenu di default */
   flex-direction: column;
-  padding-left: 15px;
+  padding-left: 20px !important;
 }
 
 .submenu li button {
@@ -180,10 +180,7 @@ footer {
     padding: 15px;
   }
 
-  .submenu {
-    padding-left: 20px;
-    /* Indenta i sottomenu */
-  }
+ 
 
   #carousel {
     max-width: 100%;
@@ -432,7 +429,7 @@ footer {
     display: none;
     /* Nascondi i sottomenu di default */
     flex-direction: column;
-    padding-left: 15px;
+
     padding-left: 20px !important;
   }
 
@@ -445,4 +442,3 @@ footer {
     display: flex;
   }
 }
-
