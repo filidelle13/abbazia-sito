@@ -70,5 +70,14 @@ const translations = {
 };
 
 
+const images = {
+    
+  storia: ["facciata.jpg"],
+  interni: ["navata.jpg", "navata-2.jpg", "altare.jpg"],
+  facciata: ["facciata.jpg","sagrato.jpg"],
+  retro: ["abside.jpg", "panorama.jpg"],
+  polittico: ["polittico.jpg", "polittico-2.jpg"]
+ 
+};
 
   
