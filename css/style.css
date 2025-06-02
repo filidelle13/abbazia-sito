@@ -2,7 +2,7 @@
 header {
   position: relative;
   background-color: #343a40;
-
+  min-height: 40px;
 }
 
 #hamburger {
@@ -15,7 +15,7 @@ header {
 
 #menu {
   position: absolute;
-  margin-top: 50px;
+  margin-top: 40px;
   top: 0px;
   left: 0;
   width: 100%;
@@ -46,7 +46,7 @@ header {
   
   #menu {
     position: absolute;
-    margin-top: 50px;
+    margin-top: 40px;
     top: 0px;
     left: 0;
     width: 100%;
@@ -172,6 +172,7 @@ header {
       flex-direction: column;
       z-index: 1000;
       overflow-y: auto; /* Aggiungi lo scroll se necessario */
+      
     }
   
     #menu[aria-hidden="false"] {
