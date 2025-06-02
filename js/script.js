@@ -47,7 +47,6 @@ function updateContent() {
 }
 
 function updateMenu(){
-  debugger;
   var buttons=document.querySelectorAll("button");
   buttons.forEach(btn=>{
     var resource=btn.dataset["resource"];
@@ -131,11 +130,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-function updateViewportHeight() {
-  const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-}
+// function updateViewportHeight() {
+//   const vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty('--vh', `${vh}px`);
+// }
 
-// Aggiorna l'altezza del viewport al caricamento e al ridimensionamento
-window.addEventListener('resize', updateViewportHeight);
-window.addEventListener('load', updateViewportHeight);
+// // Aggiorna l'altezza del viewport al caricamento e al ridimensionamento
+// window.addEventListener('resize', updateViewportHeight);
+// window.addEventListener('load', updateViewportHeight);

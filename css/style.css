@@ -362,6 +362,8 @@ footer {
   footer {
     padding: 10px; /* Riduci il padding del footer */
     font-size: 14px; /* Riduci la dimensione del testo nel footer */
+    top: calc(100dvh - 50px); /* Or your footer height */
+    background-color: #343a40;
   }
 
 #menu button {
@@ -399,11 +401,7 @@ footer {
   text-align: center;
   padding: 20px;
   position: fixed; /* Fissa il footer in fondo alla pagina */
-  bottom: 0;
-  width: 100%;
+
 }
 
-main {
-  min-height: calc(var(--vh, 1vh) * 100 - 60px); /* Altezza minima dinamica */
-}
 }
