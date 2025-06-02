@@ -293,8 +293,8 @@ header {
 }
 
 footer {
-  background-color: #343a40;
-  color: white;
+  
+  color: black ;
   text-align: center;
   padding: 20px;
   position: absolute;
@@ -389,5 +389,14 @@ footer {
 /* Mostra il sottomenu quando aria-hidden è false */
 .submenu[aria-hidden="false"] {
   display: flex;
+}
+footer {
+  color: black;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  right: 0;
 }
 }
