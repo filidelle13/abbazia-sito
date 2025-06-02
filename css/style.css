@@ -1,159 +1,121 @@
-/* RESET */
-* {
-  margin:0; padding:0; box-sizing:border-box;
-}
-body {
-  font-family: Arial, sans-serif;
-  background:#f9f9f9;
-  padding-top:50px; /* spazio barra */
-  min-height: 100vh;
-  position: relative;
-}
-/* BARRA VIOLA FISSA IN ALTO */
+/* Stile generale per il menu */
 header {
-  position: fixed;
-  top:0; left:0; right:0;
-  background: purple;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  padding: 0 15px;
-  z-index: 1000;
-}
-/* PULSANTE HAMBURGER */
-#hamburger {
-  font-size: 26px;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  user-select: none;
-}
-
-/* MENU ORIZZONTALE */
-#menu {
-  display: none; /* nascosto all’inizio */
-  margin-left: 20px;
-  color: white;
-  flex-wrap: nowrap;
-}
-#menu.active {
-  display: flex;
-}
-
-#menu > ul {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-}
-
-#menu > ul > li {
   position: relative;
+  background-color: #343a40;
+  padding: 10px;
 }
 
-/* BOTTONE PRINCIPALE MENU (Lingua, L'abbazia) */
-.menu-toggle {
+#hamburger {
   background: none;
   border: none;
   color: white;
-  font-size: 16px;
+  font-size: 24px;
   cursor: pointer;
-  user-select: none;
-  padding: 5px;
 }
 
-/* SOTTOMENU NASCOSTO */
-.submenu {
+#menu {
   position: absolute;
-  top: 38px;
+  margin-top: 50px;
+  top: 0px;
   left: 0;
-  background: purple;
-  border-radius: 0 0 6px 6px;
-  display: none;
+  width: 100%;
+  background-color: #343a40;
+  color: white;
+  display: none; /* Nascondi il menu di default */
   flex-direction: column;
-  min-width: 150px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  padding: 0;
+  z-index: 1000; /* Assicurati che il menu sia sopra altri elementi */
 }
 
-.submenu.active {
+#menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#menu li {
+  border-bottom: 1px solid #495057;
+}
+
+#menu button {
+  background: none;
+  border: none;
+  color: white;
+  width: 100%;
+  text-align: left;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+#menu button:hover {
+  background-color: #495057;
+}
+
+/* Mostra il menu quando aria-hidden è false */
+#menu[aria-hidden="false"] {
   display: flex;
 }
 
-.submenu li {
-  border-bottom: 1px solid rgba(255,255,255,0.25);
+/* Stile per i sottomenu */
+.submenu {
+  display: none; /* Nascondi i sottomenu di default */
+  flex-direction: column;
+  padding-left: 15px;
+ 
 }
-.submenu li:last-child {
-  border-bottom: none;
-}
-
-.submenu button {
-  width: 100%;
-  background: none;
-  border: none;
-  color: white;
-  padding: 10px 12px;
-  text-align: left;
+.submenu li button {
   font-size: 14px;
-  cursor: pointer;
 }
 
-.submenu button:hover {
-  background: #5e00a8;
+/* Mostra il sottomenu quando aria-hidden è false */
+.submenu[aria-hidden="false"] {
+  display: flex;
 }
 
-/* CONTENUTO PRINCIPALE */
-main {
-  max-width: 900px;
-  margin: 20px auto;
-  background: white;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-  min-height: 300px;
+/* Stile per il carosello */
+#carousel {
+  max-width: 600px; /* Imposta una larghezza massima per il carosello */
+  margin: 0 auto; /* Centra il carosello */
+  position: relative; /* Necessario per posizionare le frecce */
 }
 
-section {
-  display: none;
+.carousel-inner img {
+  width: 100%; /* Adatta le immagini alla larghezza del carosello */
+  height: auto; /* Mantieni le proporzioni delle immagini */
+  object-fit: cover;
 }
 
-section.active {
-  display: block;
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px; /* Riduci la larghezza delle frecce */
+  height: 40px; /* Riduci l'altezza delle frecce */
+  background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente per le frecce */
+  border-radius: 50%; /* Rendi le frecce circolari */
+  top: 50%; /* Posiziona le frecce al centro verticale */
+  transform: translateY(-50%); /* Centra le frecce verticalmente */
 }
 
-/* FOOTER FISSO IN BASSO A DESTRA */
+.carousel-control-prev {
+  left: -50px; /* Posiziona la freccia a sinistra del carosello */
+}
+
+.carousel-control-next {
+  right: -50px; /* Posiziona la freccia a destra del carosello */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px; /* Riduci la dimensione dell'icona */
+  height: 20px; /* Riduci la dimensione dell'icona */
+}
+
 footer {
-  position: fixed;
-  bottom: 5px;
-  right: 10px;
-  font-size: 12px;
-  color: #444;
-  user-select: none;
-}
-
-/* MOBILE: menu dropdown verticale */
-@media (max-width:600px) {
-  #menu {
-    position: fixed;
-    top: 50px;
-    left: 0;
-    right: 0;
-    background: purple;
-    flex-direction: column;
-    padding: 10px 0;
-    border-radius: 0 0 6px 6px;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-  }
-  #menu > ul {
-    flex-direction: column;
-    gap: 0;
-  }
-  #menu > ul > li {
-    margin-bottom: 10px;
-  }
-  .submenu {
-    position: relative;
-    top: 0;
-    box-shadow: none;
-    border-radius: 0;
-  }
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  right: 0;
 }
