@@ -48,6 +48,10 @@ function updateContent() {
 
 function updateMenu(){
   var buttons=document.querySelectorAll("button");
+
+  var language=document.getElementById("language");
+  language.src= "images/" + currentLang + ".svg";
+
   buttons.forEach(btn=>{
     var resource=btn.dataset["resource"];
     if(resource)

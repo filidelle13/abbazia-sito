@@ -9,12 +9,22 @@ header {
   background: none;
   border: none;
   color: white;
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
+
 }
 
 
 
+#language{
+  align-items: center  ;
+  float: right;
+  margin-top: 10px;
+  margin-right: 5px;
+  width: 30px;
+  height: 30px;
+  /* Sposta il menu delle lingue a destra */
+}
 
 
 #menu {
@@ -318,6 +328,15 @@ footer {
 
 }
 
+.flag{
+  width: 20px;
+  height: 20px;
+  /* Imposta una dimensione fissa per le bandiere */
+  margin-right: 10px;
+  /* Aggiungi un margine a destra per distanziare le bandiere dal testo */
+}
+
+
 /* Stile per il menu mobile */
 @media (max-width: 768px) {
 
@@ -414,6 +433,7 @@ footer {
     /* Nascondi i sottomenu di default */
     flex-direction: column;
     padding-left: 15px;
+    padding-left: 20px !important;
   }
 
   .submenu li button {
