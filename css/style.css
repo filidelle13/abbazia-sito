@@ -61,8 +61,8 @@ header {
   display: none; /* Nascondi i sottomenu di default */
   flex-direction: column;
   padding-left: 15px;
- 
 }
+
 .submenu li button {
   font-size: 14px;
 }
@@ -96,11 +96,11 @@ header {
 }
 
 .carousel-control-prev {
-  left: -50px; /* Posiziona la freccia a sinistra del carosello */
+  left: 10px; /* Posiziona la freccia a sinistra del carosello */
 }
 
 .carousel-control-next {
-  right: -50px; /* Posiziona la freccia a destra del carosello */
+  right: 10px; /* Posiziona la freccia a destra del carosello */
 }
 
 .carousel-control-prev-icon,
@@ -178,7 +178,5 @@ footer {
   footer {
     padding: 10px; /* Riduci il padding del footer */
     font-size: 14px; /* Riduci la dimensione del testo nel footer */
-    background-color: none ;/* Rimuovi il colore di sfondo del footer per contrasto */
-    color :black /* Cambia il colore del testo del footer per contrasto */
   }
 }
