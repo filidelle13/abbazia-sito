@@ -77,12 +77,13 @@ header {
   max-width: 600px; /* Imposta una larghezza massima per il carosello */
   margin: 0 auto; /* Centra il carosello */
   position: relative; /* Necessario per posizionare le frecce */
+  overflow: hidden; /* Evita l'overflow interno */
 }
 
 .carousel-inner img {
   width: 100%; /* Adatta le immagini alla larghezza del carosello */
-  height: auto; /* Mantieni le proporzioni delle immagini */
-  object-fit: cover;
+  height: 300px; /* Imposta un'altezza fissa per tutte le immagini */
+  object-fit: cover; /* Mantieni le proporzioni e riempi l'area */
 }
 
 .carousel-control-prev,
