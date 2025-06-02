@@ -154,9 +154,8 @@ header {
   
   /* Stile per il menu mobile */
   @media (max-width: 768px) {
-    header {
-      padding: 10px;
-    }
+    
+     
   
     #hamburger {
       font-size: 28px; /* Aumenta la dimensione del pulsante hamburger */
@@ -212,7 +211,7 @@ header {
       font-size: 14px; /* Riduci la dimensione del testo nel footer */
     }
   }
-  padding: 0;
+  padding: 0px;
 }
 
 #menu li {

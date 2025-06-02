@@ -33,7 +33,7 @@ var dizionario={
 const translations = {
     it: {
       storia_title: "Storia dell'Abbazia",
-      storia_content: "L'Abbazia di San Siro di Struppa ha origini medievali ed è un monumento storico importante per la regione.",
+      storia_content: "Secondo la tradizione la chiesa sorse nel luogo dove nacque Siro, vescovo di Genova nel IV sec. Non si può fissare una data dell'abbazia. precisa per l’edificazione, ma, nel 1025, il vescovo Landolfo la consegnò ai monaci benedettini: ecco il motivo per il quale quest’anno ci ritroviamo a festeggiare il millenario. Sulla vita di San Siro, Vescovo di Genova, non si hanno informazioni precise. Sappiamo che è nato nel sito conosciuto con il nome di Emiliana o Imiliana detto poi Molassana e infine Struppa.",
       interni_title: "Interni dell'Abbazia",
       interni_content: "Gli interni presentano archi romanici e affreschi ben conservati.",
       facciata_title: "Facciata dell'Abbazia",
