@@ -72,7 +72,7 @@ const translations = {
 
 const images = {
     
-  storia: ["facciata.jpg"],
+  storia: ["facciata.jpg","storia-1.jpg", "navata.jpg"],
   interni: ["navata.jpg", "navata-2.jpg", "altare.jpg"],
   facciata: ["facciata.jpg","sagrato.jpg"],
   retro: ["abside.jpg", "panorama.jpg"],
