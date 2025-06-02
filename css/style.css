@@ -29,7 +29,189 @@ header {
 
 #menu ul {
   list-style: none;
-  margin: 0;
+  margin: 0;/* Stile generale per il menu */
+  header {
+    position: relative;
+    background-color: #343a40;
+    padding: 10px;
+  }
+  
+  #hamburger {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  #menu {
+    position: absolute;
+    margin-top: 50px;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    display: none; /* Nascondi il menu di default */
+    flex-direction: column;
+    padding: 0;
+    z-index: 1000; /* Assicurati che il menu sia sopra altri elementi */
+  }
+  
+  #menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #menu li {
+    border-bottom: 1px solid #495057;
+  }
+  
+  #menu button {
+    background: none;
+    border: none;
+    color: white;
+    width: 100%;
+    text-align: left;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  #menu button:hover {
+    background-color: #495057;
+  }
+  
+  /* Mostra il menu quando aria-hidden è false */
+  #menu[aria-hidden="false"] {
+    display: flex;
+  }
+  
+  /* Stile per i sottomenu */
+  .submenu {
+    display: none; /* Nascondi i sottomenu di default */
+    flex-direction: column;
+    padding-left: 15px;
+  }
+  
+  .submenu li button {
+    font-size: 14px;
+  }
+  
+  /* Mostra il sottomenu quando aria-hidden è false */
+  .submenu[aria-hidden="false"] {
+    display: flex;
+  }
+  
+  /* Stile per il carosello */
+  #carousel {
+    max-width: 600px; /* Imposta una larghezza massima per il carosello */
+    margin: 0 auto; /* Centra il carosello */
+    position: relative; /* Necessario per posizionare le frecce */
+    overflow: hidden; /* Evita l'overflow interno */
+  }
+  
+  .carousel-inner img {
+    width: 100%; /* Adatta le immagini alla larghezza del carosello */
+    height: 300px; /* Imposta un'altezza fissa per tutte le immagini */
+    object-fit: cover; /* Mantieni le proporzioni e riempi l'area */
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 40px; /* Riduci la larghezza delle frecce */
+    height: 40px; /* Riduci l'altezza delle frecce */
+    background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente per le frecce */
+    border-radius: 50%; /* Rendi le frecce circolari */
+    top: 50%; /* Posiziona le frecce al centro verticale */
+    transform: translateY(-50%); /* Centra le frecce verticalmente */
+  }
+  
+  .carousel-control-prev {
+    left: 10px; /* Posiziona la freccia a sinistra del carosello */
+  }
+  
+  .carousel-control-next {
+    right: 10px; /* Posiziona la freccia a destra del carosello */
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px; /* Riduci la dimensione dell'icona */
+    height: 20px; /* Riduci la dimensione dell'icona */
+  }
+  
+  footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    right: 0;
+  }
+  
+  /* Stile per il menu mobile */
+  @media (max-width: 768px) {
+    header {
+      padding: 10px;
+    }
+  
+    #hamburger {
+      font-size: 28px; /* Aumenta la dimensione del pulsante hamburger */
+    }
+  
+    #menu {
+      position: fixed; /* Fissa il menu in alto */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; /* Rendi il menu a schermo intero */
+      background-color: #343a40;
+      display: none; /* Nascondi il menu di default */
+      flex-direction: column;
+      z-index: 1000;
+      overflow-y: auto; /* Aggiungi lo scroll se necessario */
+    }
+  
+    #menu[aria-hidden="false"] {
+      display: flex; /* Mostra il menu quando aria-hidden è false */
+    }
+  
+    #menu ul {
+      padding: 0;
+      margin: 0;
+    }
+  
+    #menu li {
+      border-bottom: 1px solid #495057;
+    }
+  
+    #menu button {
+      font-size: 18px; /* Aumenta la dimensione dei pulsanti */
+      padding: 15px;
+    }
+  
+    .submenu {
+      padding-left: 20px; /* Indenta i sottomenu */
+    }
+  
+    #carousel {
+      max-width: 100%; /* Adatta il carosello alla larghezza dello schermo */
+      margin: 0 auto;
+    }
+  
+    .carousel-inner img {
+      height: 120px; /* Riduci l'altezza delle immagini per mobile */
+      object-fit: cover;
+    }
+  
+    footer {
+      padding: 10px; /* Riduci il padding del footer */
+      font-size: 14px; /* Riduci la dimensione del testo nel footer */
+    }
+  }
   padding: 0;
 }
 
