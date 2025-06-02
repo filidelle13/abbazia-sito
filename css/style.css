@@ -311,6 +311,7 @@ footer {
 
   #hamburger {
     font-size: 28px; /* Aumenta la dimensione del pulsante hamburger */
+    left: 0; /* Posiziona il pulsante hamburger a sinistra */
   }
 
   #menu {
