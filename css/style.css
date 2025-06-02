@@ -171,12 +171,14 @@ footer {
   }
 
   .carousel-inner img {
-    height: 200px; /* Riduci l'altezza delle immagini per mobile */
+    height: 120px; /* Riduci l'altezza delle immagini per mobile */
     object-fit: cover;
   }
 
   footer {
-    padding: 10px;
+    padding: 10px; /* Riduci il padding del footer */
     font-size: 14px; /* Riduci la dimensione del testo nel footer */
+    background-color: none ;/* Rimuovi il colore di sfondo del footer per contrasto */
+    color :black /* Cambia il colore del testo del footer per contrasto */
   }
 }
