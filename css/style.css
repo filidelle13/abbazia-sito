@@ -297,10 +297,17 @@ footer {
   color: black ;
   text-align: center;
   padding: 20px;
-  position: absolute;
+
   bottom: 0;
   width: 100%;
   right: 0;
+
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  position: fixed; /* Fissa il footer in fondo alla pagina */
+
 }
 
 /* Stile per il menu mobile */
@@ -391,14 +398,6 @@ footer {
 /* Mostra il sottomenu quando aria-hidden è false */
 .submenu[aria-hidden="false"] {
   display: flex;
-}
-footer {
-  background-color: #343a40;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: fixed; /* Fissa il footer in fondo alla pagina */
-
 }
 
 }
