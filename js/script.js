@@ -87,7 +87,7 @@ langButtons.forEach(btn => {
 sectionButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const newSection = btn.dataset.section;
-    if (newSection === currentSection) return;
+    //if (newSection === currentSection) return;
     currentSection = newSection;
     localStorage.setItem("section", currentSection);
     updateContent();
