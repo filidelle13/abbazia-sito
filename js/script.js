@@ -74,7 +74,6 @@ updateContent();
 langButtons.forEach(btn => {
   btn.addEventListener("click", () => {
     const newLang = btn.dataset.lang;
-    if (newLang === currentLang) return;
     currentLang = newLang;
     localStorage.setItem("lang", currentLang);
     updateMenu();
